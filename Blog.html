@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Dott.ssa Lorena Ghiotto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Palette e variabili come Home */
+    :root {
+      --color-primary: #3A6B53;
+      --color-secondary: #5C6F66;
+      --color-bg: #F9FAF9;
+      --color-surface: #EBF2ED;
+      --color-cta: #3A6B53;
+      --color-cta-hover: #2f5a44;
+    }
+    body { font-family: 'Work Sans', sans-serif; background: var(--color-bg); color: #333; }
+    h1,h2,h3 { font-family: 'Playfair Display', serif; }
+    .text-primary { color: var(--color-primary); }
+    .bg-primary { background-color: var(--color-primary); }
+
+    .blog-card { position: relative; overflow: hidden; background: white; transition: transform .3s ease; }
+    .blog-card:hover { transform: translateY(-5px); }
+
+    /* Watermark background */
+    .page-watermark {
+      position: fixed;
+      inset: 0;
+      background: url('img/BgBlog.jpg') center/cover no-repeat;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+    main, header, footer { position: relative; z-index: 1; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="page-watermark"></div>
+  <header class="bg-primary/80 text-white backdrop-blur-sm">
+    <div class="container mx-auto px-6 py-6 flex items-center justify-between">
+      <a href="Index.html" class="text-white/90 hover:text-white font-semibold">← Torna alla Home</a>
+      <span class="font-serif text-xl">Blog</span>
+    </div>
+  </header>
+
+  <main class="py-16">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl font-bold text-primary text-center mb-10">Tutti gli Articoli</h1>
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="blog-list"></div>
+      <article id="blog-article" class="max-w-4xl mx-auto mt-12 hidden bg-white/90 border rounded-2xl p-8 shadow">
+        <button onclick="closeArticle()" class="float-right text-primary font-semibold">Chiudi ×</button>
+        <div id="blog-article-content" class="clear-both"></div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="bg-primary/80 text-white py-10 text-center backdrop-blur-sm">
+    <p class="font-serif">Dott.ssa Lorena Ghiotto</p>
+  </footer>
+
+  <script>
+    const blogArticles = [
+      { title: "Come Gestire l'Ansia quotidiana", excerpt: "Strategie pratiche e respirazione.", tag: "Benessere", colorClass: "text-accent-winter", id: 5 },
+      { title: "Il Ruolo della Resilienza", excerpt: "Costruire resilienza e forza interiore.", tag: "Psicologia", colorClass: "text-accent-spring", id: 6 },
+      { title: "Relazioni Sane: Confini e Comunicazione", excerpt: "Assertività e gestione dei confini.", tag: "Relazioni", colorClass: "text-accent-summer", id: 7 },
+      { title: "Consapevolezza Emotiva nei Bambini", excerpt: "Riconoscere e gestire le emozioni.", tag: "Genitori & Figli", colorClass: "text-accent-autumn", id: 8 }
+    ];
+
+    const container = document.getElementById('blog-list');
+    const articleEl = document.getElementById('blog-article');
+    const articleContent = document.getElementById('blog-article-content');
+
+    const fullTexts = {
+      5: "<p class='mb-4'>L'ansia è una compagna sempre più frequente nelle nostre vite. In questo articolo scopriamo come riconoscerla e affrontarla con strumenti concreti.</p><p>Impareremo la tecnica della respirazione 4-7-8, il grounding sensoriale e come distinguere un'ansia adattiva da una patologica che richiede supporto professionale.</p>",
+      6: "<p class='mb-4'>La resilienza non è una qualità innata, ma una competenza che si può sviluppare.</p><p>Esploreremo i pilastri della resilienza: auto-consapevolezza, flessibilità mentale, chiedere aiuto e il significato personale attribuito alle sfide.</p>",
+      7: "<p class='mb-4'>Le relazioni sane iniziano dall'assertività e dal rispetto dei confini personali.</p><p>Come dire 'no' senza colpa, ascoltare attivamente e trasformare i conflitti in crescita.</p>",
+      8: "<p class='mb-4'>Sviluppare l'intelligenza emotiva nei bambini è un dono.</p><p>Attraverso gioco, disegno e narrazione, insegniamo a nominare, comprendere ed esprimere le emozioni.</p>"
+    };
+
+    function openArticle(id) {
+      const art = blogArticles.find(a => a.id === id);
+      if (!art) return;
+      articleContent.innerHTML = `
+        <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
+        <h2 class="text-3xl font-serif font-bold text-primary mb-6">${art.title}</h2>
+        <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">${fullTexts[id] || art.excerpt}</div>
+      `;
+      articleEl.classList.remove('hidden');
+      window.scrollTo({ top: articleEl.offsetTop - 80, behavior: 'smooth' });
+    }
+
+    function closeArticle() {
+      articleEl.classList.add('hidden');
+      articleContent.innerHTML = '';
+    }
+
+    blogArticles.forEach(art => {
+      const card = document.createElement('div');
+      card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
+      card.innerHTML = `
+        <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
+        <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
+        <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
+        <button class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto" onclick="openArticle(${art.id})">Apri articolo &rarr;</button>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>

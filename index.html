@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dott.ssa Lorena Ghiotto | Psicologa Psicoterapeuta Padova</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* BASE */
+        body { font-family: 'Work Sans', sans-serif; background-color: var(--color-bg); color: #333; transition: background-color 2.2s ease, color 1.0s ease; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        
+        /* PALETTE COLORI (CSS Variables) */
+        :root {
+            /* Base Colors (Sempre uguali) */
+            --color-primary: #3A6B53;
+            --color-secondary: #5C6F66;
+            --color-bg: #F9FAF9;
+            --color-surface: #EBF2ED;
+
+            /* CTA color should remain the brand green even when seasons change */
+            --color-cta: #3A6B53;
+            --color-cta-hover: #2f5a44;
+
+            /* Accent defaults ( verranno cambiate con le classi season-... ) */
+            --color-accent: #8EB89D;
+            --color-accent-hover: #6ea683;
+        }
+
+        /* Classi per il body (da cambiare via JS) */
+        body.season-winter {
+            --color-accent: #5E81AC;
+            --color-accent-hover: #4C566A;
+            --color-bg: #F3F7FB;
+            --color-surface: #EAF2F8;
+        }
+
+        body.season-spring {
+            --color-accent: #E8A87C;
+            --color-accent-hover: #D08770;
+            --color-bg: #FBF8F2;
+            --color-surface: #F3F8F1;
+        }
+
+        body.season-summer {
+            --color-accent: #88C0D0;
+            --color-accent-hover: #81A1C1;
+            --color-bg: #F6FBFD;
+            --color-surface: #EAF6FA;
+        }
+
+        body.season-autumn {
+            --color-accent: #D08770;
+            --color-accent-hover: #BF616A;
+            --color-bg: #FFF6F0;
+            --color-surface: #FFF1E6;
+        }
+
+        .text-primary { color: var(--color-primary); }
+        .bg-primary { background-color: var(--color-primary); }
+        .text-secondary { color: var(--color-secondary); }
+        .bg-main { background-color: var(--color-surface); }
+        .bg-accent-cta { background-color: var(--color-cta); }
+        .text-accent-cta { color: var(--color-accent); }
+        .text-accent-spring { color: #E8A87C; }
+        .text-accent-summer { color: #88C0D0; }
+        .text-accent-autumn { color: #D08770; }
+        .text-accent-winter { color: #5E81AC; }
+
+        /* active style for season card */
+        .season-card.active { border-color: var(--color-accent) !important; box-shadow: 0 8px 18px rgba(0,0,0,0.06); }
+        
+        /* STILI SPECIFICI */
+        .season-card { transition: all 0.3s ease; }
+        .season-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        /* TAB ATTIVI */
+        .active-tab { background-color: #3A6B53 !important; color: white !important; }
+        
+        /* CARD BLOG OVERLAY */
+        .blog-card {
+            position: relative; overflow: hidden; background: white; transition: transform 0.3s ease;
+        }
+        .blog-card:hover { transform: translateY(-5px); }
+        .blog-card::after {
+            content: ''; position: absolute; bottom: -20px; right: -20px; width: 100px; height: 100px;
+            opacity: 0.08; background-size: contain; background-repeat: no-repeat; pointer-events: none;
+            /* Icona foglia generica per overlay */
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C20 0 0 20 0 50 C0 80 20 100 50 100 C80 100 100 80 100 50 C100 20 80 0 50 0 Z' fill='%233A6B53'/%3E%3C/svg%3E");
+            transform: rotate(-15deg); transition: transform 0.5s ease;
+        }
+        .blog-card:hover::after { transform: rotate(0deg) scale(1.1); opacity: 0.12; }
+
+        /* Thumbnail on cards (aligned, circular, resized) */
+        .card-thumb {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            border-radius: 999px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.92);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            border: 2px solid rgba(255,255,255,0.85);
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .card-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-card:hover .card-thumb,
+        .card:hover .card-thumb {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Keep thumbnails visible on touch devices */
+        @media (hover: none) {
+            .card-thumb {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* MODALE GENERALE */
+        #universal-modal { transition: opacity 0.5s ease; background-color: rgba(0,0,0,0.45) !important; }
+        #universal-modal.hidden { opacity: 0; pointer-events: none; }
+        #universal-modal:not(.hidden) { opacity: 1; pointer-events: auto; }
+
+        /* MODALE PERCORSI (PIÙ LARGA) */
+        #percorsi-modal { transition: opacity 0.5s ease; background-color: rgba(0,0,0,0.45) !important; }
+        #percorsi-modal.hidden { opacity: 0; pointer-events: none; }
+        #percorsi-modal:not(.hidden) { opacity: 1; pointer-events: auto; }
+        #percorsi-modal-panel { max-width: 1200px; position: relative; }
+        
+        #percorsi-bg-watermark {
+            position: absolute;
+            inset: 0;
+            background-image: url('img/Cards.png');
+            background-size: 85%;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.28;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        #percorsi-modal-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Miglioramento leggibilità testo nella modale percorsi */
+        #percorsi-modal-body h2 {
+            color: #2d5540 !important;
+        }
+        
+        #percorsi-modal-body p {
+            color: #3a3a3a !important;
+            font-weight: 400 !important;
+        }
+
+        /* MODALE CON SFONDO ELEGANTE */
+        #modal-bg-parallax {
+            position: absolute;
+            inset: 0;
+            background-size: 120%;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            z-index: 0;
+            opacity: 0.35;
+            filter: brightness(0.50) saturate(0.5);
+            pointer-events: none;
+            transition: opacity 300ms ease, transform 300ms ease;
+            will-change: transform;
+        }
+
+        #modal-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: linear-gradient(135deg, rgba(0,0,0,0.20) 10%, rgba(0,0,0,0.12) 10%);
+        }
+
+        /* Pannello contenuto dentro la modale: sfondo semi-trasparente per permettere alla foto di emergere */
+        #modal-content {
+            position: relative;
+            z-index: 10;
+            background-color: rgba(255,255,255,0.80); /* più trasparente per far intravedere lo sfondo */
+            border-radius: 1rem;
+            overflow: auto;
+            max-height: 90vh;
+        }
+        
+        /* Miglioramento leggibilità testo nei modali */
+        #modal-content .text-secondary {
+            color: #4a4a4a !important;
+            font-weight: 400 !important;
+        }
+        
+        #modal-content .text-primary {
+            color: #2d5540 !important;
+            font-weight: 500 !important;
+        }
+
+        #modal-panel {
+            position: relative;
+        }
+
+        /* CALENDARIO STYLES */
+        .calendar-day { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; cursor: pointer; transition: all 0.2s; }
+        .calendar-day:hover:not(.disabled) { background-color: #EBF2ED; color: #3A6B53; }
+        .calendar-day.selected { background-color: #3A6B53; color: white; }
+        .calendar-day.disabled { color: #ccc; cursor: not-allowed; }
+        .time-slot { border: 1px solid #8EB89D; color: #3A6B53; border-radius: 8px; padding: 8px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .time-slot:hover { background-color: #EBF2ED; }
+        .time-slot.selected { background-color: #3A6B53; color: white; border-color: #3A6B53; }
+        /* Ensure anchored sections are not hidden under the fixed header */
+        :root { --header-height: 4rem; }
+        html { scroll-padding-top: var(--header-height); }
+
+        /* GALLERIA IMMAGINI ARTICOLO */
+        .article-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+        @media (min-width: 768px) {
+            .article-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        }
+        .article-gallery figure { overflow: hidden; border-radius: 0.75rem; background: rgba(255,255,255,0.6); border: 1px solid rgba(0,0,0,0.05); }
+        .article-gallery img { width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .3s ease; cursor: zoom-in; }
+        .article-gallery figure:hover img { transform: scale(1.03); }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
+        <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2">
+                <img src="img/Logo_Ghiotto.png" alt="Logo" class="h-10 md:h-20 lg:h-28 w-auto">
+                <div class="hidden md:block">
+                    <span class="block font-serif font-bold text-primary text-base leading-none">Dott.ssa Lorena Ghiotto</span>
+                    <span class="block text-[10px] text-secondary tracking-widest uppercase">Psicologa Psicoterapeuta</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex md:flex-1 md:justify-center gap-6 text-xs font-medium text-secondary">
+                <a href="#chisiamo" class="hover:text-primary transition">Chi Sono</a>
+                <a href="#approccio" class="hover:text-primary transition">L'Approccio</a>
+                <a href="#percorsi" class="hover:text-primary transition">Percorsi</a>
+                <a href="#laboratori" class="hover:text-primary transition">Laboratori</a>
+                <a href="#Blog" class="hover:text-primary transition">Blog</a>
+                <a href="#contatti" class="hover:text-primary transition">Contatti</a>
+            </nav>
+
+            <a href="#prenota" class="hidden md:block bg-accent-cta text-white px-4 md:px-5 py-2 rounded-full text-sm font-semibold hover:bg-primary transition shadow-md">Prenota Colloquio</a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-primary">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+         <!-- Mobile Menu (Hidden) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6 flex flex-col gap-4 border-t">
+            <a href="#chisiamo" class="block text-secondary hover:text-primary">Chi Sono</a>
+            <a href="#approccio" class="block text-secondary hover:text-primary">L'Approccio</a>
+            <a href="#percorsi" class="block text-secondary hover:text-primary">Percorsi</a>
+            <a href="#laboratori" class="block text-secondary hover:text-primary">Laboratori</a>
+            <a href="#Blog" class="hover:text-primary transition">Blog</a>
+            <a href="#contatti" class="block text-secondary hover:text-primary">Contatti</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-20 bg-main min-h-[80vh] flex items-center text-center px-6 relative overflow-hidden">
+         <!-- Illustrazione Botanica in Trasparenza (Opzionale, commentata se non la vuoi) -->
+         <!-- <div class="absolute top-1/2 left-0 -translate-y-1/2 w-1/3 opacity-10 pointer-events-none hidden lg:block">
+            <img src="img/685d95bf8fdef2fa155e0de0_587236759_19229-4.jpg.avif" class="w-full h-auto mix-blend-multiply">
+         </div> -->
+
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
+                Ogni percorso ha le sue stagioni. Troviamo insieme la tua.
+            </h1>
+            <p class="text-sm md:text-base text-secondary mb-10 max-w-2xl mx-auto font-light italic">
+                "Il terapeuta potrà portare il paziente solo fin dove lui stesso è arrivato" — C. G. Jung
+            </p>
+            <p class="text-xl text-secondary mb-10 max-w-2xl mx-auto font-light">
+                Sono Lorena Ghiotto. Offro uno spazio di ascolto sicuro e non giudicante per accompagnarti attraverso le fasi della vita.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#percorsi" onclick="showTab('adulti')" class="bg-white px-8 py-4 rounded-xl shadow-md text-primary font-bold hover:shadow-lg transition border-l-4 border-primary text-left cursor-pointer">
+                    Un Percorso per Te <span class="block text-xs font-normal text-secondary mt-1">Ansia, Stress, Cambiamento &rarr;</span>
+                </a>
+                <a href="#percorsi" onclick="showTab('bambini')" class="bg-white px-8 py-4 rounded-xl shadow-md text-primary font-bold hover:shadow-lg transition border-l-4 border-accent-cta text-left cursor-pointer">
+                    Bambini e Genitori <span class="block text-xs font-normal text-secondary mt-1">Crescita, Emozioni, Sostegno &rarr;</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHI SONO -->
+    <section id="chisiamo" class="py-24 bg-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="absolute inset-0 bg-main rounded-2xl transform translate-x-4 translate-y-4"></div>
+                <img src="img/Profilo_Ghiotto.jpg" alt="Lorena Ghiotto" class="relative rounded-2xl shadow-xl w-full max-w-md mx-auto object-cover aspect-[3/4]">
+            </div>
+            <div>
+                <h2 class="text-4xl font-bold text-primary mb-6">Creare un legame di fiducia.</h2>
+                <p class="text-lg text-secondary mb-4 leading-relaxed">
+                    Sono psicologa e psicoterapeuta a Padova. Credo che ogni persona possieda le risorse per superare i momenti difficili; il mio ruolo è aiutarti a riscoprirle in uno spazio protetto.
+                </p>
+                <p class="text-lg text-secondary mb-8 leading-relaxed">
+                    Utilizzo un approccio integrato, basato sulla terapia cognitivo-comportamentale e arricchito da tecniche come l'<strong>EMDR</strong>.
+                </p>
+                <!-- BOTTONE PER MODALE CHI SONO -->
+                <button onclick="openBioModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mb-6 block">Leggi la mia storia completa &rarr;</button>
+
+                <ul class="space-y-3 text-sm text-secondary font-medium border-t pt-6">
+                    <li>✔ Laurea in Psicologia & Specializzazione</li>
+                    <li>✔ Terapeuta EMDR certificata</li>
+                    <li>✔ Iscrizione Albo Psicologi Veneto n. 7937</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPROCCIO (STAGIONI) -->
+    <section id="approccio" class="py-24 bg-main">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-primary mb-4">La Terapia come Ciclo Naturale</h2>
+                <p class="text-secondary max-w-2xl mx-auto">La metafora delle stagioni ci aiuta a comprendere che ogni fase ha un senso.</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Inverno -->
+                <div data-season="winter" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-gray-400">
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle fill="#EBF2ED" cx="48" cy="48" r="40" />
+  <!-- terreno morbido -->
+  <path
+    d="M30 62 Q48 66 66 62"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+  <!-- fiocco di neve minimale -->
+  <!-- asse verticale -->
+  <path
+    d="M48 34 L48 52"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+  <!-- asse orizzontale -->
+  <path
+    d="M40 43 L56 43"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+  <!-- diagonale 1 -->
+  <path
+    d="M41 37 L55 49"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+  <!-- diagonale 2 -->
+  <path
+    d="M55 37 L41 49"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+</svg>
+</div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Inverno</h3>
+                    <p class="text-sm text-secondary">Introspezione e riposo. Accogliamo il blocco per raccogliere energie.</p>
+                </div>
+                <!-- Primavera -->
+                <div data-season="spring" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-green-400">
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle fill="#EBF2ED" cx="48" cy="48" r="40" /><path d="M30 60 Q48 64 66 60" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M48 60 L48 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M48 50 C44 48, 42 46, 41 43 C44 43, 46 44, 48 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M48 48 C50 46, 52 45, 55 45 C54 48, 52 50, 48 52" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Primavera</h3>
+                    <p class="text-sm text-secondary">Rinascita. Piantiamo i semi del cambiamento.</p>
+                </div>
+                <!-- Estate -->
+                <div data-season="summer" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-yellow-400">
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle fill="#EBF2ED" cx="48" cy="48" r="40" /><path d="M28 60 Q48 64 68 60" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><circle cx="48" cy="46" r="10" fill="#3A6B53" /><path d="M48 30 L48 34" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M48 58 L48 62" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M34 46 L38 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M58 46 L62 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M38 36 L40 38" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M56 36 L54 38" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M38 56 L40 54" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M56 56 L54 54" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /></svg></div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Estate</h3>
+                    <p class="text-sm text-secondary">Pienezza. Consolidiamo le risorse e agiamo.</p>
+                </div>
+                <!-- Autunno -->
+                <div data-season="autumn" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-orange-400">
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle fill="#EBF2ED" cx="48" cy="48" r="40" />
+  <!-- scia / movimento dall'alto verso il basso -->
+  <path
+    d="M40 30
+       C46 28, 52 28, 58 30"
+    fill="none"
+    stroke="#5C6F66"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+  <!-- foglia che scende -->
+  <path
+    d="M48 34
+       C44 38, 42 42, 42 47
+       C42 52, 44 56, 48 60
+       C52 56, 54 52, 54 47
+       C54 42, 52 38, 48 34 Z"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+  <!-- nervatura centrale -->
+  <path
+    d="M48 34 L48 58"
+    fill="none"
+    stroke="#3A6B53"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round" />
+</svg>
+</div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Autunno</h3>
+                    <p class="text-sm text-secondary">Raccolto. Integriamo e lasciamo andare ciò che non serve.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERCORSI -->
+    <section id="percorsi" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-4xl font-bold text-primary text-center mb-10">Un Percorso su Misura</h2>
+            
+            <div class="flex justify-center gap-4 mb-12">
+                <button onclick="showTab('adulti')" id="btn-adulti" class="px-8 py-3 rounded-full font-bold transition active-tab shadow-md">Adulti</button>
+                <button onclick="showTab('bambini')" id="btn-bambini" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Bambini</button>
+            </div>
+
+            <!-- CONTENUTO ADULTI -->
+            <div id="tab-adulti" class="grid md:grid-cols-2 gap-4">
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Ansia e Attacchi di Panico</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Lutto</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Difficoltà Relazionali</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione Traumi (EMDR)</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Gestione dello Stress</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Crescita Personale</div>
+            </div>
+
+            <!-- CONTENUTO BAMBINI (Nascosto) -->
+            <div id="tab-bambini" class="hidden grid md:grid-cols-2 gap-4">
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Sostegno alla Genitorialità</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Disturbi dell'Apprendimento</div>
+                <div onclick="openGestioneEmozioniModal()" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Gestione delle Emozioni</div>
+                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Paure e Fobie Infantili</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECENSIONI -->
+    <section id="recensioni" class="py-24 bg-main">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-16">Le Vostre Parole</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-10 rounded-2xl shadow-md relative">
+                    <span class="text-6xl text-accent-cta absolute -top-4 left-6 opacity-20 font-serif">"</span>
+                    <p class="text-gray-600 italic relative z-10 pt-2 leading-relaxed">"Ho trovato in Lorena non solo una professionista, ma una persona di grande umanità."</p>
+                    <p class="mt-6 font-bold text-primary text-right text-sm uppercase tracking-wide">- Anna M.</p>
+                </div>
+                <div class="bg-white p-10 rounded-2xl shadow-md relative">
+                    <span class="text-6xl text-accent-cta absolute -top-4 left-6 opacity-20 font-serif">"</span>
+                    <p class="text-gray-600 italic relative z-10 pt-2 leading-relaxed">"Un percorso trasformativo. Ho imparato a gestire l'ansia che mi bloccava da anni."</p>
+                    <p class="mt-6 font-bold text-primary text-right text-sm uppercase tracking-wide">- Marco T.</p>
+                </div>
+                <div class="bg-white p-10 rounded-2xl shadow-md relative">
+                    <span class="text-6xl text-accent-cta absolute -top-4 left-6 opacity-20 font-serif">"</span>
+                    <p class="text-gray-600 italic relative z-10 pt-2 leading-relaxed">"Un aiuto prezioso per la nostra famiglia e per la gestione dei figli. Consigliatissima."</p>
+                    <p class="mt-6 font-bold text-primary text-right text-sm uppercase tracking-wide">- Famiglia Rossi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LABORATORI (BLOG) -->
+    <section id="laboratori" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-primary text-center mb-12">Laboratori</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="laboratori-container">
+                <!-- I contenuti verranno inseriti da JS -->
+            </div>
+            <div class="mt-10 text-center">
+                <a href="Laboratori.html" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-green-800 transition">Vedi tutti i laboratori</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="Blog" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-primary text-center mb-12">Blog</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="blog-container">
+                <!-- I contenuti verranno inseriti da JS -->
+            </div>
+            <div class="mt-10 text-center">
+                <a href="Blog.html" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-green-800 transition">Vedi tutti gli articoli</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRENOTAZIONE (BOOKING) -->
+    <section id="prenota" class="py-24 bg-main">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold text-primary mb-4">Prenota il tuo Colloquio</h2>
+            <p class="text-secondary mb-10">Scegli una data per il primo incontro conoscitivo.</p>
+            
+            <div id="booking-widget" class="max-w-lg mx-auto bg-white border rounded-2xl p-6 shadow-lg">
+                <!-- Calendario generato da JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATTI -->
+    <section id="contatti" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-primary text-center mb-16">Sedi e Contatti</h2>
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div class="space-y-6">
+                    <div class="flex gap-6 items-start bg-main p-6 rounded-xl shadow-sm">
+                        <img src="img/Studio_selvazzano_01.jpg" class="w-24 h-24 object-cover rounded-lg bg-gray-200" alt="Studio">
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Selvazzano Dentro</h4>
+                            <p class="text-secondary">Via San Giuseppe 1, Padova</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start bg-main p-6 rounded-xl shadow-sm">
+                        <img src="img/Studio_Selvazzano_02.jpg" class="w-24 h-24 object-cover rounded-lg bg-gray-200" alt="Studio">
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Montemerlo</h4>
+                            <p class="text-secondary">Via Repoise 18/1, Padova</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-main p-8 rounded-xl shadow-lg">
+                    <form class="space-y-4">
+                        <input type="text" placeholder="Nome" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                        <input type="email" placeholder="Email" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                        <textarea rows="4" placeholder="Messaggio" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary"></textarea>
+                        <button class="w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-green-800 transition">Invia Messaggio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-primary text-white py-12 text-center">
+        <p class="font-serif text-xl mb-2">Dott.ssa Lorena Ghiotto</p>
+        <p class="text-sm opacity-80 mb-6">Psicologa Psicoterapeuta - Albo Veneto n. 7937</p>
+        <div class="text-sm opacity-60 space-x-4">
+            <a href="#" class="hover:text-white">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" class="hover:text-white">Cookie Policy</a>
+        </div>
+    </footer>
+
+    <!-- MODALE UNIVERSALE (Per Articoli e Chi Sono) -->
+    <div id="universal-modal" class="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center hidden p-4 opacity-0 transition-opacity duration-300">
+        <div class="rounded-2xl max-w-2xl w-full max-h-[90vh] relative shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden" id="modal-panel">
+            <div id="modal-bg-parallax" class="absolute inset-0 bg-cover bg-center"></div>
+            <div id="modal-overlay" class="absolute inset-0"></div>
+            <div id="modal-content" class="relative z-10 overflow-y-auto max-h-[90vh] p-8">
+                <button onclick="stopModalParallax(); closeModal();" class="absolute top-4 right-4 text-gray-400 hover:text-primary text-3xl z-50">&times;</button>
+                <div id="modal-body-content">
+                    <!-- Contenuto dinamico iniettato qui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODALE PERCORSI (PIÙ LARGA) -->
+    <div id="percorsi-modal" class="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center hidden p-4 opacity-0 transition-opacity duration-300">
+        <div class="rounded-2xl w-full max-h-[90vh] relative shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden bg-white" id="percorsi-modal-panel">
+            <div id="percorsi-bg-watermark"></div>
+            <div id="percorsi-modal-content" class="relative z-10 overflow-y-auto max-h-[90vh] p-8">
+                <button onclick="closePercorsiModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary text-3xl z-50">&times;</button>
+                <div id="percorsi-modal-body">
+                    <!-- Contenuto dinamico iniettato qui -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX IMMAGINI -->
+    <div id="image-lightbox" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/80 p-4">
+        <button aria-label="Chiudi" onclick="closeLightbox()" class="absolute top-4 right-4 text-white/90 hover:text-white text-3xl z-10">&times;</button>
+        <button aria-label="Precedente" onclick="lightboxPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/90 hover:text-white text-5xl font-light z-10 transition hover:scale-110">&lsaquo;</button>
+        <button aria-label="Successiva" onclick="lightboxNext()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/90 hover:text-white text-5xl font-light z-10 transition hover:scale-110">&rsaquo;</button>
+        <img id="lightbox-img" src="" alt="immagine" class="max-w-[92vw] max-h-[92vh] object-contain rounded-lg shadow-2xl" />
+        <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium bg-black/40 px-4 py-2 rounded-full"></div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // --- TAB SWITCHER ---
+        function showTab(tabName) {
+            const tabAdulti = document.getElementById('tab-adulti');
+            const tabBambini = document.getElementById('tab-bambini');
+            const btnAdulti = document.getElementById('btn-adulti');
+            const btnBambini = document.getElementById('btn-bambini');
+
+            if (tabName === 'adulti') {
+                tabAdulti.classList.remove('hidden');
+                tabBambini.classList.add('hidden');
+                btnAdulti.classList.add('active-tab', 'shadow-md');
+                btnAdulti.classList.remove('text-secondary', 'bg-gray-100');
+                btnBambini.classList.remove('active-tab', 'shadow-md');
+                btnBambini.classList.add('text-secondary', 'bg-gray-100');
+            } else {
+                tabAdulti.classList.add('hidden');
+                tabBambini.classList.remove('hidden');
+                btnBambini.classList.add('active-tab', 'shadow-md');
+                btnBambini.classList.remove('text-secondary', 'bg-gray-100');
+                btnAdulti.classList.remove('active-tab', 'shadow-md');
+                btnAdulti.classList.add('text-secondary', 'bg-gray-100');
+            }
+        }
+
+        // --- BLOG DATA & LOGIC ---
+        const articles = [
+            {
+                title: "La Donna e il suo Corpo",
+                excerpt: "Un percorso di empowerment femminile e mindful eating per ritrovare una relazione gentile con se stesse.",
+                fullText: "<p class='mb-4'><strong>Un progetto dedicato all'empowerment femminile</strong></p><p class='mb-4'>Il progetto La donna e il suo corpo nasce dall'esigenza di creare uno spazio sicuro, accogliente e profondamente rispettoso in cui le donne potessero esplorare il proprio rapporto con il corpo, la propria storia emotiva e le modalità con cui, nel tempo, si sono relazionate al cibo, all'immagine di sé e al proprio benessere complessivo. L'incontro si è svolto in un teatro a Roma, un luogo scelto volutamente per la sua capacità di contenere, simbolicamente e fisicamente, ciò che emerge quando si lavora sull'identità corporea: il palco come spazio di espressione, la platea come spazio di ascolto, il teatro intero come contenitore di trasformazioni.</p><p class='mb-4'>Il progetto è stato realizzato in collaborazione con due colleghe: una psicoterapeuta e una dietista. La loro presenza ha arricchito il percorso portando sguardi complementari e competenze specifiche, fondamentali per affrontare il tema dell'empowerment femminile in modo completo e multidisciplinare. La psicoterapeuta ha lavorato sulle dimensioni emotive, sulle memorie corporee e sui vissuti legati all'immagine di sé, offrendo alle partecipanti strumenti per riconoscere le narrazioni interiori che spesso condizionano l'esperienza del corpo. La dietista, invece, ha portato un contributo prezioso legato alla fisiologia, all'alimentazione consapevole e alla possibilità di costruire un rapporto con il cibo più gentile, meno giudicante e calibrato sui bisogni reali.</p><p class='mb-4'>All'interno di questo quadro, il mio intervento si è concentrato sul mindful eating, un approccio che invita a recuperare presenza, sensorialità e connessione nel gesto quotidiano del nutrirsi. L'obiettivo non era insegnare \"come mangiare\", ma accompagnare le partecipanti nell'esplorare cosa accade nel corpo e nella mente quando ci si avvicina al cibo: quali emozioni emergono, quali automatismi prendono il sopravvento, quali sensazioni vengono ignorate o amplificate. Il mindful eating, in questo contesto, è diventato uno strumento per riscoprire la propria autenticità, entrando in relazione con se stesse senza giudizio e senza fretta.</p><p class='mb-4'>Durante il laboratorio abbiamo lavorato sull'ascolto del corpo, sull'osservazione dei segnali di fame e sazietà, sulla qualità del respiro e sul contatto con le sensazioni fisiche. Attraverso esercizi guidati, brevi meditazioni e momenti di condivisione, le partecipanti hanno potuto sperimentare come la consapevolezza possa trasformare l'esperienza del cibo e, più in generale, il modo in cui ci si abita dentro. Il cibo, infatti, è spesso uno dei linguaggi attraverso cui il corpo parla: comprenderlo, ascoltarlo e riconoscerlo significa restituire dignità alle proprie emozioni e ai propri bisogni.</p><p class='mb-4'>Il lavoro con le mie colleghe ha creato una sinergia particolarmente efficace. La Dott.ssa Iris Mattera, psicoterapeuta, ha offerto chiavi di lettura interiori grazie alla messa in scena dello Psicodramma. Veronica Giachè, dietista, ha dato indicazioni pratiche e scientifiche, e la mindful eating ha rappresentato il ponte tra queste due dimensioni, traducendo teoria e consapevolezza in esperienza. Questo approccio ha permesso alle partecipanti di sentirsi accolte nella complessità della loro storia personale, senza semplificazioni né giudizi, e di scoprire che l'empowerment femminile passa anche attraverso un nuovo modo di percepirsi, nutrirsi e raccontarsi.</p><p class='mb-4'>Il teatro, con la sua atmosfera intima e simbolica, ha amplificato la profondità del percorso: è diventato il luogo in cui ogni donna ha potuto portare la propria voce, la propria vulnerabilità e la propria forza. Il progetto si è concluso con un momento collettivo di riflessione, in cui ciascuna partecipante ha avuto modo di riconoscere non solo ciò che aveva compreso, ma ciò che aveva sentito, dentro il corpo e dentro di sé.</p><p class='mb-4'><strong>La donna e il suo corpo</strong> è stato molto più di un incontro formativo: è stato un invito a tornare ad abitare il proprio corpo come luogo di potere, di storia, di libertà e di cura. Un'esperienza che ha mostrato, una volta ancora, che quando le donne si mettono in ascolto di sé e lo fanno insieme, qualcosa di profondo e trasformativo può accadere.</p>",
+                tag: "Crescita Personale",
+                colorClass: "text-accent-spring",
+                bgImage: "img/La donna e il suo corpo.jpeg",
+                images: [
+                    "img/LaDonna01.jpeg",
+                    "img/LaDonna02.jpeg",
+                    "img/LaDonna03.jpeg"
+                ],
+                id: 1
+            },
+            {
+                title: "Mindfulness tra Natura e Sapori",
+                excerpt: "Laboratorio esperienziale di mindful walking e mindful eating a Vetriolo Terme.",
+                fullText: "<p class='mb-4'><strong>Un laboratorio dedicato alla connessione autentica con sé, il cibo e l'ambiente</strong></p><p class='mb-4'>Nel laboratorio Mindfulness tra Natura e Sapori, ospitato al Nif Alpine Taste di Vetriolo Terme, abbiamo unito mindful walking e mindful eating in un'esperienza immersiva tra natura e gusto. In collaborazione con una collega psicologa abbiamo guidato una camminata consapevole, mentre il proprietario del locale ha messo a disposizione i cibi per la degustazione.</p><p class='mb-4'>Ho condotto la parte di mindful eating, invitando i partecipanti ad ascoltare sensazioni, sapori ed emozioni con presenza e lentezza. L'obiettivo era trasformare un atto quotidiano come mangiare in una pratica meditativa profonda, dove ogni boccone diventa occasione di consapevolezza e connessione con sé stessi e con l'ambiente.</p><p class='mb-4'>Durante il laboratorio, i partecipanti hanno imparato a rallentare, a osservare i colori e le forme dei cibi, ad ascoltare i suoni della masticazione, a riconoscere i sapori in tutta la loro complessità. Abbiamo lavorato con l'olfatto, il gusto, la vista e il tatto, creando un'esperienza multisensoriale che ha permesso a ciascuno di riscoprire il piacere autentico del nutrirsi consapevole.</p><p class='mb-4'>L'esperienza ha dimostrato come la natura, il cibo e la consapevolezza possono intrecciarsi per creare momenti di profonda connessione e trasformazione. Un incontro dedicato a chi desideri ritrovare una relazione più gentile e consapevole con se stesso, il cibo e il mondo intorno.</p>",
+                tag: "Natura & Benessere",
+                colorClass: "text-accent-summer",
+                bgImage: "img/Mindfulness tra Natura e Sapori.jpeg",
+                images: [
+                    "img/Mindfulness tra Natura e Sapori.jpeg"
+                ],
+                id: 2
+            },
+            {
+                title: "ZenFlow: Equilibrio Online",
+                excerpt: "Ciclo di 10 incontri online con pratiche di respirazione e rilassamento.",
+                fullText: "<p class='mb-4'><strong>ZenFlow</strong> è pensato per chi ha poco tempo ma vuole prendersi cura del proprio equilibrio mentale.</p><p>In 10 incontri online, impareremo tecniche semplici ed efficaci di respirazione, rilassamento muscolare e visualizzazione per gestire lo stress quotidiano direttamente da casa.</p>",
+                tag: "Benessere Online",
+                colorClass: "text-accent-winter",
+                id: 3
+            },
+            {
+                title: "Emozioni a Scuola",
+                excerpt: "Progetto per la scuola primaria: esplorare gioia, paura e rabbia.",
+                fullText: "<p class='mb-4'>Un progetto educativo rivolto alle scuole primarie.</p><p>Attraverso il gioco e il racconto, aiuteremo i bambini a dare un nome alle emozioni (gioia, paura, rabbia, tristezza), a riconoscerle nel corpo e a trovare strategie sane per regolarle, migliorando il clima in classe.</p>",
+                tag: "Scuola & Genitori",
+                colorClass: "text-accent-autumn",
+                id: 4
+            }
+        ];
+
+        const blogArticles = [
+            {
+                title: "Come Gestire l'Ansia quotidiana",
+                excerpt: "Strategie pratiche e tecniche di respirazione per affrontare l'ansia durante la giornata.",
+                fullText: "<p class='mb-4'>L'ansia è una compagna sempre più frequente nelle nostre vite. In questo articolo scopriamo come riconoscerla e affrontarla con strumenti concreti.</p><p>Impareremo la tecnica della respirazione 4-7-8, il grounding sensoriale e come distinguere un'ansia adattiva da una patologica che richiede supporto professionale.</p>",
+                tag: "Benessere",
+                colorClass: "text-accent-winter",
+                id: 5
+            },
+            {
+                title: "Il Ruolo della Resilienza",
+                excerpt: "Scopri come costruire la tua resilienza e ritrovare la forza nei momenti difficili.",
+                fullText: "<p class='mb-4'>La resilienza non è una qualità innata, ma una competenza che si può sviluppare.</p><p>In questo articolo esploreremo i pilastri della resilienza: l'auto-consapevolezza, la flessibilità mentale, la capacità di cercare aiuto e il significato personale che attribuiamo alle sfide.</p>",
+                tag: "Psicologia",
+                colorClass: "text-accent-spring",
+                id: 6
+            },
+            {
+                title: "Relazioni Sane: Confini e Comunicazione",
+                excerpt: "Come costruire relazioni autentiche imparando a comunicare con chiarezza e stabilire confini.",
+                fullText: "<p class='mb-4'>Le relazioni sane iniziano dalla capacità di comunicare in modo assertivo e dal rispetto dei confini personali.</p><p>Scopriamo insieme come dire 'no' senza sensi di colpa, come ascoltare attivamente e come trasformare i conflitti in opportunità di crescita.</p>",
+                tag: "Relazioni",
+                colorClass: "text-accent-summer",
+                id: 7
+            },
+            {
+                title: "Consapevolezza Emotiva nei Bambini",
+                excerpt: "Come insegnare ai bambini a riconoscere e gestire le proprie emozioni.",
+                fullText: "<p class='mb-4'>Aiutare i bambini a sviluppare l'intelligenza emotiva è uno dei regali più importanti che possiamo fargli.</p><p>Attraverso il gioco, il disegno e la narrazione, possiamo insegnare ai piccoli a nominare le emozioni, a comprenderle e a esprimerle in modo costruttivo.</p>",
+                tag: "Genitori & Figli",
+                colorClass: "text-accent-autumn",
+                id: 8
+            }
+        ];
+
+        const laboratoriContainer = document.getElementById('laboratori-container');
+        articles.forEach(art => {
+            const card = document.createElement('div');
+            card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
+            card.innerHTML = `
+                <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
+                <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
+                <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
+                <button onclick="openArticleModal(${art.id})" class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto">Scopri di più &rarr;</button>
+            `;
+            // se presente immagine, aggiungi miniatura che apparirà al hover
+            if (art.bgImage) {
+                const thumb = document.createElement('div');
+                thumb.className = 'card-thumb';
+                const thumbImg = document.createElement('img');
+                thumbImg.className = 'card-thumb-img';
+                thumbImg.src = encodeURI(art.bgImage);
+                thumbImg.alt = art.title + ' - anteprima';
+                thumb.appendChild(thumbImg);
+                card.appendChild(thumb);
+            }
+
+            laboratoriContainer.appendChild(card);
+        });
+
+        const blogContainer = document.getElementById('blog-container');
+        blogArticles.forEach(art => {
+            const card = document.createElement('div');
+            card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
+            card.innerHTML = `
+                <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
+                <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
+                <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
+                <button onclick="openArticleModal(${art.id})" class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto">Leggi articolo &rarr;</button>
+            `;
+            // se presente immagine, aggiungi miniatura che apparirà al hover
+            if (art.bgImage) {
+                const thumb = document.createElement('div');
+                thumb.className = 'card-thumb';
+                const thumbImg = document.createElement('img');
+                thumbImg.className = 'card-thumb-img';
+                thumbImg.src = encodeURI(art.bgImage);
+                thumbImg.alt = art.title + ' - anteprima';
+                thumb.appendChild(thumbImg);
+                card.appendChild(thumb);
+            }
+
+            blogContainer.appendChild(card);
+        });
+
+        // --- MODAL SYSTEM ---
+        const modal = document.getElementById('universal-modal');
+        const modalPanel = document.getElementById('modal-panel');
+        const modalBody = document.getElementById('modal-body-content');
+        const bgParallax = document.getElementById('modal-bg-parallax');
+        const modalContent = document.getElementById('modal-content');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalPanel.classList.remove('scale-95');
+                modalPanel.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            stopModalParallax();
+            modal.classList.add('opacity-0');
+            modalPanel.classList.remove('scale-100');
+            modalPanel.classList.add('scale-95');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function renderGallery(images) {
+            if (!images || !images.length) return '';
+            const items = images.map((src, idx) => {
+                const safe = encodeURI(src);
+                return `<figure onclick=\"openLightbox('${safe}')\"><img loading=\"lazy\" src=\"${safe}\" alt=\"immagine articolo ${idx+1}\"></figure>`;
+            }).join('');
+            return `
+                <div class=\"mt-10\">
+                    <h4 class=\"text-lg font-semibold text-primary mb-3\">Immagini</h4>
+                    <div class=\"article-gallery\">${items}</div>
+                </div>
+            `;
+        }
+
+        function openArticleModal(id) {
+            let article = articles.find(a => a.id === id);
+            if (!article) {
+                article = blogArticles.find(a => a.id === id);
+            }
+            if (article) {
+                modalBody.innerHTML = `
+                    <span class="text-xs font-bold ${article.colorClass} uppercase tracking-widest mb-2 block">${article.tag}</span>
+                    <h3 class="text-3xl font-serif font-bold text-primary mb-6">${article.title}</h3>
+                    <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">
+                        ${article.fullText}
+                    </div>
+                    ${renderGallery(article.images)}
+                `;
+                
+                // Gestisci immagine di sfondo con preload + encodeURI e fallback
+                const bgParallax = document.getElementById('modal-bg-parallax');
+                if (article.bgImage) {
+                    const imagePath = encodeURI(article.bgImage);
+                    // preload per verificare che l'immagine esista
+                    const tmp = new Image();
+                    tmp.src = imagePath;
+                    tmp.onload = () => {
+                        bgParallax.style.backgroundImage = `url("${imagePath}")`;
+                        bgParallax.style.backgroundRepeat = 'no-repeat';
+                        bgParallax.style.backgroundPosition = 'center top';
+                        bgParallax.style.backgroundSize = '200%';
+                        bgParallax.style.opacity = '0.45';
+                        startModalParallax();
+                    };
+                    tmp.onerror = () => {
+                        // se fallisce il preload, rimuoviamo lo sfondo e lasciamo solo l'overlay
+                        bgParallax.style.backgroundImage = 'none';
+                        bgParallax.style.opacity = '0';
+                        console.warn('Modal background image not found:', article.bgImage);
+                    };
+                } else {
+                    bgParallax.style.backgroundImage = 'none';
+                    bgParallax.style.opacity = '0';
+                }
+                
+                openModal();
+            }
+        }
+
+        function openBioModal() {
+            modalBody.innerHTML = `
+                <span class="text-xs font-bold text-accent-cta uppercase tracking-widest mb-2 block">CHI SONO</span>
+                <h3 class="text-3xl font-serif font-bold text-primary mb-6">La mia storia</h3>
+                <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">
+                    <p>Il mio percorso nasce da una profonda curiosità verso l'essere umano e le sue risorse infinite. Dopo la laurea in Psicologia Clinica a Padova, ho sentito l'esigenza di andare oltre la teoria e di trovare strumenti concreti per aiutare le persone a stare meglio.</p>
+                    <p>Ho scelto la specializzazione in Psicoterapia Cognitivo-Comportamentale perché credo nell'importanza di lavorare sul "qui e ora", fornendo strategie pratiche per gestire pensieri ed emozioni.</p>
+                    <p>Successivamente, l'incontro con l'EMDR mi ha aperto nuove prospettive sulla cura del trauma, permettendomi di lavorare ancora più in profondità. Oggi, nel mio studio, cerco di integrare tutto questo con un approccio umano, caldo e accogliente, perché credo che la relazione terapeutica sia il primo vero strumento di cura.</p>
+                </div>
+            `;
+            
+            // Rimuovi immagine di sfondo per la modale "Chi Sono"
+            const bgParallax = document.getElementById('modal-bg-parallax');
+            bgParallax.style.backgroundImage = 'none';
+            bgParallax.style.opacity = '0';
+            
+            openModal();
+        }
+
+        // --- MODAL PARALLAX ---
+        let parallaxRaf = null;
+        let scrollListener = null;
+
+        function startModalParallax() {
+            if (parallaxRaf) cancelAnimationFrame(parallaxRaf);
+            
+            scrollListener = () => {
+                if (parallaxRaf) cancelAnimationFrame(parallaxRaf);
+                parallaxRaf = requestAnimationFrame(() => {
+                    const scrollTop = modalContent.scrollTop;
+                    const translateY = Math.min(scrollTop * 0.05, 50);
+                    bgParallax.style.transform = `translate3d(0, -${translateY}px, 0)`;
+                });
+            };
+
+            modalContent.addEventListener('scroll', scrollListener);
+        }
+
+        function stopModalParallax() {
+            if (parallaxRaf) {
+                cancelAnimationFrame(parallaxRaf);
+                parallaxRaf = null;
+            }
+            if (scrollListener) {
+                modalContent.removeEventListener('scroll', scrollListener);
+                scrollListener = null;
+            }
+            bgParallax.style.transform = 'translate3d(0, 0, 0)';
+        }
+
+        // Close modal on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                stopModalParallax();
+                closeModal();
+            }
+        });
+
+        // --- PERCORSI MODAL SYSTEM ---
+        const percorsiModal = document.getElementById('percorsi-modal');
+        const percorsiModalPanel = document.getElementById('percorsi-modal-panel');
+        const percorsiModalBody = document.getElementById('percorsi-modal-body');
+
+        function openPercorsiModal() {
+            percorsiModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                percorsiModal.classList.remove('opacity-0');
+                percorsiModalPanel.classList.remove('scale-95');
+                percorsiModalPanel.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closePercorsiModal() {
+            percorsiModal.classList.add('opacity-0');
+            percorsiModalPanel.classList.remove('scale-100');
+            percorsiModalPanel.classList.add('scale-95');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                percorsiModal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close on outside click
+        percorsiModal.addEventListener('click', (e) => {
+            if (e.target === percorsiModal) {
+                closePercorsiModal();
+            }
+        });
+
+        function openGestioneEmozioniModal() {
+            percorsiModalBody.innerHTML = `
+                <h2 class="text-4xl font-serif font-bold text-primary mb-6">Gestione delle Emozioni</h2>
+                <p class="text-lg text-secondary mb-4 leading-relaxed">
+                    Un percorso dedicato ai bambini per imparare a riconoscere, nominare e gestire le proprie emozioni in modo sano e costruttivo.
+                </p>
+                <p class="text-lg text-secondary mb-6 leading-relaxed">
+                    Attraverso il gioco, le storie e attività creative, i bambini sviluppano l'intelligenza emotiva e acquisiscono strumenti per esprimere ciò che sentono.
+                </p>
+                <!-- Contenuto con immagini PNG alpha verrà aggiunto qui -->
+            `;
+            openPercorsiModal();
+        }
+
+        // --- LIGHTBOX LOGIC ---
+        let lightboxImages = [];
+        let lightboxIndex = 0;
+
+        function openLightbox(src) {
+            // Trova tutte le immagini della galleria corrente
+            const galleryImgs = document.querySelectorAll('.article-gallery img');
+            lightboxImages = Array.from(galleryImgs).map(img => img.src);
+            lightboxIndex = lightboxImages.indexOf(src);
+            
+            const lb = document.getElementById('image-lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            updateLightboxCounter();
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+            
+            // Aggiungi listener per tasti freccia
+            document.addEventListener('keydown', handleLightboxKeys);
+        }
+        
+        function closeLightbox() {
+            const lb = document.getElementById('image-lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = '';
+            lb.classList.add('hidden');
+            lb.classList.remove('flex');
+            lightboxImages = [];
+            lightboxIndex = 0;
+            
+            // Rimuovi listener
+            document.removeEventListener('keydown', handleLightboxKeys);
+        }
+        
+        function lightboxNext() {
+            if (lightboxImages.length === 0) return;
+            lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+            document.getElementById('lightbox-img').src = lightboxImages[lightboxIndex];
+            updateLightboxCounter();
+        }
+        
+        function lightboxPrev() {
+            if (lightboxImages.length === 0) return;
+            lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+            document.getElementById('lightbox-img').src = lightboxImages[lightboxIndex];
+            updateLightboxCounter();
+        }
+        
+        function updateLightboxCounter() {
+            const counter = document.getElementById('lightbox-counter');
+            if (lightboxImages.length > 1) {
+                counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
+                counter.style.display = 'block';
+            } else {
+                counter.style.display = 'none';
+            }
+        }
+        
+        function handleLightboxKeys(e) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') lightboxNext();
+            if (e.key === 'ArrowLeft') lightboxPrev();
+        }
+
+        // --- CALENDAR LOGIC ---
+        const calendarEl = document.getElementById('booking-widget');
+        const now = new Date();
+        const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+        
+        let calendarHTML = `
+            <div class="mb-6 flex justify-between items-center border-b pb-4">
+                <h3 class="font-bold text-lg text-primary capitalize">${now.toLocaleString('default', { month: 'long', year: 'numeric' })}</h3>
+            </div>
+            <div class="grid grid-cols-7 gap-2 text-center mb-2">
+                <div class="text-xs text-gray-400 font-bold">L</div><div class="text-xs text-gray-400 font-bold">M</div><div class="text-xs text-gray-400 font-bold">M</div>
+                <div class="text-xs text-gray-400 font-bold">G</div><div class="text-xs text-gray-400 font-bold">V</div><div class="text-xs text-gray-400 font-bold">S</div>
+                <div class="text-xs text-gray-400 font-bold">D</div>
+            </div>
+            <div class="grid grid-cols-7 gap-2 text-center mb-6">
+        `;
+        
+        // Simple grid filler
+        calendarHTML += `<div></div><div></div>`; 
+        for(let i=1; i<=daysInMonth; i++) {
+            // Mock logic: weekends and past days disabled
+            const isWeekend = (i + 2) % 7 === 6 || (i + 2) % 7 === 0; 
+            const disabled = i < now.getDate() || isWeekend ? 'disabled text-gray-300 cursor-default' : 'hover:bg-main hover:text-primary font-bold text-secondary cursor-pointer';
+            const onclick = disabled.includes('disabled') ? '' : `onclick="selectDate(this, ${i})"`;
+            calendarHTML += `<div class="calendar-day w-10 h-10 flex items-center justify-center rounded-full transition ${disabled}" ${onclick}>${i}</div>`;
+        }
+        calendarHTML += `</div>
+        <div id="time-selection" class="hidden pt-6 border-t border-gray-100 animate-fade-in">
+            <p class="text-sm text-secondary mb-3 font-medium">Orari disponibili per il giorno selezionato:</p>
+            <div class="grid grid-cols-3 gap-3">
+                <div class="time-slot p-2 border rounded-lg text-center text-sm text-primary hover:bg-main cursor-pointer transition" onclick="selectTime(this)">09:00</div>
+                <div class="time-slot p-2 border rounded-lg text-center text-sm text-primary hover:bg-main cursor-pointer transition" onclick="selectTime(this)">11:30</div>
+                <div class="time-slot p-2 border rounded-lg text-center text-sm text-primary hover:bg-main cursor-pointer transition" onclick="selectTime(this)">16:00</div>
+            </div>
+            <div id="booking-form" class="hidden mt-6 bg-white border rounded-xl p-4 shadow-sm">
+                <h4 class="text-primary font-semibold mb-3">Dati prenotazione</h4>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <input id="bf-name" type="text" placeholder="Nome e Cognome" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                    <input id="bf-email" type="email" placeholder="Email" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                    <input id="bf-phone" type="tel" placeholder="Telefono" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                    <input id="bf-notes" type="text" placeholder="Note (opzionale)" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                </div>
+                <h4 class="text-primary font-semibold mt-5 mb-3">Pagamento (anteprima)</h4>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <input id="bf-card" type="text" placeholder="Numero Carta" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                    <input id="bf-exp" type="text" placeholder="Scadenza (MM/YY)" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                    <input id="bf-cvc" type="text" placeholder="CVC" class="w-full p-3 border rounded-lg bg-white focus:outline-none focus:border-primary">
+                </div>
+                <button onclick="submitBookingPreview()" class="mt-5 w-full bg-primary text-white font-bold py-3 rounded-lg hover:bg-green-800 transition">Conferma Prenotazione (Demo)</button>
+                <p id="bf-status" class="text-sm text-secondary mt-3"></p>
+            </div>
+        </div>`;
+        
+        calendarEl.innerHTML = calendarHTML;
+
+        function selectDate(el, day) {
+            document.querySelectorAll('.calendar-day').forEach(d => {
+                d.classList.remove('bg-primary', 'text-white', 'selected');
+                if(!d.classList.contains('disabled')) d.classList.add('text-secondary');
+            });
+            el.classList.remove('text-secondary', 'hover:bg-main');
+            el.classList.add('bg-primary', 'text-white', 'selected');
+            document.getElementById('time-selection').classList.remove('hidden');
+        }
+        
+        function selectTime(el) {
+            document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('bg-primary', 'text-white', 'border-primary'));
+            el.classList.add('bg-primary', 'text-white', 'border-primary');
+            document.getElementById('booking-form').classList.remove('hidden');
+        }
+
+        function submitBookingPreview() {
+            const name = document.getElementById('bf-name').value.trim();
+            const email = document.getElementById('bf-email').value.trim();
+            const phone = document.getElementById('bf-phone').value.trim();
+            const card = document.getElementById('bf-card').value.replace(/\s+/g,'');
+            const exp = document.getElementById('bf-exp').value.trim();
+            const cvc = document.getElementById('bf-cvc').value.trim();
+            const status = document.getElementById('bf-status');
+            if (!name || !email || !phone || !card || !exp || !cvc) {
+                status.textContent = 'Per favore compila tutti i campi obbligatori.';
+                status.style.color = '#b00020';
+                return;
+            }
+            if (!/^[0-9]{13,19}$/.test(card)) {
+                status.textContent = 'Numero carta non valido (solo cifre, 13-19).';
+                status.style.color = '#b00020';
+                return;
+            }
+            if (!/^[0-9]{2}\/[0-9]{2}$/.test(exp)) {
+                status.textContent = 'Formato scadenza non valido (MM/YY).';
+                status.style.color = '#b00020';
+                return;
+            }
+            if (!/^[0-9]{3,4}$/.test(cvc)) {
+                status.textContent = 'CVC non valido.';
+                status.style.color = '#b00020';
+                return;
+            }
+            status.textContent = 'Prenotazione registrata (demo). Nessun pagamento reale eseguito.';
+            status.style.color = '#2d5540';
+        }
+
+        // --- MOBILE MENU ---
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // --- FIX: adjust scroll offset for fixed header ---
+        (function adjustScrollOffset(){
+            const header = document.querySelector('header');
+            function update() {
+                const h = header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+                document.documentElement.style.setProperty('--header-height', h + 'px');
+            }
+            // initial + on resize/orientation change + after load
+            update();
+            window.addEventListener('resize', update);
+            window.addEventListener('orientationchange', update);
+            window.addEventListener('load', () => setTimeout(update, 50));
+        })();
+
+        // --- SEASON PALETTE SWITCHER ---
+        (function seasonSwitcher(){
+            const seasonCards = document.querySelectorAll('[data-season]');
+            const body = document.body;
+            const LS_KEY = 'site-season';
+
+            function applySeason(season){
+                // remove existing season- classes
+                body.classList.remove('season-winter','season-spring','season-summer','season-autumn');
+                if(season) body.classList.add('season-' + season);
+                // highlight active card
+                seasonCards.forEach(c => c.classList.toggle('active', c.dataset.season === season));
+            }
+
+            // determine default season: from localStorage or current month
+            function defaultSeason(){
+                const saved = localStorage.getItem(LS_KEY);
+                if(saved) return saved;
+                const m = new Date().getMonth() + 1; // 1-12
+                if(m >= 12 || m <= 2) return 'winter';
+                if(m >= 3 && m <= 5) return 'spring';
+                if(m >= 6 && m <= 8) return 'summer';
+                return 'autumn';
+            }
+
+            seasonCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const s = card.dataset.season;
+                    applySeason(s);
+                    localStorage.setItem(LS_KEY, s);
+                });
+            });
+
+            // apply initial
+            applySeason(defaultSeason());
+        })();
+    </script>
+</body>
+</html>
+```
+```
