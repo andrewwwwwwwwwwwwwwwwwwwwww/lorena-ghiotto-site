@@ -633,7 +633,8 @@
 
         <div class="max-w-4xl mx-auto relative z-10">
             <h1 class="text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight">
-                Ogni percorso ha le sue stagioni. Troviamo insieme la tua.
+                Ogni percorso ha le sue stagioni.<br>
+                Troviamo insieme la tua.
             </h1>
             <p class="text-sm md:text-base text-secondary mb-10 max-w-2xl mx-auto font-light italic">
                 "Il terapeuta potrà portare il paziente solo fin dove lui stesso è arrivato" — C. G. Jung
@@ -671,10 +672,13 @@
                 <button onclick="openBioModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mb-6 block">Leggi la mia storia completa &rarr;</button>
 
                 <ul class="space-y-3 text-sm text-secondary font-medium border-t pt-6">
-                    <li>✔ Laurea in Psicologia & Specializzazione</li>
-                    <li>✔ Terapeuta EMDR certificata</li>
-                    <li>✔ Iscrizione Albo Psicologi Veneto n. 7937</li>
+                    <li>Laurea in Psicologia & Specializzazione</li>
+                    <li>Terapeuta EMDR certificata</li>
+                    <li>Iscrizione Albo Psicologi Veneto n. 7937</li>
                 </ul>
+
+                <!-- BOTTONE PER MODALE SPAZI -->
+                <button onclick="openSpaziModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mt-6 block">I miei spazi &rarr;</button>
             </div>
         </div>
     </section>
@@ -1240,6 +1244,45 @@
             openModal();
         }
 
+        // Variabile globale per le immagini degli spazi
+        let currentGalleryImages = [];
+
+        function openSpaziModal() {
+            // Array delle immagini degli spazi
+            currentGalleryImages = [
+                'img/Studio_selvazzano_01.jpg',
+                'img/Studio_Selvazzano_02.jpg',
+                'img/Studio_Selvazzano_03.jpg'
+            ];
+
+            const galleryHTML = currentGalleryImages.map((img, idx) => {
+                const safeImg = encodeURI(img);
+                return `
+                    <figure class="cursor-pointer hover:opacity-80 transition-opacity" onclick="openLightboxGallery(${idx})">
+                        <img loading="lazy" src="${safeImg}" alt="Spazio terapeutico ${idx + 1}" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    </figure>
+                `;
+            }).join('');
+
+            modalBody.innerHTML = `
+                <span class="text-xs font-bold text-accent-cta uppercase tracking-widest mb-2 block">GLI STUDI</span>
+                <h3 class="text-3xl font-serif font-bold text-primary mb-6">I miei spazi</h3>
+                <div class="text-secondary text-lg leading-relaxed mb-6 font-light">
+                    <p>Gli spazi in cui ti accolgo sono pensati per essere accoglienti, luminosi e riservati. Luoghi dove sentirti al sicuro per condividere le tue esperienze e lavorare insieme al tuo benessere.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${galleryHTML}
+                </div>
+            `;
+            
+            // Rimuovi immagine di sfondo per la modale "Spazi"
+            const bgParallax = document.getElementById('modal-bg-parallax');
+            bgParallax.style.backgroundImage = 'none';
+            bgParallax.style.opacity = '0';
+            
+            openModal();
+        }
+
         // --- MODAL PARALLAX ---
         let parallaxRaf = null;
         let scrollListener = null;
@@ -1338,6 +1381,22 @@
             const lb = document.getElementById('image-lightbox');
             const img = document.getElementById('lightbox-img');
             img.src = src;
+            updateLightboxCounter();
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+            
+            // Aggiungi listener per tasti freccia
+            document.addEventListener('keydown', handleLightboxKeys);
+        }
+
+        function openLightboxGallery(index) {
+            // Versione per gallerie personalizzate
+            lightboxImages = currentGalleryImages.map(img => encodeURI(img));
+            lightboxIndex = index;
+            
+            const lb = document.getElementById('image-lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = lightboxImages[lightboxIndex];
             updateLightboxCounter();
             lb.classList.remove('hidden');
             lb.classList.add('flex');
