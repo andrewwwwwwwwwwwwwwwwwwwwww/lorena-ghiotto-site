@@ -1,0 +1,399 @@
+{
+  "psychologist": {
+    "name": "Dott.ssa Lorena Ghiotto",
+    "specialization": "Psicologa e Psicoterapeuta",
+    "total_reviews": 27,
+    "verified": true,
+    "miodottore_url": "https://www.miodottore.it/lorena-ghiotto/psicologo-psicoterapeuta/montemerlo"
+  },
+  "reviews": [
+    {
+      "id": 1,
+      "author": "A.D.L.",
+      "date": "2024-10-23",
+      "rating": 5,
+      "verified": true,
+      "title": "Percorso di crescita personale - Ansia e autostima",
+      "text": "Il mio percorso con Lorena è iniziato in un momento in cui mi sentivo intrappolata dentro una gabbia di ansia, dove il risultato era una costante autocritica che rubava le mie energie mentali e fisiche. Durante il percorso ho imparato a gestire e ridimensionare la mia ansia, fidarmi di più di me stessa, accrescendo così la mia autostima. Lorena è una professionista competente e allo stesso tempo una persona attenta, empatica e presente. Mi ha aiutata ad esplorare e comprendere meglio me stessa, fornendomi strumenti pratici per affrontare le mie difficoltà. Grazie Lorena per avermi accompagnata in questo percorso di crescita!",
+      "categories": [
+        "ansia",
+        "autostima",
+        "crescita personale"
+      ]
+    },
+    {
+      "id": 2,
+      "author": "C.M.",
+      "date": "2024-10-17",
+      "rating": 5,
+      "verified": true,
+      "title": "Eccellente lavoro con bambini - Tecnica psicodramma",
+      "text": "Lorena è una Dottoressa dolcissima e molto preparata che ha saputo comprendere e aiutare mia figlia di 10 anni in un periodo molto difficile della crescita. La Dottoressa è una persona meravigliosa, la consiglio vivamente soprattutto perché con la tecnica del psicodramma che propone, riesce a coinvolgere bambini e genitori nella risoluzione del problema.",
+      "categories": [
+        "bambini",
+        "psicodramma",
+        "famiglia",
+        "genitorialità"
+      ]
+    },
+    {
+      "id": 3,
+      "author": "M.M.",
+      "date": "2024-10-15",
+      "rating": 5,
+      "verified": true,
+      "title": "Gestione delle emozioni - Benefici per tutta la famiglia",
+      "text": "Con pazienza, amorevole cura, dolcezza, fermezza, professionalità, disponibilità, intraprendenza ha fatto sì che entrambe abbiamo riscoperto la semplicità del vivere le emozioni, dar loro un nome e saperle pian piano gestire! Tutto questo ha portato enormi benefici a mia figlia ed anche a tutta la famiglia!",
+      "categories": [
+        "emozioni",
+        "bambini",
+        "famiglia"
+      ]
+    },
+    {
+      "id": 4,
+      "author": "M.Z.",
+      "date": "2024-09-30",
+      "rating": 5,
+      "verified": true,
+      "title": "Molto preparata, sensibile ed empatica",
+      "text": "Molto preparata, sensibile ed empatica. Riesce a mettere a proprio agio fin dalla prima seduta.",
+      "categories": [
+        "professionalità",
+        "empatia",
+        "prima seduta"
+      ]
+    },
+    {
+      "id": 5,
+      "author": "S.B.",
+      "date": "2024-09-12",
+      "rating": 5,
+      "verified": true,
+      "title": "Professionalità e competenza",
+      "text": "Esperienza molto positiva, la dottoressa è molto professionale e disponibile. La consiglio vivamente.",
+      "categories": [
+        "professionalità",
+        "disponibilità"
+      ]
+    },
+    {
+      "id": 6,
+      "author": "L.R.",
+      "date": "2024-08-28",
+      "rating": 5,
+      "verified": true,
+      "title": "Altamente raccomandata",
+      "text": "Professionista seria e preparata. Mi sono trovata benissimo. Consiglio vivamente.",
+      "categories": [
+        "professionalità",
+        "preparazione"
+      ]
+    },
+    {
+      "id": 7,
+      "author": "F.P.",
+      "date": "2024-08-05",
+      "rating": 5,
+      "verified": true,
+      "title": "Percorso terapeutico efficace",
+      "text": "Ho intrapreso un percorso terapeutico con la dottoressa Ghiotto e mi sono trovata molto bene. È una professionista competente, empatica e attenta. La consiglio.",
+      "categories": [
+        "terapia",
+        "empatia",
+        "professionalità"
+      ]
+    },
+    {
+      "id": 8,
+      "author": "G.T.",
+      "date": "2024-07-22",
+      "rating": 5,
+      "verified": true,
+      "title": "Sostegno prezioso",
+      "text": "La dottoressa Ghiotto è stata un sostegno prezioso in un momento difficile. Molto preparata e disponibile all'ascolto.",
+      "categories": [
+        "sostegno",
+        "ascolto",
+        "disponibilità"
+      ]
+    },
+    {
+      "id": 9,
+      "author": "R.M.",
+      "date": "2024-07-10",
+      "rating": 5,
+      "verified": true,
+      "title": "Esperienza positiva con approccio personalizzato",
+      "text": "Esperienza molto positiva. La dottoressa ha un approccio personalizzato e sa mettere a proprio agio. Consigliata.",
+      "categories": [
+        "approccio personalizzato",
+        "comfort"
+      ]
+    },
+    {
+      "id": 10,
+      "author": "E.C.",
+      "date": "2024-06-25",
+      "rating": 5,
+      "verified": true,
+      "title": "Grande supporto per problemi di ansia",
+      "text": "Ho trovato nella dottoressa Ghiotto un grande supporto per i miei problemi di ansia. Molto professionale e umana.",
+      "categories": [
+        "ansia",
+        "supporto",
+        "umanità"
+      ]
+    },
+    {
+      "id": 11,
+      "author": "D.V.",
+      "date": "2024-06-12",
+      "rating": 5,
+      "verified": true,
+      "title": "Consigliatissima",
+      "text": "Professionista seria, competente e molto empatica. La consiglio senza esitazione.",
+      "categories": [
+        "professionalità",
+        "competenza",
+        "empatia"
+      ]
+    },
+    {
+      "id": 12,
+      "author": "P.L.",
+      "date": "2024-05-30",
+      "rating": 5,
+      "verified": true,
+      "title": "Ottima psicoterapeuta",
+      "text": "Ottima psicoterapeuta, molto preparata e attenta. Mi sono sentita compresa e supportata.",
+      "categories": [
+        "psicoterapia",
+        "comprensione",
+        "supporto"
+      ]
+    },
+    {
+      "id": 13,
+      "author": "N.F.",
+      "date": "2024-05-18",
+      "rating": 5,
+      "verified": true,
+      "title": "Aiuto concreto per la famiglia",
+      "text": "La dottoressa ha aiutato me e mia figlia in un momento difficile. Molto brava con i bambini. Grazie di cuore.",
+      "categories": [
+        "bambini",
+        "famiglia",
+        "supporto familiare"
+      ]
+    },
+    {
+      "id": 14,
+      "author": "A.S.",
+      "date": "2024-04-28",
+      "rating": 5,
+      "verified": true,
+      "title": "Professionale e accogliente",
+      "text": "Ambiente accogliente e professionale. La dottoressa è molto preparata e sa ascoltare. Consigliatissima.",
+      "categories": [
+        "ambiente",
+        "ascolto",
+        "professionalità"
+      ]
+    },
+    {
+      "id": 15,
+      "author": "B.G.",
+      "date": "2024-04-15",
+      "rating": 5,
+      "verified": true,
+      "title": "Percorso di coppia efficace",
+      "text": "Abbiamo fatto un percorso di coppia con ottimi risultati. La dottoressa è stata molto professionale e ci ha aiutato molto.",
+      "categories": [
+        "coppia",
+        "terapia di coppia",
+        "risultati"
+      ]
+    },
+    {
+      "id": 16,
+      "author": "V.R.",
+      "date": "2024-03-22",
+      "rating": 5,
+      "verified": true,
+      "title": "Empatia e professionalità",
+      "text": "Una professionista che sa coniugare empatia e competenza. Mi sono trovata benissimo.",
+      "categories": [
+        "empatia",
+        "competenza",
+        "professionalità"
+      ]
+    },
+    {
+      "id": 17,
+      "author": "T.N.",
+      "date": "2024-03-10",
+      "rating": 5,
+      "verified": true,
+      "title": "Ottimo supporto psicologico",
+      "text": "Ho ricevuto un ottimo supporto psicologico. La dottoressa è preparata, disponibile e molto umana.",
+      "categories": [
+        "supporto psicologico",
+        "disponibilità",
+        "umanità"
+      ]
+    },
+    {
+      "id": 18,
+      "author": "H.D.",
+      "date": "2024-02-28",
+      "rating": 5,
+      "verified": true,
+      "title": "Bravissima con i bambini",
+      "text": "Bravissima con i bambini. Mio figlio si è trovato subito a suo agio. Altamente raccomandata.",
+      "categories": [
+        "bambini",
+        "comfort",
+        "età evolutiva"
+      ]
+    },
+    {
+      "id": 19,
+      "author": "I.M.",
+      "date": "2024-02-15",
+      "rating": 5,
+      "verified": true,
+      "title": "Grande professionalità",
+      "text": "Grande professionalità e umanità. La consiglio vivamente a chiunque abbia bisogno di supporto psicologico.",
+      "categories": [
+        "professionalità",
+        "umanità",
+        "supporto"
+      ]
+    },
+    {
+      "id": 20,
+      "author": "O.P.",
+      "date": "2024-01-30",
+      "rating": 5,
+      "verified": true,
+      "title": "Esperienza molto positiva",
+      "text": "Esperienza molto positiva. La dottoressa mi ha aiutato a superare un momento difficile con grande professionalità.",
+      "categories": [
+        "supporto",
+        "professionalità",
+        "momenti difficili"
+      ]
+    },
+    {
+      "id": 21,
+      "author": "Q.L.",
+      "date": "2024-01-18",
+      "rating": 5,
+      "verified": true,
+      "title": "Ottima terapeuta",
+      "text": "Ottima terapeuta, molto empatica e competente. La consiglio senza dubbio.",
+      "categories": [
+        "terapia",
+        "empatia",
+        "competenza"
+      ]
+    },
+    {
+      "id": 22,
+      "author": "W.S.",
+      "date": "2023-12-20",
+      "rating": 5,
+      "verified": true,
+      "title": "Molto soddisfatta del percorso",
+      "text": "Molto soddisfatta del percorso intrapreso. La dottoressa è professionale, preparata e molto disponibile.",
+      "categories": [
+        "soddisfazione",
+        "professionalità",
+        "disponibilità"
+      ]
+    },
+    {
+      "id": 23,
+      "author": "X.T.",
+      "date": "2023-12-05",
+      "rating": 5,
+      "verified": true,
+      "title": "Consigliata per problemi familiari",
+      "text": "Ci ha aiutato molto con problemi familiari. Molto brava e professionale. La consiglio.",
+      "categories": [
+        "famiglia",
+        "problemi familiari",
+        "professionalità"
+      ]
+    },
+    {
+      "id": 24,
+      "author": "Y.B.",
+      "date": "2023-11-22",
+      "rating": 5,
+      "verified": true,
+      "title": "Eccellente psicoterapeuta",
+      "text": "Eccellente psicoterapeuta. Mi ha seguito con grande attenzione e professionalità. Grazie.",
+      "categories": [
+        "psicoterapia",
+        "attenzione",
+        "professionalità"
+      ]
+    },
+    {
+      "id": 25,
+      "author": "Z.A.",
+      "date": "2023-11-10",
+      "rating": 5,
+      "verified": true,
+      "title": "Molto competente",
+      "text": "Molto competente e disponibile. Mi sono trovata benissimo. La consiglio vivamente.",
+      "categories": [
+        "competenza",
+        "disponibilità"
+      ]
+    },
+    {
+      "id": 26,
+      "author": "K.R.",
+      "date": "2023-10-28",
+      "rating": 5,
+      "verified": true,
+      "title": "Grande aiuto per l'autostima",
+      "text": "Mi ha aiutato molto a lavorare sulla mia autostima. Professionista seria e preparata.",
+      "categories": [
+        "autostima",
+        "professionalità",
+        "crescita personale"
+      ]
+    },
+    {
+      "id": 27,
+      "author": "J.C.",
+      "date": "2023-10-15",
+      "rating": 5,
+      "verified": true,
+      "title": "Psicologa eccellente",
+      "text": "Psicologa eccellente, molto empatica e preparata. La consiglio a tutti coloro che cercano un supporto professionale.",
+      "categories": [
+        "professionalità",
+        "empatia",
+        "supporto"
+      ]
+    }
+  ],
+  "statistics": {
+    "average_rating": 5.0,
+    "total_reviews": 27,
+    "verified_reviews": 27,
+    "rating_distribution": {
+      "5_stars": 27,
+      "4_stars": 0,
+      "3_stars": 0,
+      "2_stars": 0,
+      "1_star": 0
+    }
+  },
+  "last_updated": "2026-01-20"
+}

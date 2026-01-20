@@ -199,6 +199,340 @@
             background: linear-gradient(135deg, rgba(0,0,0,0.20) 10%, rgba(0,0,0,0.12) 10%);
         }
 
+        /* === RECENSIONI CAROUSEL STYLES === */
+        .reviews-section-carousel {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            padding: 40px 30px;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .reviews-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #7f8c8d;
+            font-size: 1rem;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stars-display {
+            color: #f39c12;
+            font-size: 1.3rem;
+        }
+
+        /* Carousel Container */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            min-height: 300px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+
+        .review-card {
+            min-width: 100%;
+            max-width: 100%;
+            flex-shrink: 0;
+            padding: 30px;
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            box-sizing: border-box;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .review-author {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .author-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--color-primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .verified-badge::before {
+            content: "✓";
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .review-date {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        .review-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .stars {
+            color: #f39c12;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .review-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .review-text {
+            color: #555;
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .review-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .category-tag {
+            background: var(--color-surface);
+            color: var(--color-secondary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Navigation Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .carousel-arrow {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(58, 107, 83, 0.3);
+        }
+
+        .carousel-arrow:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(58, 107, 83, 0.5);
+            background: var(--color-cta-hover);
+        }
+
+        .carousel-arrow:active {
+            transform: scale(0.95);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        /* Dots Navigation */
+        .carousel-dots {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bdc3c7;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .dot.active {
+            background: var(--color-primary);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .dot:hover {
+            background: #95a5a6;
+        }
+
+        .dot.active:hover {
+            background: var(--color-primary);
+        }
+
+        /* Footer Link */
+        .reviews-footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--color-surface);
+        }
+
+        .miodottore-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(58, 107, 83, 0.3);
+        }
+
+        .miodottore-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 107, 83, 0.5);
+            background: var(--color-cta-hover);
+        }
+
+        .miodottore-link::after {
+            content: "→";
+            font-size: 1.2rem;
+        }
+
+        /* Loading State */
+        .loading-reviews {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design for Carousel */
+        @media (max-width: 768px) {
+            .reviews-section-carousel {
+                padding: 30px 20px;
+                border-radius: 15px;
+            }
+
+            .review-card {
+                padding: 20px 10px;
+            }
+
+            .review-header {
+                flex-direction: column;
+            }
+
+            .carousel-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .carousel-controls {
+                gap: 10px;
+            }
+
+            .carousel-dots {
+                gap: 8px;
+            }
+
+            .miodottore-link {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .reviews-section-carousel {
+                padding: 20px 15px;
+            }
+
+            .review-title {
+                font-size: 1rem;
+            }
+
+            .review-text {
+                font-size: 0.95rem;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
         /* Pannello contenuto dentro la modale: sfondo semi-trasparente per permettere alla foto di emergere */
         #modal-content {
             position: relative;
@@ -487,25 +821,39 @@
         </div>
     </section>
 
-    <!-- RECENSIONI -->
+    <!-- RECENSIONI CAROUSEL -->
     <section id="recensioni" class="py-24 bg-main">
         <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-16">Le Vostre Parole</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="bg-white p-10 rounded-2xl shadow-md relative">
-                    <span class="text-6xl text-accent-cta absolute -top-4 left-6 opacity-20 font-serif">"</span>
-                    <p class="text-gray-600 italic relative z-10 pt-2 leading-relaxed">"Ho trovato in Lorena non solo una professionista, ma una persona di grande umanità."</p>
-                    <p class="mt-6 font-bold text-primary text-right text-sm uppercase tracking-wide">- Anna M.</p>
+            <div class="reviews-section-carousel max-w-5xl mx-auto">
+                <div class="reviews-header">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-4">Le Vostre Parole</h2>
+                    <div class="reviews-stats">
+                        <div class="rating-summary">
+                            <span class="stars-display">★★★★★</span>
+                            <strong id="averageRating">5.0</strong>
+                        </div>
+                        <span>•</span>
+                        <span><strong id="totalReviews">27</strong> recensioni verificate</span>
+                    </div>
                 </div>
-                <div class="bg-white p-10 rounded-2xl shadow-md relative">
-                    <span class="text-6xl text-accent-cta absolute -top-4 left-6 opacity-20 font-serif">"</span>
-                    <p class="text-gray-600 italic relative z-10 pt-2 leading-relaxed">"Un percorso trasformativo. Ho imparato a gestire l'ansia che mi bloccava da anni."</p>
-                    <p class="mt-6 font-bold text-primary text-right text-sm uppercase tracking-wide">- Marco T.</p>
+
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="loading-reviews">Caricamento recensioni...</div>
                 </div>
-                <div class="bg-white p-10 rounded-2xl shadow-md relative">
-                    <span class="text-6xl text-accent-cta absolute -top-4 left-6 opacity-20 font-serif">"</span>
-                    <p class="text-gray-600 italic relative z-10 pt-2 leading-relaxed">"Un aiuto prezioso per la nostra famiglia e per la gestione dei figli. Consigliatissima."</p>
-                    <p class="mt-6 font-bold text-primary text-right text-sm uppercase tracking-wide">- Famiglia Rossi</p>
+
+                <div class="carousel-controls" id="carouselControls" style="display: none;">
+                    <button class="carousel-arrow" id="prevBtn" aria-label="Recensione precedente">←</button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-arrow" id="nextBtn" aria-label="Recensione successiva">→</button>
+                </div>
+
+                <div class="reviews-footer">
+                    <a href="https://www.miodottore.it/lorena-ghiotto/psicologo-psicoterapeuta/montemerlo" 
+                       class="miodottore-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Leggi tutte le 27 recensioni su MioDottore
+                    </a>
                 </div>
             </div>
         </div>
@@ -1202,6 +1550,285 @@
             // apply initial
             applySeason(defaultSeason());
         })();
+
+        // === REVIEWS CAROUSEL ===
+        class ReviewsCarousel {
+            constructor() {
+                this.currentIndex = 0;
+                this.reviews = [];
+                this.autoPlayInterval = null;
+                this.autoPlayDelay = 5000; // 5 seconds
+                this.isPaused = false;
+                
+                this.init();
+            }
+
+            async init() {
+                try {
+                    await this.loadReviews();
+                    if (this.reviews && this.reviews.length > 0) {
+                        this.setupCarousel();
+                        this.setupEventListeners();
+                        this.startAutoPlay();
+                    } else {
+                        console.error('No reviews found');
+                        const container = document.getElementById('carouselContainer');
+                        if (container) {
+                            container.innerHTML = '<div class="loading-reviews">Nessuna recensione disponibile.</div>';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to initialize carousel:', error);
+                    const container = document.getElementById('carouselContainer');
+                    if (container) {
+                        container.innerHTML = '<div class="loading-reviews">Errore nell\'inizializzazione del carosello.</div>';
+                    }
+                }
+            }
+
+            async loadReviews() {
+                console.log('Loading reviews...');
+                const response = await fetch('reviews_complete.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                this.reviews = data.reviews;
+                console.log('Reviews loaded:', this.reviews.length);
+                
+                // Update stats
+                const avgRatingEl = document.getElementById('averageRating');
+                const totalReviewsEl = document.getElementById('totalReviews');
+                if (avgRatingEl) avgRatingEl.textContent = data.statistics.average_rating.toFixed(1);
+                if (totalReviewsEl) totalReviewsEl.textContent = data.statistics.total_reviews;
+            }
+
+            setupCarousel() {
+                console.log('Setting up carousel with', this.reviews.length, 'reviews');
+                const container = document.getElementById('carouselContainer');
+                const controls = document.getElementById('carouselControls');
+                const dotsContainer = document.getElementById('carouselDots');
+
+                if (!container) {
+                    console.error('carouselContainer not found');
+                    return;
+                }
+                if (!controls) {
+                    console.error('carouselControls not found');
+                    return;
+                }
+                if (!dotsContainer) {
+                    console.error('carouselDots not found');
+                    return;
+                }
+
+                if (this.reviews.length === 0) {
+                    console.error('No reviews to display');
+                    container.innerHTML = '<div class="loading-reviews">Nessuna recensione trovata.</div>';
+                    return;
+                }
+
+                // Create carousel track
+                const track = document.createElement('div');
+                track.className = 'carousel-track';
+                track.id = 'carouselTrack';
+
+                // Create review cards
+                this.reviews.forEach((review, index) => {
+                    const card = this.createReviewCard(review, index);
+                    track.appendChild(card);
+                    console.log('Created card', index + 1, 'of', this.reviews.length);
+                });
+
+                container.innerHTML = '';
+                container.appendChild(track);
+                controls.style.display = 'flex';
+                console.log('Track appended to container, controls displayed');
+
+                // Create dots
+                this.reviews.forEach((_, index) => {
+                    const dot = document.createElement('button');
+                    dot.className = 'dot';
+                    dot.setAttribute('aria-label', `Vai alla recensione ${index + 1}`);
+                    dot.addEventListener('click', () => this.goToSlide(index));
+                    dotsContainer.appendChild(dot);
+                });
+
+                // Show first review
+                this.showReview(0);
+            }
+
+            createReviewCard(review, index) {
+                const card = document.createElement('div');
+                card.className = 'review-card';
+                card.setAttribute('data-index', index);
+
+                const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                const date = new Date(review.date).toLocaleDateString('it-IT', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+
+                const categories = review.categories
+                    .map(cat => `<span class="category-tag">${cat}</span>`)
+                    .join('');
+
+                card.innerHTML = `
+                    <div class="review-header">
+                        <div class="review-author">
+                            <div class="author-name">
+                                ${review.author}
+                                ${review.verified ? '<span class="verified-badge">Verificato</span>' : ''}
+                            </div>
+                            <div class="review-date">${date}</div>
+                        </div>
+                        <div class="review-rating">
+                            <span class="stars">${stars}</span>
+                        </div>
+                    </div>
+                    <div class="review-title">${review.title}</div>
+                    <div class="review-text">${review.text}</div>
+                    <div class="review-categories">${categories}</div>
+                `;
+
+                return card;
+            }
+
+            showReview(index) {
+                console.log('showReview called with index:', index);
+                const track = document.getElementById('carouselTrack');
+                const dots = document.querySelectorAll('.dot');
+                
+                if (!track) {
+                    console.error('Track not found');
+                    return;
+                }
+
+                console.log('Found track, dots:', dots.length);
+
+                // Move track to show the correct card
+                const offset = -100 * index;
+                track.style.transform = `translateX(${offset}%)`;
+                console.log('Track transformed to:', offset + '%');
+
+                // Update dots
+                dots.forEach(dot => dot.classList.remove('active'));
+                if (dots[index]) {
+                    dots[index].classList.add('active');
+                }
+
+                this.currentIndex = index;
+            }
+
+            goToSlide(index) {
+                this.showReview(index);
+                this.resetAutoPlay();
+            }
+
+            nextReview() {
+                console.log('nextReview called, current:', this.currentIndex);
+                const nextIndex = (this.currentIndex + 1) % this.reviews.length;
+                this.goToSlide(nextIndex);
+            }
+
+            prevReview() {
+                console.log('prevReview called, current:', this.currentIndex);
+                const prevIndex = (this.currentIndex - 1 + this.reviews.length) % this.reviews.length;
+                this.goToSlide(prevIndex);
+            }
+
+            setupEventListeners() {
+                console.log('Setting up event listeners...');
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                const container = document.getElementById('carouselContainer');
+
+                console.log('prevBtn:', prevBtn, 'nextBtn:', nextBtn, 'container:', container);
+
+                if (prevBtn && nextBtn && container) {
+                    prevBtn.addEventListener('click', () => {
+                        console.log('Prev button clicked');
+                        this.prevReview();
+                    });
+                    nextBtn.addEventListener('click', () => {
+                        console.log('Next button clicked');
+                        this.nextReview();
+                    });
+                    console.log('Event listeners attached to navigation buttons');
+
+                    // Pause on hover
+                    container.addEventListener('mouseenter', () => this.pauseAutoPlay());
+                    container.addEventListener('mouseleave', () => this.resumeAutoPlay());
+
+                    // Keyboard navigation
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'ArrowLeft') this.prevReview();
+                        if (e.key === 'ArrowRight') this.nextReview();
+                    });
+
+                    // Touch swipe support
+                    let touchStartX = 0;
+                    let touchEndX = 0;
+
+                    container.addEventListener('touchstart', (e) => {
+                        touchStartX = e.changedTouches[0].screenX;
+                    });
+
+                    container.addEventListener('touchend', (e) => {
+                        touchEndX = e.changedTouches[0].screenX;
+                        this.handleSwipe(touchStartX, touchEndX);
+                    });
+                }
+            }
+
+            handleSwipe(startX, endX) {
+                const swipeThreshold = 50;
+                const diff = startX - endX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        this.nextReview();
+                    } else {
+                        this.prevReview();
+                    }
+                }
+            }
+
+            startAutoPlay() {
+                console.log('Starting auto-play with delay:', this.autoPlayDelay);
+                this.autoPlayInterval = setInterval(() => {
+                    if (!this.isPaused) {
+                        console.log('Auto-play tick');
+                        this.nextReview();
+                    }
+                }, this.autoPlayDelay);
+            }
+
+            pauseAutoPlay() {
+                this.isPaused = true;
+            }
+
+            resumeAutoPlay() {
+                this.isPaused = false;
+            }
+
+            resetAutoPlay() {
+                clearInterval(this.autoPlayInterval);
+                this.startAutoPlay();
+            }
+
+            stopAutoPlay() {
+                clearInterval(this.autoPlayInterval);
+            }
+        }
+
+        // Initialize carousel when DOM and all scripts are ready
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                new ReviewsCarousel();
+            }, 100);
+        });
     </script>
 </body>
 </html>
