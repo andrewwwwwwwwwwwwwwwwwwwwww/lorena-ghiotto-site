@@ -54,6 +54,11 @@
     <div class="container mx-auto px-6">
       <h1 class="text-4xl font-bold text-primary text-center mb-10">Tutti i Laboratori</h1>
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="laboratori-list"></div>
+      <div class="flex justify-center items-center gap-4 mt-8">
+        <button id="prev-btn" class="px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/80 transition disabled:opacity-30 disabled:cursor-not-allowed" onclick="changePage(-1)">← Precedenti</button>
+        <span id="page-indicator" class="text-primary font-semibold"></span>
+        <button id="next-btn" class="px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/80 transition disabled:opacity-30 disabled:cursor-not-allowed" onclick="changePage(1)">Successivi →</button>
+      </div>
       <article id="lab-article" class="max-w-4xl mx-auto mt-12 hidden bg-white/90 border rounded-2xl p-8 shadow">
         <button onclick="closeLabArticle()" class="float-right text-primary font-semibold">Chiudi ×</button>
         <div id="lab-article-content" class="clear-both"></div>
@@ -69,8 +74,12 @@
     const articles = [
       { title: "La Donna e il suo Corpo", excerpt: "Empowerment femminile e mindful eating.", tag: "Crescita Personale", colorClass: "text-accent-spring", bgImage: "img/La donna e il suo corpo.jpeg", id: 1 },
       { title: "Mindfulness tra Natura e Sapori", excerpt: "Mindful walking e mindful eating a Vetriolo.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Mindfulness tra Natura e Sapori.jpeg", id: 2 },
-      { title: "ZenFlow: Equilibrio Online", excerpt: "10 incontri online con pratiche di rilassamento.", tag: "Benessere Online", colorClass: "text-accent-winter", id: 3 },
-      { title: "Emozioni a Scuola", excerpt: "Progetto per la primaria sulle emozioni.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", id: 4 }
+      { title: "ZenFlow: Equilibrio Online", excerpt: "10 incontri online con pratiche di rilassamento.", tag: "Benessere Online", colorClass: "text-accent-winter", bgImage: "img/Zenflow01.jpeg", id: 3 },
+      { title: "Super poteri del cuore", excerpt: "Progetto sulle emozioni alla scuola primaria.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", bgImage: "img/Superpoteridelcuore.jpeg", id: 4 },
+      { title: "Benessere per le atlete", excerpt: "Gestione dell'ansia pre e post gara.", tag: "Sport & Mindfulness", colorClass: "text-accent-spring", id: 5 },
+      { title: "Emozioni in gioco", excerpt: "Laboratorio per genitori e figli.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", id: 6 },
+      { title: "Rituali di gusto", excerpt: "Degustazione consapevole al caseificio.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Ritualidigusto.jpeg", id: 7 },
+      { title: "Spazio Ben-essere", excerpt: "Incontri gratuiti di benessere personale.", tag: "Benessere Online", colorClass: "text-accent-winter", id: 8 }
     ];
 
     const container = document.getElementById('laboratori-list');
@@ -78,10 +87,14 @@
     const articleContent = document.getElementById('lab-article-content');
 
     const fullTexts = {
-      1: "<p class='mb-4'><strong>Un progetto dedicato all'empowerment femminile</strong></p><p class='mb-4'>Il progetto La donna e il suo corpo nasce dall'esigenza di creare uno spazio sicuro e accogliente in cui esplorare il rapporto con il corpo, la storia emotiva e le modalità di relazione con cibo e immagine di sé.</p>",
+      1: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>La donna e il suo corpo: un progetto dedicato all'empowerment femminile</h3><p class='mb-4'>Il progetto La donna e il suo corpo nasce dall'esigenza di creare uno spazio sicuro, accogliente e profondamente rispettoso in cui le donne potessero esplorare il proprio rapporto con il corpo, la propria storia emotiva e le modalità con cui, nel tempo, si sono relazionate al cibo, all'immagine di sé e al proprio benessere complessivo. L'incontro si è svolto in un teatro a Roma, un luogo scelto volutamente per la sua capacità di contenere, simbolicamente e fisicamente, ciò che emerge quando si lavora sull'identità corporea: il palco come spazio di espressione, la platea come spazio di ascolto, il teatro intero come contenitore di trasformazioni.</p><p class='mb-4'>Il progetto è stato realizzato in collaborazione con due colleghe: una psicoterapeuta e una dietista. La loro presenza ha arricchito il percorso portando sguardi complementari e competenze specifiche, fondamentali per affrontare il tema dell'empowerment femminile in modo completo e multidisciplinare. La psicoterapeuta ha lavorato sulle dimensioni emotive, sulle memorie corporee e sui vissuti legati all'immagine di sé, offrendo alle partecipanti strumenti per riconoscere le narrazioni interiori che spesso condizionano l'esperienza del corpo. La dietista, invece, ha portato un contributo prezioso legato alla fisiologia, all'alimentazione consapevole e alla possibilità di costruire un rapporto con il cibo più gentile, meno giudicante e calibrato sui bisogni reali.</p><p class='mb-4'>All'interno di questo quadro, il mio intervento si è concentrato sul mindful eating, un approccio che invita a recuperare presenza, sensorialità e connessione nel gesto quotidiano del nutrirsi. L'obiettivo non era insegnare \"come mangiare\", ma accompagnare le partecipanti nell'esplorare cosa accade nel corpo e nella mente quando ci si avvicina al cibo: quali emozioni emergono, quali automatismi prendono il sopravvento, quali sensazioni vengono ignorate o amplificate. Il mindful eating, in questo contesto, è diventato uno strumento per riscoprire la propria autenticità, entrando in relazione con se stesse senza giudizio e senza fretta.</p><p class='mb-4'>Durante il laboratorio abbiamo lavorato sull'ascolto del corpo, sull'osservazione dei segnali di fame e sazietà, sulla qualità del respiro e sul contatto con le sensazioni fisiche. Attraverso esercizi guidati, brevi meditazioni e momenti di condivisione, le partecipanti hanno potuto sperimentare come la consapevolezza possa trasformare l'esperienza del cibo e, più in generale, il modo in cui ci si abita dentro. Il cibo, infatti, è spesso uno dei linguaggi attraverso cui il corpo parla: comprenderlo, ascoltarlo e riconoscerlo significa restituire dignità alle proprie emozioni e ai propri bisogni.</p><p class='mb-4'>Il lavoro con le mie colleghe ha creato una sinergia particolarmente efficace. La Dott.ssa Iris Mattera, psicoterapeuta, ha offerto chiavi di lettura interiori grazie alla messa in scena dello Psicodramma. Veronica Giachè, dietista, ha dato indicazioni pratiche e scientifiche, e la mindful eating ha rappresentato il ponte tra queste due dimensioni, traducendo teoria e consapevolezza in esperienza. Questo approccio ha permesso alle partecipanti di sentirsi accolte nella complessità della loro storia personale, senza semplificazioni né giudizi, e di scoprire che l'empowerment femminile passa anche attraverso un nuovo modo di percepirsi, nutrirsi e raccontarsi.</p><p class='mb-4'>Il teatro, con la sua atmosfera intima e simbolica, ha amplificato la profondità del percorso: è diventato il luogo in cui ogni donna ha potuto portare la propria voce, la propria vulnerabilità e la propria forza. Il progetto si è concluso con un momento collettivo di riflessione, in cui ciascuna partecipante ha avuto modo di riconoscere non solo ciò che aveva compreso, ma ciò che aveva sentito, dentro il corpo e dentro di sé.</p><p class='mb-4'>La donna e il suo corpo è stato molto più di un incontro formativo: è stato un invito a tornare ad abitare il proprio corpo come luogo di potere, di storia, di libertà e di cura. Un'esperienza che ha mostrato, una volta ancora, che quando le donne si mettono in ascolto di sé e lo fanno insieme, qualcosa di profondo e trasformativo può accadere.</p>",
       2: "<p class='mb-4'><strong>Mindfulness tra Natura e Sapori</strong></p><p class='mb-4'>Un'esperienza immersiva tra mindful walking e mindful eating a Vetriolo Terme, con degustazione consapevole e camminata in natura.</p>",
-      3: "<p class='mb-4'><strong>ZenFlow</strong></p><p>Dieci incontri online per respirazione, rilassamento e visualizzazioni, pensati per integrare pratiche brevi nella quotidianità.</p>",
-      4: "<p class='mb-4'><strong>Emozioni a Scuola</strong></p><p>Progetto per la primaria: nominare gioia, paura, rabbia e tristezza; riconoscerle nel corpo e trovare strategie per regolarle.</p>"
+      3: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>ZenFlow</h3><p class='mb-4'>ZenFlow è un percorso di 10 incontri online dedicato al benessere integrato di mente e corpo. In collaborazione con un'insegnante di yoga, abbiamo alternato 5 incontri di mindfulness da me condotti e 5 di yoga guidati da lei.</p><p class='mb-4'>Ogni lunedì sera i partecipanti hanno sperimentato pratiche complementari di presenza, respiro e movimento, pensate per favorire equilibrio, ascolto e rilassamento profondo. Un ciclo semplice ma trasformativo, nato per portare consapevolezza nella quotidianità.</p><p class='mb-4'><strong>Collaborazione con:</strong> Barbara Infinity Balance</p>",
+      4: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Progetto sulle emozioni alla Scuola primaria: I super poteri del cuore</h3><p class='mb-4'>Nel progetto <strong>Super poteri del cuore</strong> ho guidato i bambini alla scoperta delle emozioni attraverso attività di mindfulness pensate per offrire una base chiara e concreta su ciò che sentono. Abbiamo esplorato gioia, rabbia, tristezza e paura imparando a riconoscerle nel corpo e nella mente.</p><p class='mb-4'>Attraverso respirazione, ascolto consapevole e piccoli esercizi di attenzione, i bambini hanno sviluppato strumenti per osservare le emozioni senza giudicarle e per esprimerle in modo più equilibrato. Il percorso ha favorito consapevolezza, regolazione emotiva e un clima di classe più accogliente, aiutando ogni bambino a sentirsi visto, compreso e capace di comprendere meglio se stesso.</p><p class='mb-4'><strong>Collaborazione con:</strong> Silvia Ferrari, docente di Scuola Primaria</p>",
+      5: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Benessere per le atlete: percorsi di gestione dell'ansia e dello stress pre/post gara</h3><p class='mb-4'>Nel progetto dedicato al benessere delle atlete abbiamo proposto un percorso mirato alla gestione dell'ansia e dello stress nelle fasi pre e post gara. Attraverso momenti di confronto, esercizi di respirazione consapevole e pratiche di mindfulness abbiamo lavorato sulle risorse personali utili a recuperare centratura, fiducia e lucidità.</p><p class='mb-4'>L'obiettivo era offrire strumenti semplici e applicabili subito, capaci di sostenere le atlete nelle sfide sportive e nella cura del proprio equilibrio emotivo.</p>",
+      6: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Emozioni in gioco: laboratorio per genitori e figli</h3><p class='mb-4'>Un laboratorio dedicato a genitori e figli per esplorare insieme il mondo delle emozioni attraverso il gioco e la Mindfulness. Un percorso esperienziale che favorisce ascolto, presenza e connessione, offrendo strumenti pratici per riconoscere e condividere ciò che si prova.</p><p class='mb-4'>Attraverso attività creative e momenti di calma consapevole, adulti e bambini imparano a comunicare in modo più autentico, a rafforzare il legame affettivo e a vivere un tempo di qualità, ricco di scoperte e piccoli gesti di cura reciproca.</p><p class='mb-4'><strong>Collaborazione con:</strong> Sofia Dalla Libera, Psicologa e Psicoterapeuta in formazione all'ultimo anno</p>",
+      7: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Rituali di gusto: degustazione consapevole e mindfulness presso il caseificio Sapori di Montegnago</h3><p class='mb-4'><strong>Rituali di gusto</strong> è un percorso pensato per portare i partecipanti oltre la semplice degustazione, trasformandola in un atto di presenza. Al caseificio Sapori di Montegnago, insieme ad Elisa, casara e degustatrice ONAF, che ha guidato i partecipanti in un viaggio tra lavorazioni artigiane, profumi e stagionature.</p><p class='mb-4'>Ho poi introdotto una pratica di mindful eating dedicata alla degustazione dei loro formaggi: respirare, osservare, assaggiare con intenzione, riconoscere consistenze e sfumature, lasciando che ogni morso diventi un momento di ascolto e connessione autentica con il cibo.</p><p class='mb-4'><strong>Collaborazione con:</strong> Elisa Marini, casara e degustatrice ONAF</p>",
+      8: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Spazio Ben-essere: incontri di benessere personale e relazionale</h3><p class='mb-4'>Da gennaio 2026 io e la dott.ssa Sofia Dalla Libera proporremo una serie di incontri gratuiti dedicati al benessere personale e relazionale. Uno spazio accogliente in cui fermarsi, ascoltarsi e approfondire temi legati alla cura di sé, alle dinamiche relazionali e alla consapevolezza emotiva.</p><p class='mb-4'>Ogni appuntamento, della durata di un'ora e mezza, offrirà spunti pratici, momenti di riflessione e occasioni di confronto guidato. Un percorso pensato per chi desidera ritrovare equilibrio, coltivare presenza e comprendere meglio il proprio mondo interiore.</p><p class='mb-4'><strong>Collaborazione con:</strong> Sofia Dalla Libera, Psicologa e Psicoterapeuta</p>"
     };
 
     function openLabArticle(id) {
@@ -103,7 +116,54 @@
       articleContent.innerHTML = '';
     }
 
-    articles.forEach(art => {
+    let currentPage = 0;
+    const itemsPerPage = 4;
+    const totalPages = Math.ceil(articles.length / itemsPerPage);
+
+    function renderPage() {
+      container.innerHTML = '';
+      const start = currentPage * itemsPerPage;
+      const end = start + itemsPerPage;
+      const pageArticles = articles.slice(start, end);
+
+      pageArticles.forEach(art => {
+        const card = document.createElement('div');
+        card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
+        card.innerHTML = `
+          <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
+          <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
+          <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
+          <button class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto" onclick="openLabArticle(${art.id})">Apri laboratorio &rarr;</button>
+        `;
+        if (art.bgImage) {
+          const thumb = document.createElement('div');
+          thumb.className = 'card-thumb';
+          const img = document.createElement('img');
+          img.src = encodeURI(art.bgImage);
+          img.alt = art.title;
+          thumb.appendChild(img);
+          card.appendChild(thumb);
+        }
+        container.appendChild(card);
+      });
+
+      document.getElementById('prev-btn').disabled = currentPage === 0;
+      document.getElementById('next-btn').disabled = currentPage === totalPages - 1;
+      document.getElementById('page-indicator').textContent = `${currentPage + 1} / ${totalPages}`;
+    }
+
+    function changePage(direction) {
+      currentPage += direction;
+      if (currentPage < 0) currentPage = 0;
+      if (currentPage >= totalPages) currentPage = totalPages - 1;
+      renderPage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    renderPage();
+
+    /* OLD CODE - REMOVED */
+    /* articles.forEach(art => {
       const card = document.createElement('div');
       card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
       card.innerHTML = `
@@ -122,7 +182,7 @@
         card.appendChild(thumb);
       }
       container.appendChild(card);
-    });
+    }); */
   </script>
 </body>
 </html>

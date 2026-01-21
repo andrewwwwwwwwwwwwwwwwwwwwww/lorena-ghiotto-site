@@ -41,10 +41,12 @@
 
             <a href="#prenota" class="hidden md:block bg-accent-cta text-white px-4 md:px-5 py-2 rounded-full text-sm font-semibold hover:bg-primary transition shadow-md z-10">Prenota Colloquio</a>
             
+            <!-- Mobile Menu Button -->
             <button id="mobile-menu-btn" class="md:hidden text-primary">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
+         <!-- Mobile Menu (Hidden) -->
         <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6 flex flex-col gap-4 border-t">
             <a href="#chisiamo" class="block text-secondary hover:text-primary">Chi Sono</a>
             <a href="#approccio" class="block text-secondary hover:text-primary">L'Approccio</a>
@@ -94,12 +96,16 @@
                 <p class="text-lg text-secondary mb-8 leading-relaxed">
                     Utilizzo un approccio integrato, basato sulla terapia cognitivo-comportamentale e arricchito da tecniche come l'<strong>EMDR</strong>.
                 </p>
+                <!-- BOTTONE PER MODALE CHI SONO -->
                 <button onclick="openBioModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mb-6 block">Leggi la mia storia completa &rarr;</button>
+
                 <ul class="space-y-3 text-sm text-secondary font-medium border-t pt-6">
                     <li>Laurea in Psicologia & Specializzazione</li>
                     <li>Terapeuta EMDR certificata</li>
                     <li>Iscrizione Albo Psicologi Veneto n. 7937</li>
                 </ul>
+
+                <!-- BOTTONE PER MODALE SPAZI -->
                 <button onclick="openSpaziModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mt-6 block">I miei spazi &rarr;</button>
             </div>
         </div>
@@ -113,23 +119,39 @@
                 <p class="text-secondary max-w-2xl mx-auto">La metafora delle stagioni ci aiuta a comprendere che ogni fase ha un senso.</p>
             </div>
             <div class="grid md:grid-cols-4 gap-6">
+                <!-- Inverno -->
                 <div data-season="winter" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-winter">
-                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><circle fill="#EBF2ED" cx="48" cy="48" r="40"/><path d="M30 62 Q48 66 66 62" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M48 34 L48 52" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M40 43 L56 43" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M41 37 L55 49" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M55 37 L41 49" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle fill="#EBF2ED" cx="48" cy="48" r="40" />
+  <path d="M30 62 Q48 66 66 62" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M48 34 L48 52" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M40 43 L56 43" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M41 37 L55 49" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M55 37 L41 49" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg></div>
                     <h3 class="text-xl font-bold text-primary mb-2">Inverno</h3>
                     <p class="text-sm text-secondary">Introspezione e riposo. Accogliamo il blocco per raccogliere energie.</p>
                 </div>
+                <!-- Primavera -->
                 <div data-season="spring" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-spring">
-                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><circle fill="#EBF2ED" cx="48" cy="48" r="40"/><path d="M30 60 Q48 64 66 60" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M48 60 L48 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M48 50 C44 48, 42 46, 41 43 C44 43, 46 44, 48 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M48 48 C50 46, 52 45, 55 45 C54 48, 52 50, 48 52" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle fill="#EBF2ED" cx="48" cy="48" r="40" /><path d="M30 60 Q48 64 66 60" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M48 60 L48 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M48 50 C44 48, 42 46, 41 43 C44 43, 46 44, 48 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M48 48 C50 46, 52 45, 55 45 C54 48, 52 50, 48 52" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /></svg></div>
                     <h3 class="text-xl font-bold text-primary mb-2">Primavera</h3>
                     <p class="text-sm text-secondary">Rinascita. Piantiamo i semi del cambiamento.</p>
                 </div>
+                <!-- Estate -->
                 <div data-season="summer" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-summer">
-                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><circle fill="#EBF2ED" cx="48" cy="48" r="40"/><path d="M28 60 Q48 64 68 60" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><circle cx="48" cy="46" r="10" fill="#3A6B53"/><path d="M48 30 L48 34" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M48 58 L48 62" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M34 46 L38 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M58 46 L62 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle fill="#EBF2ED" cx="48" cy="48" r="40" /><path d="M28 60 Q48 64 68 60" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" /><circle cx="48" cy="46" r="10" fill="#3A6B53" /><path d="M48 30 L48 34" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M48 58 L48 62" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M34 46 L38 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M58 46 L62 46" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M38 36 L40 38" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M56 36 L54 38" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M38 56 L40 54" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /><path d="M56 56 L54 54" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" /></svg></div>
                     <h3 class="text-xl font-bold text-primary mb-2">Estate</h3>
                     <p class="text-sm text-secondary">Pienezza. Consolidiamo le risorse e agiamo.</p>
                 </div>
+                <!-- Autunno -->
                 <div data-season="autumn" class="season-card bg-white p-8 rounded-xl shadow-sm text-center border-t-4 border-autumn">
-                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><circle fill="#EBF2ED" cx="48" cy="48" r="40"/><path d="M40 30 C46 28, 52 28, 58 30" fill="none" stroke="#5C6F66" stroke-width="2.5" stroke-linecap="round"/><path d="M48 34 C44 38, 42 42, 42 47 C42 52, 44 56, 48 60 C52 56, 54 52, 54 47 C54 42, 52 38, 48 34 Z" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/><path d="M48 34 L48 58" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+                    <div class="mb-4 w-24 h-24 mx-auto"><svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <circle fill="#EBF2ED" cx="48" cy="48" r="40" />
+  <path d="M40 30 C46 28, 52 28, 58 30" fill="none" stroke="#5C6F66" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M48 34 C44 38, 42 42, 42 47 C42 52, 44 56, 48 60 C52 56, 54 52, 54 47 C54 42, 52 38, 48 34 Z" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M48 34 L48 58" fill="none" stroke="#3A6B53" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg></div>
                     <h3 class="text-xl font-bold text-primary mb-2">Autunno</h3>
                     <p class="text-sm text-secondary">Raccolto. Integriamo e lasciamo andare ciò che non serve.</p>
                 </div>
@@ -141,18 +163,23 @@
     <section id="percorsi" class="py-24 bg-white">
         <div class="container mx-auto px-6 max-w-5xl">
             <h2 class="text-4xl font-bold text-primary text-center mb-10">Un Percorso su Misura</h2>
+            
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <button onclick="showTab('bambini')" id="btn-bambini" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Bambini</button>
                 <button onclick="showTab('adolescenti')" id="btn-adolescenti" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Adolescenti</button>
                 <button onclick="showTab('adulti')" id="btn-adulti" class="px-8 py-3 rounded-full font-bold transition active-tab shadow-md">Adulti</button>
                 <button onclick="showTab('terzaeta')" id="btn-terzaeta" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Terza Età</button>
             </div>
+
+            <!-- CONTENUTO BAMBINI -->
             <div id="tab-bambini" class="hidden grid md:grid-cols-2 gap-4">
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Sostegno alla Genitorialità</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Disturbi dell'Apprendimento</div>
                 <div onclick="openGestioneEmozioniModal()" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Gestione delle Emozioni</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Paure e Fobie Infantili</div>
             </div>
+
+            <!-- CONTENUTO ADOLESCENTI -->
             <div id="tab-adolescenti" class="hidden grid md:grid-cols-2 gap-4">
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Costruzione dell'Identità</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Ansia Scolastica e da Prestazione</div>
@@ -161,6 +188,8 @@
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Gestione delle Emozioni</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Conflitti Familiari</div>
             </div>
+
+            <!-- CONTENUTO ADULTI -->
             <div id="tab-adulti" class="grid md:grid-cols-2 gap-4">
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Ansia e Attacchi di Panico</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Lutto</div>
@@ -169,6 +198,8 @@
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Gestione dello Stress</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Crescita Personale</div>
             </div>
+
+            <!-- CONTENUTO TERZA ETÀ -->
             <div id="tab-terzaeta" class="hidden grid md:grid-cols-2 gap-4">
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Adattamento ai Cambiamenti di Vita</div>
                 <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Pensionamento</div>
@@ -187,19 +218,32 @@
                 <div class="reviews-header">
                     <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-4">Le Vostre Parole</h2>
                     <div class="reviews-stats">
-                        <div class="rating-summary"><span class="stars-display">★★★★★</span><strong id="averageRating">5.0</strong></div>
+                        <div class="rating-summary">
+                            <span class="stars-display">★★★★★</span>
+                            <strong id="averageRating">5.0</strong>
+                        </div>
                         <span>•</span>
                         <span><strong id="totalReviews">27</strong> recensioni verificate</span>
                     </div>
                 </div>
-                <div class="carousel-container" id="carouselContainer"><div class="loading-reviews">Caricamento recensioni...</div></div>
+
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="loading-reviews">Caricamento recensioni...</div>
+                </div>
+
                 <div class="carousel-controls" id="carouselControls" style="display: none;">
                     <button class="carousel-arrow" id="prevBtn" aria-label="Recensione precedente">←</button>
                     <div class="carousel-dots" id="carouselDots"></div>
                     <button class="carousel-arrow" id="nextBtn" aria-label="Recensione successiva">→</button>
                 </div>
+
                 <div class="reviews-footer">
-                    <a href="https://www.miodottore.it/lorena-ghiotto/psicologo-psicoterapeuta/montemerlo" class="miodottore-link" target="_blank" rel="noopener noreferrer">Leggi tutte le 27 recensioni su MioDottore</a>
+                    <a href="https://www.miodottore.it/lorena-ghiotto/psicologo-psicoterapeuta/montemerlo" 
+                       class="miodottore-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Leggi tutte le 27 recensioni su MioDottore
+                    </a>
                 </div>
             </div>
         </div>
@@ -209,7 +253,9 @@
     <section id="laboratori" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-primary text-center mb-12">Laboratori</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="laboratori-container"></div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="laboratori-container">
+                <!-- I contenuti verranno inseriti da JS -->
+            </div>
             <div class="flex justify-center items-center gap-4 mt-8">
                 <button id="prev-lab-btn" class="px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/80 transition disabled:opacity-30 disabled:cursor-not-allowed" onclick="changeLabPage(-1)">←</button>
                 <span id="lab-page-indicator" class="text-primary font-semibold"></span>
@@ -225,19 +271,24 @@
     <section id="Blog" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-primary text-center mb-12">Blog</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="blog-container"></div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="blog-container">
+                <!-- I contenuti verranno inseriti da JS -->
+            </div>
             <div class="mt-10 text-center">
                 <a href="Blog.html" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-green-800 transition">Vedi tutti gli articoli</a>
             </div>
         </div>
     </section>
 
-    <!-- PRENOTAZIONE -->
+    <!-- PRENOTAZIONE (BOOKING) -->
     <section id="prenota" class="py-24 bg-main">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold text-primary mb-4">Prenota il tuo Colloquio</h2>
             <p class="text-secondary mb-10">Scegli una data per il primo incontro conoscitivo.</p>
-            <div id="booking-widget" class="max-w-lg mx-auto bg-white border rounded-2xl p-6 shadow-lg"></div>
+            
+            <div id="booking-widget" class="max-w-lg mx-auto bg-white border rounded-2xl p-6 shadow-lg">
+                <!-- Calendario generato da JS -->
+            </div>
         </div>
     </section>
 
@@ -249,11 +300,17 @@
                 <div class="space-y-6">
                     <div class="flex gap-6 items-start bg-main p-6 rounded-xl shadow-sm">
                         <img src="img/Studio_selvazzano_01.jpg" class="w-24 h-24 object-cover rounded-lg bg-gray-200" alt="Studio">
-                        <div><h4 class="text-xl font-bold text-primary">Selvazzano Dentro</h4><p class="text-secondary">Via San Giuseppe 1, Padova</p></div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Selvazzano Dentro</h4>
+                            <p class="text-secondary">Via San Giuseppe 1, Padova</p>
+                        </div>
                     </div>
                     <div class="flex gap-6 items-start bg-main p-6 rounded-xl shadow-sm">
                         <img src="img/Studio_Selvazzano_02.jpg" class="w-24 h-24 object-cover rounded-lg bg-gray-200" alt="Studio">
-                        <div><h4 class="text-xl font-bold text-primary">Montemerlo</h4><p class="text-secondary">Via Repoise 18/1, Padova</p></div>
+                        <div>
+                            <h4 class="text-xl font-bold text-primary">Montemerlo</h4>
+                            <p class="text-secondary">Via Repoise 18/1, Padova</p>
+                        </div>
                     </div>
                 </div>
                 <div class="bg-main p-8 rounded-xl shadow-lg">
@@ -273,39 +330,47 @@
         <p class="font-serif text-xl mb-2">Dott.ssa Lorena Ghiotto</p>
         <p class="text-sm opacity-80 mb-6">Psicologa Psicoterapeuta - Albo Veneto n. 7937</p>
         <div class="text-sm opacity-60 space-x-4">
-            <a href="#" class="hover:text-white">Privacy Policy</a><span>|</span><a href="#" class="hover:text-white">Cookie Policy</a>
+            <a href="#" class="hover:text-white">Privacy Policy</a>
+            <span>|</span>
+            <a href="#" class="hover:text-white">Cookie Policy</a>
         </div>
     </footer>
 
-    <!-- MODALI -->
+    <!-- MODALE UNIVERSALE (Per Articoli e Chi Sono) -->
     <div id="universal-modal" class="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center hidden p-4 opacity-0 transition-opacity duration-300">
         <div class="rounded-2xl max-w-2xl w-full max-h-[90vh] relative shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden bg-white" id="modal-panel">
             <div id="modal-content" class="relative z-10 overflow-y-auto max-h-[90vh] p-8">
                 <button onclick="closeModal();" class="absolute top-4 right-4 text-gray-400 hover:text-primary text-3xl z-50">&times;</button>
-                <div id="modal-body-content"></div>
+                <div id="modal-body-content">
+                    <!-- Contenuto dinamico iniettato qui -->
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- MODALE PERCORSI (PIÙ LARGA) -->
     <div id="percorsi-modal" class="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center hidden p-4 opacity-0 transition-opacity duration-300">
         <div class="rounded-2xl w-full max-h-[90vh] relative shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden" id="percorsi-modal-panel" style="background: rgba(255, 255, 255, 0.98);">
             <div id="percorsi-bg-watermark"></div>
             <div id="percorsi-modal-content" class="relative z-10 overflow-y-auto max-h-[90vh] p-8">
                 <button onclick="closePercorsiModal()" class="absolute top-4 right-4 text-gray-400 hover:text-primary text-3xl z-50">&times;</button>
-                <div id="percorsi-modal-body"></div>
+                <div id="percorsi-modal-body">
+                    <!-- Contenuto dinamico iniettato qui -->
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- LIGHTBOX IMMAGINI -->
     <div id="image-lightbox" class="fixed inset-0 z-[80] hidden items-center justify-center bg-black/80 p-4">
         <button aria-label="Chiudi" onclick="closeLightbox()" class="absolute top-4 right-4 text-white/90 hover:text-white text-3xl z-10">&times;</button>
         <button aria-label="Precedente" onclick="lightboxPrev()" class="absolute left-4 top-1/2 -translate-y-1/2 text-white/90 hover:text-white text-5xl font-light z-10 transition hover:scale-110">&lsaquo;</button>
         <button aria-label="Successiva" onclick="lightboxNext()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/90 hover:text-white text-5xl font-light z-10 transition hover:scale-110">&rsaquo;</button>
-        <img id="lightbox-img" src="" alt="immagine" class="max-w-[92vw] max-h-[92vh] object-contain rounded-lg shadow-2xl"/>
+        <img id="lightbox-img" src="" alt="immagine" class="max-w-[92vw] max-h-[92vh] object-contain rounded-lg shadow-2xl" />
         <div id="lightbox-counter" class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/80 text-sm font-medium bg-black/40 px-4 py-2 rounded-full"></div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT (Ordine importante!) -->
     <script src="js/data.js"></script>
     <script src="js/modals.js"></script>
     <script src="js/carousel.js"></script>
