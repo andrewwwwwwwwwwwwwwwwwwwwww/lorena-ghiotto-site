@@ -36,6 +36,7 @@
                 <a href="#percorsi" class="hover:text-primary transition">Percorsi</a>
                 <a href="#laboratori" class="hover:text-primary transition">Laboratori</a>
                 <a href="#Blog" class="hover:text-primary transition">Blog</a>
+                <a href="Media.html" class="hover:text-primary transition">Media</a>
                 <a href="#contatti" class="hover:text-primary transition">Contatti</a>
             </nav>
 
@@ -51,6 +52,7 @@
             <a href="#percorsi" class="block text-secondary hover:text-primary">Percorsi</a>
             <a href="#laboratori" class="block text-secondary hover:text-primary">Laboratori</a>
             <a href="#Blog" class="hover:text-primary transition">Blog</a>
+            <a href="Media.html" class="block text-secondary hover:text-primary">Media</a>
             <a href="#contatti" class="block text-secondary hover:text-primary">Contatti</a>
         </div>
     </header>
@@ -89,16 +91,21 @@
             <div>
                 <h2 class="text-4xl font-bold text-primary mb-6">Creare un legame di fiducia.</h2>
                 <p class="text-lg text-secondary mb-4 leading-relaxed">
-                    Sono psicologa e psicoterapeuta a Padova. Credo che ogni persona possieda le risorse per superare i momenti difficili; il mio ruolo è aiutarti a riscoprirle in uno spazio protetto.
+                    Sono Lorena Ghiotto, psicologa e psicoterapeuta. Il mio percorso nasce da una profonda curiosità verso l'essere umano e le sue risorse infinite. Dopo la laurea in Psicologia Clinica presso l'Università di Padova, ho scelto di specializzarmi in Psicoterapia Cognitivo-Comportamentale, perché credo nell'importanza di lavorare sul "qui e ora" fornendo strategie pratiche per gestire pensieri ed emozioni.
+                </p>
+                <p class="text-lg text-secondary mb-4 leading-relaxed">
+                    L'incontro con l'<strong>EMDR</strong> mi ha aperto nuove prospettive sulla cura del trauma, permettendomi di lavorare in profondità con chi porta ferite emotive. Nel mio studio cerco di integrare tutto questo con un approccio umano, caldo e accogliente, perché credo che la relazione terapeutica sia il primo vero strumento di cura.
                 </p>
                 <p class="text-lg text-secondary mb-8 leading-relaxed">
-                    Utilizzo un approccio integrato, basato sulla terapia cognitivo-comportamentale e arricchito da tecniche come l'<strong>EMDR</strong>.
+                    Accanto alla pratica clinica, mi dedico alla <strong>mindfulness</strong> e ai laboratori esperienziali: percorsi di gruppo dedicati alla consapevolezza, al benessere e alla connessione con sé stessi e con gli altri.
                 </p>
                 <button onclick="openBioModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mb-6 block">Leggi la mia storia completa &rarr;</button>
                 <ul class="space-y-3 text-sm text-secondary font-medium border-t pt-6">
-                    <li>Laurea in Psicologia & Specializzazione</li>
+                    <li>Laurea in Psicologia Clinica — Università di Padova</li>
+                    <li>Specializzazione in Psicoterapia Cognitivo-Comportamentale</li>
                     <li>Terapeuta EMDR certificata</li>
-                    <li>Iscrizione Albo Psicologi Veneto n. 7937</li>
+                    <li>Conduttrice di laboratori di Mindfulness</li>
+                    <li>Iscrizione Albo Psicologi del Veneto n. 7937</li>
                 </ul>
                 <button onclick="openSpaziModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mt-6 block">I miei spazi &rarr;</button>
             </div>
@@ -148,34 +155,34 @@
                 <button onclick="showTab('terzaeta')" id="btn-terzaeta" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Terza Età</button>
             </div>
             <div id="tab-bambini" class="hidden grid md:grid-cols-2 gap-4">
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Sostegno alla Genitorialità</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Disturbi dell'Apprendimento</div>
+                <div onclick="openPercorsoModal('Sostegno alla Genitorialità', '<p class=\'mb-4\'>Un percorso di accompagnamento per genitori che desiderano comprendere meglio i bisogni emotivi dei propri figli e rafforzare la relazione educativa.</p><p>Attraverso colloqui individuali e strumenti pratici, lavoriamo insieme sulla comunicazione, sulla gestione dei conflitti e sulla costruzione di un clima familiare sereno e sicuro.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Sostegno alla Genitorialità</div>
+                <div onclick="openPercorsoModal('Disturbi dell\'Apprendimento', '<p class=\'mb-4\'>Un intervento mirato per bambini con difficoltà di apprendimento, volto a individuare strategie efficaci per affrontare la scuola con maggiore serenità e fiducia.</p><p>Lavoriamo sulla motivazione, sulle competenze metacognitive e sull\'autostima, collaborando con la famiglia e gli insegnanti per creare un supporto integrato.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Disturbi dell'Apprendimento</div>
                 <div onclick="openGestioneEmozioniModal()" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Gestione delle Emozioni</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Paure e Fobie Infantili</div>
+                <div onclick="openPercorsoModal('Paure e Fobie Infantili', '<p class=\'mb-4\'>Un percorso di supporto per bambini che vivono paure intense o fobie che interferiscono con la vita quotidiana, il sonno o la socialità.</p><p>Attraverso tecniche cognitivo-comportamentali adattate all\'età, aiutiamo il bambino a comprendere, affrontare e superare gradualmente le proprie paure, ritrovando sicurezza e serenità.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Paure e Fobie Infantili</div>
             </div>
             <div id="tab-adolescenti" class="hidden grid md:grid-cols-2 gap-4">
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Costruzione dell'Identità</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Ansia Scolastica e da Prestazione</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Relazioni con i Pari</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Orientamento Scolastico e Professionale</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Gestione delle Emozioni</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Conflitti Familiari</div>
+                <div onclick="openPercorsoModal('Costruzione dell\'Identità', '<p class=\'mb-4\'>L\'adolescenza è il momento in cui si inizia a costruire chi si vuole essere. Questo percorso accompagna i ragazzi nell\'esplorazione della propria identità, dei propri valori e dei propri desideri.</p><p>Uno spazio sicuro e non giudicante per confrontarsi con i cambiamenti, le incertezze e le scoperte che caratterizzano questa fase della vita.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Costruzione dell'Identità</div>
+                <div onclick="openPercorsoModal('Ansia Scolastica e da Prestazione', '<p class=\'mb-4\'>L\'ansia legata alla scuola e alla prestazione può compromettere il rendimento e il benessere degli adolescenti. Questo percorso offre strumenti concreti per riconoscere e gestire l\'ansia.</p><p>Lavoriamo su tecniche di rilassamento, ristrutturazione cognitiva e strategie di studio efficaci per ritrovare fiducia nelle proprie capacità.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Ansia Scolastica e da Prestazione</div>
+                <div onclick="openPercorsoModal('Relazioni con i Pari', '<p class=\'mb-4\'>Le relazioni con i coetanei sono fondamentali nell\'adolescenza. Questo percorso aiuta i ragazzi a sviluppare competenze relazionali, a gestire i conflitti e a costruire amicizie autentiche.</p><p>Affrontiamo temi come il bullismo, l\'esclusione sociale, la pressione del gruppo e la comunicazione assertiva.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Relazioni con i Pari</div>
+                <div onclick="openPercorsoModal('Orientamento Scolastico e Professionale', '<p class=\'mb-4\'>Scegliere il proprio percorso formativo o professionale può generare dubbi e insicurezze. Questo percorso offre un accompagnamento dedicato per esplorare interessi, attitudini e valori.</p><p>Attraverso colloqui e strumenti di autovalutazione, aiutiamo l\'adolescente a fare scelte consapevoli e in linea con il proprio progetto di vita.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Orientamento Scolastico e Professionale</div>
+                <div onclick="openPercorsoModal('Gestione delle Emozioni', '<p class=\'mb-4\'>L\'adolescenza è una fase di grandi turbolenze emotive. Questo percorso aiuta i ragazzi a riconoscere, comprendere e regolare le proprie emozioni.</p><p>Attraverso tecniche di mindfulness, respirazione e consapevolezza corporea, i ragazzi imparano a non farsi travolgere dalle emozioni intense e a esprimerle in modo costruttivo.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Gestione delle Emozioni</div>
+                <div onclick="openPercorsoModal('Conflitti Familiari', '<p class=\'mb-4\'>I conflitti tra genitori e figli adolescenti sono frequenti e spesso dolorosi. Questo percorso offre uno spazio di mediazione e comprensione reciproca.</p><p>Lavoriamo sulla comunicazione, sull\'ascolto attivo e sulla negoziazione per ristabilire un dialogo costruttivo e rispettoso all\'interno della famiglia.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Conflitti Familiari</div>
             </div>
             <div id="tab-adulti" class="grid md:grid-cols-2 gap-4">
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Ansia e Attacchi di Panico</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Lutto</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Difficoltà Relazionali</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione Traumi (EMDR)</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Gestione dello Stress</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Crescita Personale</div>
+                <div onclick="openPercorsoModal('Ansia e Attacchi di Panico', '<p class=\'mb-4\'>L\'ansia e gli attacchi di panico possono condizionare profondamente la vita quotidiana. Questo percorso offre un supporto strutturato per comprendere i meccanismi dell\'ansia e imparare a gestirla.</p><p>Attraverso tecniche cognitivo-comportamentali, respirazione consapevole e esposizione graduale, lavoriamo per riprendere il controllo e ritrovare serenità.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Ansia e Attacchi di Panico</div>
+                <div onclick="openPercorsoModal('Elaborazione del Lutto', '<p class=\'mb-4\'>La perdita di una persona cara è una delle esperienze più dolorose che possiamo vivere. Questo percorso offre uno spazio protetto per elaborare il lutto e ritrovare gradualmente un senso di continuità.</p><p>Accompagniamo la persona attraverso le fasi del dolore con rispetto e delicatezza, aiutandola a integrare la perdita nella propria storia di vita.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Lutto</div>
+                <div onclick="openPercorsoModal('Difficoltà Relazionali', '<p class=\'mb-4\'>Le relazioni possono essere fonte di gioia ma anche di sofferenza. Questo percorso aiuta a comprendere le proprie dinamiche relazionali, a riconoscere schemi ripetitivi e a costruire legami più sani e appaganti.</p><p>Lavoriamo su comunicazione, confini personali, assertività e capacità di gestire i conflitti in modo costruttivo.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Difficoltà Relazionali</div>
+                <div onclick="openPercorsoModal('Elaborazione Traumi (EMDR)', '<p class=\'mb-4\'>L\'EMDR (Eye Movement Desensitization and Reprocessing) è un approccio terapeutico riconosciuto dall\'OMS per il trattamento del trauma. Attraverso la stimolazione bilaterale, aiutiamo il cervello a rielaborare i ricordi traumatici.</p><p>Questo percorso è indicato per chi ha vissuto eventi traumatici — singoli o ripetuti — che continuano a influenzare il presente attraverso flashback, ansia, evitamento o reattività emotiva intensa.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione Traumi (EMDR)</div>
+                <div onclick="openPercorsoModal('Gestione dello Stress', '<p class=\'mb-4\'>Lo stress cronico può avere ripercussioni importanti sul corpo e sulla mente. Questo percorso offre strumenti pratici per riconoscere le fonti di stress, modificare le abitudini disfunzionali e ritrovare equilibrio.</p><p>Attraverso tecniche di mindfulness, rilassamento e ristrutturazione cognitiva, lavoriamo per costruire una quotidianità più sostenibile e consapevole.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Gestione dello Stress</div>
+                <div onclick="openPercorsoModal('Crescita Personale', '<p class=\'mb-4\'>Un percorso per chi desidera conoscersi più a fondo, esplorare le proprie risorse e lavorare su obiettivi personali di miglioramento e realizzazione.</p><p>Attraverso un lavoro di introspezione guidata, consapevolezza e azione, accompagniamo la persona verso una versione più autentica e soddisfatta di sé.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Crescita Personale</div>
             </div>
             <div id="tab-terzaeta" class="hidden grid md:grid-cols-2 gap-4">
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Adattamento ai Cambiamenti di Vita</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Pensionamento</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Solitudine e Isolamento</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Lutto</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Mantenimento del Benessere Mentale</div>
-                <div class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3"><span class="w-2 h-2 bg-primary rounded-full"></span>Relazioni Familiari Intergenerazionali</div>
+                <div onclick="openPercorsoModal('Adattamento ai Cambiamenti di Vita', '<p class=\'mb-4\'>La terza età porta con sé cambiamenti significativi: nel corpo, nelle relazioni, nei ruoli sociali. Questo percorso accompagna la persona nell\'adattamento a queste trasformazioni.</p><p>Lavoriamo per riscoprire risorse, costruire nuovi equilibri e affrontare questa fase con consapevolezza, dignità e serenità.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Adattamento ai Cambiamenti di Vita</div>
+                <div onclick="openPercorsoModal('Elaborazione del Pensionamento', '<p class=\'mb-4\'>Il passaggio alla pensione può generare un senso di vuoto, perdita di identità e disorientamento. Questo percorso aiuta a elaborare questo cambiamento e a riscoprire nuove fonti di significato.</p><p>Insieme lavoriamo sulla ridefinizione del tempo, sulla valorizzazione delle proprie competenze e sulla costruzione di una quotidianità appagante.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Pensionamento</div>
+                <div onclick="openPercorsoModal('Solitudine e Isolamento', '<p class=\'mb-4\'>La solitudine nella terza età può diventare una condizione dolorosa e debilitante. Questo percorso offre uno spazio di ascolto e connessione per chi si sente solo o isolato.</p><p>Lavoriamo sulla rete sociale, sulla comunicazione e sulla riscoperta di interessi e attività che favoriscono il contatto con gli altri e il senso di appartenenza.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Solitudine e Isolamento</div>
+                <div onclick="openPercorsoModal('Elaborazione del Lutto', '<p class=\'mb-4\'>Nella terza età, il lutto può assumere dimensioni particolarmente profonde: la perdita del partner, di amici o di coetanei. Questo percorso offre un accompagnamento delicato e rispettoso.</p><p>Lavoriamo sull\'elaborazione del dolore, sul mantenimento del legame con chi non c\'è più e sulla ricostruzione di un senso di continuità e speranza.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione del Lutto</div>
+                <div onclick="openPercorsoModal('Mantenimento del Benessere Mentale', '<p class=\'mb-4\'>Prendersi cura della propria salute mentale è importante in ogni fase della vita. Questo percorso offre strumenti per mantenere attive le funzioni cognitive, coltivare il benessere emotivo e prevenire il disagio psicologico.</p><p>Attraverso attività di stimolazione cognitiva, mindfulness e supporto emotivo, lavoriamo per vivere questa stagione della vita con pienezza e vitalità.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Mantenimento del Benessere Mentale</div>
+                <div onclick="openPercorsoModal('Relazioni Familiari Intergenerazionali', '<p class=\'mb-4\'>Le relazioni tra generazioni diverse possono essere fonte di ricchezza ma anche di conflitto. Questo percorso aiuta a comprendere le dinamiche familiari intergenerazionali e a migliorare la comunicazione.</p><p>Lavoriamo sul riconoscimento dei bisogni reciproci, sulla gestione delle aspettative e sulla costruzione di relazioni più equilibrate e rispettose tra nonni, figli e nipoti.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Relazioni Familiari Intergenerazionali</div>
             </div>
         </div>
     </section>
@@ -246,14 +253,48 @@
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-primary text-center mb-16">Sedi e Contatti</h2>
             <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                <div class="space-y-6">
-                    <div class="flex gap-6 items-start bg-main p-6 rounded-xl shadow-sm">
-                        <img src="img/Studio_selvazzano_01.jpg" class="w-24 h-24 object-cover rounded-lg bg-gray-200" alt="Studio">
-                        <div><h4 class="text-xl font-bold text-primary">Selvazzano Dentro</h4><p class="text-secondary">Via San Giuseppe 1, Padova</p></div>
+                <div class="space-y-8">
+                    <!-- Selvazzano Dentro -->
+                    <div class="bg-main p-6 rounded-xl shadow-sm">
+                        <div class="flex gap-6 items-start mb-4">
+                            <div class="studio-carousel w-32 h-24 flex-shrink-0 relative overflow-hidden rounded-lg bg-gray-200" id="carousel-selvazzano">
+                                <img src="img/Studio_selvazzano_01.jpg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-100" alt="Studio Selvazzano 1">
+                                <img src="img/Studio_Selvazzano_02.jpg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0" alt="Studio Selvazzano 2">
+                                <img src="img/Studio_Selvazzano_03.jpg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0" alt="Studio Selvazzano 3">
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary">Selvazzano Dentro</h4>
+                                <p class="text-secondary">Via San Giuseppe 1, Padova</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-1 justify-center" id="dots-selvazzano">
+                            <button class="w-2 h-2 rounded-full bg-primary" onclick="goToSlide('selvazzano', 0)"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('selvazzano', 1)"></button>
+                            <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('selvazzano', 2)"></button>
+                        </div>
                     </div>
-                    <div class="flex gap-6 items-start bg-main p-6 rounded-xl shadow-sm">
-                        <img src="img/Studio_Selvazzano_02.jpg" class="w-24 h-24 object-cover rounded-lg bg-gray-200" alt="Studio">
-                        <div><h4 class="text-xl font-bold text-primary">Montemerlo</h4><p class="text-secondary">Via Repoise 18/1, Padova</p></div>
+                    <!-- Montemerlo -->
+                    <div class="bg-main p-6 rounded-xl shadow-sm">
+                        <div class="flex gap-6 items-start">
+                            <img src="img/Studio_Selvazzano_02.jpg" class="w-32 h-24 object-cover rounded-lg bg-gray-200 flex-shrink-0" alt="Studio Montemerlo">
+                            <div>
+                                <h4 class="text-xl font-bold text-primary">Montemerlo</h4>
+                                <p class="text-secondary">Via Repoise 18/1, Padova</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Google Maps -->
+                    <div class="rounded-xl overflow-hidden shadow-sm">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2803.2!2d11.7878!3d45.3863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda555c0d4e9f%3A0x1!2sSelvazzano+Dentro+PD!5e0!3m2!1sit!2sit!4v1" 
+                            width="100%" 
+                            height="200" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Mappa studi Dott.ssa Ghiotto - Selvazzano Dentro, Padova">
+                        </iframe>
                     </div>
                 </div>
                 <div class="bg-main p-8 rounded-xl shadow-lg">

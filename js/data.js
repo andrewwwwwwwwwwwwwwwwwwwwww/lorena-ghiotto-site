@@ -92,6 +92,26 @@ const articles = [
         tag: "Benessere Online",
         colorClass: "text-accent-winter",
         id: 8
+    },
+    {
+        title: "Progetto D.I.T.A.",
+        excerpt: "Danza, Integrazione, Terapia e Ascolto: un percorso che unisce corpo e mente attraverso il movimento consapevole.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>D.I.T.A. – Danza, Integrazione, Terapia e Ascolto</h3><p class='mb-4'>Il progetto <strong>D.I.T.A.</strong> nasce dall'incontro tra psicologia e movimento, con l'obiettivo di offrire un'esperienza trasformativa che integra corpo, mente ed emozioni. D.I.T.A. è l'acronimo di <strong>Danza, Integrazione, Terapia e Ascolto</strong>, quattro dimensioni che si intrecciano per creare uno spazio di esplorazione profonda.</p><p class='mb-4'><strong>Danza:</strong> il movimento come linguaggio dell'anima, per esprimere ciò che le parole non riescono a dire. Non serve saper danzare: ogni gesto autentico è benvenuto.</p><p class='mb-4'><strong>Integrazione:</strong> un approccio che unisce diverse discipline – dalla mindfulness alla psicomotricità – per lavorare sulla persona nella sua interezza.</p><p class='mb-4'><strong>Terapia:</strong> il contesto sicuro e guidato in cui il movimento diventa strumento di consapevolezza, elaborazione e cambiamento.</p><p class='mb-4'><strong>Ascolto:</strong> la capacità di sintonizzarsi con se stessi, con il proprio corpo e con gli altri, riscoprendo sensazioni, bisogni e risorse spesso dimenticate.</p><p class='mb-4'>Durante gli incontri, i partecipanti vengono guidati attraverso pratiche di movimento consapevole, esercizi di respirazione, momenti di condivisione e brevi meditazioni. L'obiettivo non è la performance, ma la presenza: abitare il proprio corpo con gentilezza, lasciando emergere ciò che ha bisogno di essere visto e accolto.</p><p class='mb-4'>Il progetto D.I.T.A. si rivolge a chiunque desideri esplorare nuove modalità di ascolto di sé, ritrovare una connessione autentica con il proprio corpo e sperimentare il potere trasformativo del movimento in un contesto protetto e accogliente.</p>",
+        tag: "Crescita Personale",
+        colorClass: "text-accent-spring",
+        id: 9
+    },
+    {
+        title: "Calm Connection",
+        excerpt: "Un percorso di mindfulness e connessione per ritrovare calma interiore e costruire relazioni più consapevoli.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Calm Connection: Ritrovare la Calma, Riscoprire la Connessione</h3><p class='mb-4'><strong>Calm Connection</strong> è un percorso esperienziale che unisce pratiche di mindfulness e lavoro relazionale per aiutare i partecipanti a coltivare una calma interiore profonda e a costruire connessioni più autentiche con se stessi e con gli altri.</p><p class='mb-4'>In un mondo sempre più frenetico e iperconnesso, spesso perdiamo il contatto con ciò che conta davvero: la qualità delle nostre relazioni, la presenza nel momento e la capacità di ascoltarci. Calm Connection nasce proprio da questa esigenza.</p><p class='mb-4'><strong>Il percorso si articola in tre aree fondamentali:</strong></p><p class='mb-4'><strong>Calma:</strong> tecniche di respirazione, meditazione guidata e body scan per ridurre lo stress, regolare il sistema nervoso e ritrovare un senso di centratura e stabilità interiore.</p><p class='mb-4'><strong>Consapevolezza:</strong> pratiche di mindfulness per osservare pensieri, emozioni e sensazioni corporee senza giudizio, sviluppando una presenza più lucida e compassionevole.</p><p class='mb-4'><strong>Connessione:</strong> esercizi relazionali e momenti di condivisione per esplorare come ci relazioniamo agli altri, riconoscere schemi automatici e sperimentare nuove modalità di comunicazione autentica.</p><p class='mb-4'>Ogni incontro è pensato come un'esperienza completa: si inizia con un momento di arrivo e centratura, si prosegue con una pratica guidata e si conclude con uno spazio di condivisione e riflessione. I partecipanti portano a casa strumenti concreti da integrare nella vita quotidiana.</p><p class='mb-4'>Calm Connection è adatto a chiunque desideri prendersi una pausa consapevole, imparare a gestire meglio lo stress e riscoprire la bellezza di relazioni più presenti e genuine.</p>",
+        tag: "Mindfulness & Relazioni",
+        colorClass: "text-accent-summer",
+        bgImage: "img/Calmconnection01.jpeg",
+        images: [
+            "img/Calmconnection01.jpeg"
+        ],
+        id: 10
     }
 ];
 
