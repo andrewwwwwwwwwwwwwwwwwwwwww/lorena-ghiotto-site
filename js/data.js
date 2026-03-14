@@ -40,7 +40,10 @@ const articles = [
         colorClass: "text-accent-winter",
         bgImage: "img/Zenflow01.jpeg",
         images: [
-            "img/Zenflow01.jpeg"
+            "img/Zenflow01.jpeg",
+            "img/CorsiMindfulness01.jpeg",
+            "img/CorsiMindfulnessGruppo.jpeg",
+            "img/CorsiMindfulnessIndividuale.jpeg"
         ],
         id: 3
     },
@@ -53,7 +56,8 @@ const articles = [
         bgImage: "img/Superpoteridelcuore.jpeg",
         images: [
             "img/Emozioniascuolta.jpg",
-            "img/Superpoteridelcuore.jpeg"
+            "img/Superpoteridelcuore.jpeg",
+            "img/LabScuola01.jpeg"
         ],
         id: 4
     },
@@ -63,6 +67,11 @@ const articles = [
         fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Mente Vincente: Mindfulness per le Atlete</h3><p class='mb-4'>Un percorso dedicato alle atlete per trasformare ansia e stress in risorse preziose prima e dopo le gare. Attraverso strumenti pratici e immediatamente applicabili:</p><p class='mb-4'><strong>Respirazione consapevole:</strong> tecniche per recuperare centratura e lucidità.</p><p class='mb-4'><strong>Mindfulness:</strong> pratiche per riconoscere e gestire le emozioni intense.</p><p class='mb-4'><strong>Confronto:</strong> momenti di condivisione per rafforzare fiducia e resilienza.</p><p class='mb-4'>Un supporto concreto per affrontare le sfide sportive con equilibrio emotivo e presenza mentale.</p>",
         tag: "Sport & Mindfulness",
         colorClass: "text-accent-spring",
+        bgImage: "img/MindfulBreathing01.jpeg",
+        images: [
+            "img/MindfulBreathing01.jpeg",
+            "img/MindfulBreathing02.jpeg"
+        ],
         id: 5
     },
     {
@@ -71,6 +80,10 @@ const articles = [
         fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Crescere Insieme: Genitori e Figli alla Scoperta delle Emozioni</h3><p class='mb-4'>Un laboratorio esperienziale dove genitori e figli esplorano insieme il mondo delle emozioni attraverso il gioco e la mindfulness. Un percorso per:</p><p class='mb-4'><strong>Riconoscere:</strong> dare voce a ciò che si prova, insieme.</p><p class='mb-4'><strong>Connettersi:</strong> rafforzare il legame affettivo attraverso l'ascolto reciproco.</p><p class='mb-4'><strong>Praticare:</strong> attività creative e momenti di calma consapevole.</p><p class='mb-4'>Un tempo di qualità dedicato alla cura reciproca, dove adulti e bambini imparano a comunicare in modo più autentico.</p>",
         tag: "Scuola & Genitori",
         colorClass: "text-accent-autumn",
+        bgImage: "img/LabScuola01.jpeg",
+        images: [
+            "img/LabScuola01.jpeg"
+        ],
         id: 6
     },
     {
@@ -81,7 +94,8 @@ const articles = [
         colorClass: "text-accent-summer",
         bgImage: "img/Ritualidigusto.jpeg",
         images: [
-            "img/Ritualidigusto.jpeg"
+            "img/Ritualidigusto.jpeg",
+            "img/Ritualidigusto02.jpg"
         ],
         id: 7
     },
@@ -91,6 +105,14 @@ const articles = [
         fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Uno Spazio per Fermarsi e Ascoltarsi</h3><p class='mb-4'>Da gennaio 2026, una serie di incontri gratuiti dedicati alla cura di sé e alle relazioni. Ogni appuntamento di un'ora e mezza offre:</p><p class='mb-4'><strong>Temi di benessere:</strong> cura di sé, dinamiche relazionali, consapevolezza emotiva.</p><p class='mb-4'><strong>Spunti pratici:</strong> strumenti concreti da portare nella quotidianità.</p><p class='mb-4'><strong>Confronto guidato:</strong> momenti di riflessione condivisa in uno spazio accogliente.</p><p class='mb-4'>Un percorso per ritrovare equilibrio, coltivare presenza e comprendere meglio il proprio mondo interiore.</p>",
         tag: "Benessere Online",
         colorClass: "text-accent-winter",
+        bgImage: "img/LaboratorioBenessere01.jpeg",
+        images: [
+            "img/LaboratorioBenessere01.jpeg",
+            "img/LaboratorioBenessere02.jpeg",
+            "img/LaboratorioBenessere03.jpeg",
+            "img/LaboratorioBenessere04.jpeg",
+            "img/LaboratorioBenessere05.jpeg"
+        ],
         id: 8
     },
     {
@@ -99,6 +121,11 @@ const articles = [
         fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>D.I.T.A. – Danza, Integrazione, Terapia e Ascolto</h3><p class='mb-4'>Il progetto <strong>D.I.T.A.</strong> nasce dall'incontro tra psicologia e movimento, con l'obiettivo di offrire un'esperienza trasformativa che integra corpo, mente ed emozioni. D.I.T.A. è l'acronimo di <strong>Danza, Integrazione, Terapia e Ascolto</strong>, quattro dimensioni che si intrecciano per creare uno spazio di esplorazione profonda.</p><p class='mb-4'><strong>Danza:</strong> il movimento come linguaggio dell'anima, per esprimere ciò che le parole non riescono a dire. Non serve saper danzare: ogni gesto autentico è benvenuto.</p><p class='mb-4'><strong>Integrazione:</strong> un approccio che unisce diverse discipline – dalla mindfulness alla psicomotricità – per lavorare sulla persona nella sua interezza.</p><p class='mb-4'><strong>Terapia:</strong> il contesto sicuro e guidato in cui il movimento diventa strumento di consapevolezza, elaborazione e cambiamento.</p><p class='mb-4'><strong>Ascolto:</strong> la capacità di sintonizzarsi con se stessi, con il proprio corpo e con gli altri, riscoprendo sensazioni, bisogni e risorse spesso dimenticate.</p><p class='mb-4'>Durante gli incontri, i partecipanti vengono guidati attraverso pratiche di movimento consapevole, esercizi di respirazione, momenti di condivisione e brevi meditazioni. L'obiettivo non è la performance, ma la presenza: abitare il proprio corpo con gentilezza, lasciando emergere ciò che ha bisogno di essere visto e accolto.</p><p class='mb-4'>Il progetto D.I.T.A. si rivolge a chiunque desideri esplorare nuove modalità di ascolto di sé, ritrovare una connessione autentica con il proprio corpo e sperimentare il potere trasformativo del movimento in un contesto protetto e accogliente.</p>",
         tag: "Crescita Personale",
         colorClass: "text-accent-spring",
+        bgImage: "img/GruppiStudio01.jpeg",
+        images: [
+            "img/GruppiStudio01.jpeg",
+            "img/MindfulnessNif.jpeg"
+        ],
         id: 9
     },
     {
@@ -109,7 +136,12 @@ const articles = [
         colorClass: "text-accent-summer",
         bgImage: "img/Calmconnection01.jpeg",
         images: [
-            "img/Calmconnection01.jpeg"
+            "img/Calmconnection01.jpeg",
+            "img/CalmConnection02.jpeg",
+            "img/CalmConnection03.jpeg",
+            "img/CalmConnection04.jpeg",
+            "img/CalmConnection05.jpeg",
+            "img/CalmConnection06.jpeg"
         ],
         id: 10
     }

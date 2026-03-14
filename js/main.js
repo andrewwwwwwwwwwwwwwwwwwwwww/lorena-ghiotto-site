@@ -130,6 +130,12 @@ function initMobileMenu() {
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
+        // Close menu when clicking on anchor links
+        menu.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
     }
 }
 
@@ -183,12 +189,15 @@ function initSeasonSwitcher() {
 const studioCarousels = {};
 
 function initStudioCarousels() {
-    const selvazzanoEl = document.getElementById('carousel-selvazzano');
-    if (selvazzanoEl) {
-        const imgs = selvazzanoEl.querySelectorAll('img');
-        studioCarousels['selvazzano'] = { images: imgs, current: 0, timer: null };
-        startAutoSlide('selvazzano');
-    }
+    const carouselIds = ['selvazzano', 'montemerlo'];
+    carouselIds.forEach(id => {
+        const el = document.getElementById('carousel-' + id);
+        if (el) {
+            const imgs = el.querySelectorAll('img');
+            studioCarousels[id] = { images: imgs, current: 0, timer: null };
+            startAutoSlide(id);
+        }
+    });
 }
 
 function startAutoSlide(id) {

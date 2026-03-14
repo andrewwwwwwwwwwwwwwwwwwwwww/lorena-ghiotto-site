@@ -43,10 +43,14 @@
 </head>
 <body class="min-h-screen">
   <div class="page-watermark"></div>
-  <header class="bg-primary/80 text-white backdrop-blur-sm">
-    <div class="container mx-auto px-6 py-6 flex items-center justify-between">
-      <a href="index.html" class="text-white/90 hover:text-white font-semibold">← Torna alla Home</a>
+  <header class="bg-primary text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-white/80 font-semibold transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        Torna alla Home
+      </a>
       <span class="font-serif text-xl">Laboratori</span>
+      <a href="index.html#contatti" class="text-white/80 hover:text-white text-sm font-medium transition">Contatti</a>
     </div>
   </header>
 
@@ -76,12 +80,12 @@
       { title: "Mindfulness tra Natura e Sapori", excerpt: "Mindful walking e mindful eating a Vetriolo.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Mindfulness tra Natura e Sapori.jpeg", id: 2 },
       { title: "ZenFlow: Equilibrio Online", excerpt: "10 incontri online con pratiche di rilassamento.", tag: "Benessere Online", colorClass: "text-accent-winter", bgImage: "img/Zenflow01.jpeg", id: 3 },
       { title: "Super poteri del cuore", excerpt: "Progetto sulle emozioni alla scuola primaria.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", bgImage: "img/Superpoteridelcuore.jpeg", id: 4 },
-      { title: "Benessere per le atlete", excerpt: "Gestione dell'ansia pre e post gara.", tag: "Sport & Mindfulness", colorClass: "text-accent-spring", id: 5 },
-      { title: "Emozioni in gioco", excerpt: "Laboratorio per genitori e figli.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", id: 6 },
-      { title: "Rituali di gusto", excerpt: "Degustazione consapevole al caseificio.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Ritualidigusto.jpeg", id: 7 },
-      { title: "Spazio Ben-essere", excerpt: "Incontri gratuiti di benessere personale.", tag: "Benessere Online", colorClass: "text-accent-winter", id: 8 },
-      { title: "Progetto D.I.T.A.", excerpt: "Danza, Integrazione, Terapia e Ascolto: corpo e mente attraverso il movimento.", tag: "Crescita Personale", colorClass: "text-accent-spring", id: 9 },
-      { title: "Calm Connection", excerpt: "Mindfulness e connessione per ritrovare calma interiore.", tag: "Mindfulness & Relazioni", colorClass: "text-accent-summer", bgImage: "img/Calmconnection01.jpeg", images: ["img/Calmconnection01.jpeg"], id: 10 }
+      { title: "Benessere per le atlete", excerpt: "Gestione dell'ansia pre e post gara.", tag: "Sport & Mindfulness", colorClass: "text-accent-spring", bgImage: "img/MindfulBreathing01.jpeg", images: ["img/MindfulBreathing01.jpeg", "img/MindfulBreathing02.jpeg"], id: 5 },
+      { title: "Emozioni in gioco", excerpt: "Laboratorio per genitori e figli.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", bgImage: "img/LabScuola01.jpeg", images: ["img/LabScuola01.jpeg"], id: 6 },
+      { title: "Rituali di gusto", excerpt: "Degustazione consapevole al caseificio.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Ritualidigusto.jpeg", images: ["img/Ritualidigusto.jpeg", "img/Ritualidigusto02.jpg"], id: 7 },
+      { title: "Spazio Ben-essere", excerpt: "Incontri gratuiti di benessere personale.", tag: "Benessere Online", colorClass: "text-accent-winter", bgImage: "img/LaboratorioBenessere01.jpeg", images: ["img/LaboratorioBenessere01.jpeg", "img/LaboratorioBenessere02.jpeg", "img/LaboratorioBenessere03.jpeg", "img/LaboratorioBenessere04.jpeg", "img/LaboratorioBenessere05.jpeg"], id: 8 },
+      { title: "Progetto D.I.T.A.", excerpt: "Danza, Integrazione, Terapia e Ascolto: corpo e mente attraverso il movimento.", tag: "Crescita Personale", colorClass: "text-accent-spring", bgImage: "img/GruppiStudio01.jpeg", images: ["img/GruppiStudio01.jpeg", "img/MindfulnessNif.jpeg"], id: 9 },
+      { title: "Calm Connection", excerpt: "Mindfulness e connessione per ritrovare calma interiore.", tag: "Mindfulness & Relazioni", colorClass: "text-accent-summer", bgImage: "img/Calmconnection01.jpeg", images: ["img/Calmconnection01.jpeg", "img/CalmConnection02.jpeg", "img/CalmConnection03.jpeg", "img/CalmConnection04.jpeg", "img/CalmConnection05.jpeg", "img/CalmConnection06.jpeg"], id: 10 }
     ];
 
     const container = document.getElementById('laboratori-list');
