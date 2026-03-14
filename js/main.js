@@ -18,8 +18,8 @@ function showTab(tabName) {
         terzaeta: document.getElementById('btn-terzaeta')
     };
 
-    // Nascondi tutti i tab (inline style per evitare conflitti con la classe grid)
-    Object.values(tabs).forEach(tab => { tab.style.display = 'none'; });
+    // Nascondi tutti i tab (classe tab-hidden con !important per evitare conflitti con grid)
+    Object.values(tabs).forEach(tab => { tab.classList.add('tab-hidden'); });
     
     // Rimuovi active da tutti i bottoni
     Object.values(buttons).forEach(btn => {
@@ -29,7 +29,7 @@ function showTab(tabName) {
 
     // Mostra il tab selezionato e attiva il bottone
     if (tabs[tabName]) {
-        tabs[tabName].style.display = '';
+        tabs[tabName].classList.remove('tab-hidden');
         buttons[tabName].classList.add('active-tab', 'shadow-md');
         buttons[tabName].classList.remove('text-secondary', 'bg-gray-100');
     }
