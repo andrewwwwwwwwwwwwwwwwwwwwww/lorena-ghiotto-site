@@ -82,6 +82,7 @@
 
     .tag-laboratori { background: var(--color-primary); }
     .tag-studio { background: #5E81AC; }
+    .tag-corsi { background: #D08770; }
 
     .filter-btn {
       padding: 0.5rem 1.5rem;
@@ -109,10 +110,14 @@
   </style>
 </head>
 <body class="min-h-screen">
-  <header class="bg-primary/80 text-white backdrop-blur-sm">
-    <div class="container mx-auto px-6 py-6 flex items-center justify-between">
-      <a href="index.html" class="text-white/90 hover:text-white font-semibold">← Torna alla Home</a>
+  <header class="bg-primary text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 text-white hover:text-white/80 font-semibold transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        Torna alla Home
+      </a>
       <span class="font-serif text-xl">Media</span>
+      <a href="index.html#contatti" class="text-white/80 hover:text-white text-sm font-medium transition">Contatti</a>
     </div>
   </header>
 
@@ -125,6 +130,7 @@
       <div class="flex flex-wrap justify-center gap-3 mb-10">
         <button class="filter-btn active" onclick="filterMedia('all')">Tutti</button>
         <button class="filter-btn" onclick="filterMedia('laboratori')">Laboratori</button>
+        <button class="filter-btn" onclick="filterMedia('corsi')">Corsi</button>
         <button class="filter-btn" onclick="filterMedia('studio')">Studi</button>
       </div>
 
@@ -159,13 +165,38 @@
       { src: "img/Mindfulness03.jpeg", label: "Mindfulness tra Natura e Sapori", category: "laboratori" },
       { src: "img/Zenflow01.jpeg", label: "ZenFlow: Equilibrio Online", category: "laboratori" },
       { src: "img/Superpoteridelcuore.jpeg", label: "Super poteri del cuore", category: "laboratori" },
-      { src: "img/Emozioniascuolta.jpg", label: "Super poteri del cuore", category: "laboratori" },
+      { src: "img/Emozioniascuolta.jpg", label: "Emozioni in ascolto", category: "laboratori" },
       { src: "img/Ritualidigusto.jpeg", label: "Rituali di gusto", category: "laboratori" },
+      { src: "img/Ritualidigusto02.jpg", label: "Rituali di gusto", category: "laboratori" },
       { src: "img/Calmconnection01.jpeg", label: "Calm Connection", category: "laboratori" },
+      { src: "img/CalmConnection02.jpeg", label: "Calm Connection", category: "laboratori" },
+      { src: "img/CalmConnection03.jpeg", label: "Calm Connection", category: "laboratori" },
+      { src: "img/CalmConnection04.jpeg", label: "Calm Connection", category: "laboratori" },
+      { src: "img/CalmConnection05.jpeg", label: "Calm Connection", category: "laboratori" },
+      { src: "img/CalmConnection06.jpeg", label: "Calm Connection", category: "laboratori" },
+      { src: "img/LabScuola01.jpeg", label: "Laboratorio Scuola", category: "laboratori" },
+      { src: "img/LaboratorioBenessere01.jpeg", label: "Laboratorio Benessere", category: "laboratori" },
+      { src: "img/LaboratorioBenessere02.jpeg", label: "Laboratorio Benessere", category: "laboratori" },
+      { src: "img/LaboratorioBenessere03.jpeg", label: "Laboratorio Benessere", category: "laboratori" },
+      { src: "img/LaboratorioBenessere04.jpeg", label: "Laboratorio Benessere", category: "laboratori" },
+      { src: "img/LaboratorioBenessere05.jpeg", label: "Laboratorio Benessere", category: "laboratori" },
+      { src: "img/GruppiStudio01.jpeg", label: "Gruppi di Studio", category: "laboratori" },
+      // Corsi Mindfulness
+      { src: "img/CorsiMindfulness01.jpeg", label: "Corsi Mindfulness", category: "corsi" },
+      { src: "img/CorsiMindfulnessGruppo.jpeg", label: "Mindfulness di Gruppo", category: "corsi" },
+      { src: "img/CorsiMindfulnessIndividuale.jpeg", label: "Mindfulness Individuale", category: "corsi" },
+      { src: "img/MindfulBreathing01.jpeg", label: "Mindful Breathing", category: "corsi" },
+      { src: "img/MindfulBreathing02.jpeg", label: "Mindful Breathing", category: "corsi" },
+      { src: "img/MindfulnessNif.jpeg", label: "Mindfulness NIF", category: "corsi" },
       // Studio
       { src: "img/Studio_selvazzano_01.jpg", label: "Studio Selvazzano Dentro", category: "studio" },
       { src: "img/Studio_Selvazzano_02.jpg", label: "Studio Selvazzano Dentro", category: "studio" },
-      { src: "img/Studio_Selvazzano_03.jpg", label: "Studio Selvazzano Dentro", category: "studio" }
+      { src: "img/Studio_Selvazzano_03.jpg", label: "Studio Selvazzano Dentro", category: "studio" },
+      { src: "img/Montemerlo01.jpeg", label: "Studio Montemerlo", category: "studio" },
+      { src: "img/Montemerlo02.jpeg", label: "Studio Montemerlo", category: "studio" },
+      { src: "img/Montemerlo03.jpeg", label: "Studio Montemerlo", category: "studio" },
+      { src: "img/StudioLorena01.jpeg", label: "Studio Lorena", category: "studio" },
+      { src: "img/StudioLorena02.jpeg", label: "Studio Lorena", category: "studio" }
     ];
 
     let currentFilter = 'all';
@@ -190,8 +221,8 @@
         const div = document.createElement('div');
         div.className = 'media-item';
         div.onclick = () => openMediaLightbox(idx);
-        const tagClass = item.category === 'laboratori' ? 'tag-laboratori' : 'tag-studio';
-        const tagLabel = item.category === 'laboratori' ? 'Laboratorio' : 'Studio';
+        const tagClass = item.category === 'laboratori' ? 'tag-laboratori' : item.category === 'corsi' ? 'tag-corsi' : 'tag-studio';
+        const tagLabel = item.category === 'laboratori' ? 'Laboratorio' : item.category === 'corsi' ? 'Corso' : 'Studio';
         div.innerHTML = `
           <img loading="lazy" src="${encodeURI(item.src)}" alt="${item.label}">
           <span class="media-tag ${tagClass}">${tagLabel}</span>
