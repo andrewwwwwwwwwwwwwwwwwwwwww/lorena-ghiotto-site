@@ -18,8 +18,8 @@ function showTab(tabName) {
         terzaeta: document.getElementById('btn-terzaeta')
     };
 
-    // Nascondi tutti i tab
-    Object.values(tabs).forEach(tab => tab.classList.add('hidden'));
+    // Nascondi tutti i tab (inline style per evitare conflitti con la classe grid)
+    Object.values(tabs).forEach(tab => { tab.style.display = 'none'; });
     
     // Rimuovi active da tutti i bottoni
     Object.values(buttons).forEach(btn => {
@@ -29,7 +29,7 @@ function showTab(tabName) {
 
     // Mostra il tab selezionato e attiva il bottone
     if (tabs[tabName]) {
-        tabs[tabName].classList.remove('hidden');
+        tabs[tabName].style.display = '';
         buttons[tabName].classList.add('active-tab', 'shadow-md');
         buttons[tabName].classList.remove('text-secondary', 'bg-gray-100');
     }
@@ -54,6 +54,7 @@ function renderLabPage() {
         const card = document.createElement('div');
         card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
         card.innerHTML = `
+            ${art.bgImage ? `<div class="w-full h-40 rounded-lg overflow-hidden mb-4 flex-shrink-0"><img src="${encodeURI(art.bgImage)}" alt="${art.title}" class="w-full h-full object-cover"></div>` : ''}
             <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
             <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
             <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>

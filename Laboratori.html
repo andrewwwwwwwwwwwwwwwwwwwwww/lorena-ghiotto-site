@@ -76,10 +76,10 @@
 
   <script>
     const articles = [
-      { title: "La Donna e il suo Corpo", excerpt: "Empowerment femminile e mindful eating.", tag: "Crescita Personale", colorClass: "text-accent-spring", bgImage: "img/La donna e il suo corpo.jpeg", id: 1 },
-      { title: "Mindfulness tra Natura e Sapori", excerpt: "Mindful walking e mindful eating a Vetriolo.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Mindfulness tra Natura e Sapori.jpeg", id: 2 },
-      { title: "ZenFlow: Equilibrio Online", excerpt: "10 incontri online con pratiche di rilassamento.", tag: "Benessere Online", colorClass: "text-accent-winter", bgImage: "img/Zenflow01.jpeg", id: 3 },
-      { title: "Super poteri del cuore", excerpt: "Progetto sulle emozioni alla scuola primaria.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", bgImage: "img/Superpoteridelcuore.jpeg", id: 4 },
+      { title: "La Donna e il suo Corpo", excerpt: "Empowerment femminile e mindful eating.", tag: "Crescita Personale", colorClass: "text-accent-spring", bgImage: "img/La donna e il suo corpo.jpeg", images: ["img/LaDonna01.jpeg", "img/LaDonna02.jpeg", "img/LaDonna03.jpeg"], id: 1 },
+      { title: "Mindfulness tra Natura e Sapori", excerpt: "Mindful walking e mindful eating a Vetriolo.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Mindfulness tra Natura e Sapori.jpeg", images: ["img/Mindfulness01.jpeg", "img/Mindfulness02.jpeg", "img/Mindfulness03.jpeg"], id: 2 },
+      { title: "ZenFlow: Equilibrio Online", excerpt: "10 incontri online con pratiche di rilassamento.", tag: "Benessere Online", colorClass: "text-accent-winter", bgImage: "img/Zenflow01.jpeg", images: ["img/Zenflow01.jpeg", "img/CorsiMindfulness01.jpeg", "img/CorsiMindfulnessGruppo.jpeg", "img/CorsiMindfulnessIndividuale.jpeg"], id: 3 },
+      { title: "Super poteri del cuore", excerpt: "Progetto sulle emozioni alla scuola primaria.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", bgImage: "img/Superpoteridelcuore.jpeg", images: ["img/Emozioniascuolta.jpg", "img/Superpoteridelcuore.jpeg", "img/LabScuola01.jpeg"], id: 4 },
       { title: "Benessere per le atlete", excerpt: "Gestione dell'ansia pre e post gara.", tag: "Sport & Mindfulness", colorClass: "text-accent-spring", bgImage: "img/MindfulBreathing01.jpeg", images: ["img/MindfulBreathing01.jpeg", "img/MindfulBreathing02.jpeg"], id: 5 },
       { title: "Emozioni in gioco", excerpt: "Laboratorio per genitori e figli.", tag: "Scuola & Genitori", colorClass: "text-accent-autumn", bgImage: "img/LabScuola01.jpeg", images: ["img/LabScuola01.jpeg"], id: 6 },
       { title: "Rituali di gusto", excerpt: "Degustazione consapevole al caseificio.", tag: "Natura & Benessere", colorClass: "text-accent-summer", bgImage: "img/Ritualidigusto.jpeg", images: ["img/Ritualidigusto.jpeg", "img/Ritualidigusto02.jpg"], id: 7 },
@@ -138,6 +138,7 @@
         const card = document.createElement('div');
         card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
         card.innerHTML = `
+          ${art.bgImage ? `<div class="w-full h-40 rounded-lg overflow-hidden mb-4 flex-shrink-0"><img src="${encodeURI(art.bgImage)}" alt="${art.title}" class="w-full h-full object-cover"></div>` : ''}
           <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
           <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
           <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
