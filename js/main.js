@@ -5,16 +5,14 @@
 // --- TAB SWITCHER ---
 function showTab(tabName) {
     const tabs = {
-        bambini: document.getElementById('tab-bambini'),
-        adolescenti: document.getElementById('tab-adolescenti'),
         adulti: document.getElementById('tab-adulti'),
+        giovani: document.getElementById('tab-giovani'),
         terzaeta: document.getElementById('tab-terzaeta')
     };
     
     const buttons = {
-        bambini: document.getElementById('btn-bambini'),
-        adolescenti: document.getElementById('btn-adolescenti'),
         adulti: document.getElementById('btn-adulti'),
+        giovani: document.getElementById('btn-giovani'),
         terzaeta: document.getElementById('btn-terzaeta')
     };
 
