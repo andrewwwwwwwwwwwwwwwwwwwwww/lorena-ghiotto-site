@@ -179,6 +179,45 @@ function initSeasonSwitcher() {
     applySeason(defaultSeason());
 }
 
+// --- STUDIO PHOTO CAROUSELS ---
+const studioCarousels = {};
+
+function initStudioCarousels() {
+    const selvazzanoEl = document.getElementById('carousel-selvazzano');
+    if (selvazzanoEl) {
+        const imgs = selvazzanoEl.querySelectorAll('img');
+        studioCarousels['selvazzano'] = { images: imgs, current: 0, timer: null };
+        startAutoSlide('selvazzano');
+    }
+}
+
+function startAutoSlide(id) {
+    const carousel = studioCarousels[id];
+    if (!carousel) return;
+    carousel.timer = setInterval(() => {
+        const next = (carousel.current + 1) % carousel.images.length;
+        goToSlide(id, next);
+    }, 3000);
+}
+
+function goToSlide(id, index) {
+    const carousel = studioCarousels[id];
+    if (!carousel) return;
+    carousel.images.forEach((img, i) => {
+        img.style.opacity = i === index ? '1' : '0';
+    });
+    const dots = document.getElementById('dots-' + id);
+    if (dots) {
+        dots.querySelectorAll('button').forEach((dot, i) => {
+            dot.className = 'w-2 h-2 rounded-full ' + (i === index ? 'bg-primary' : 'bg-gray-300');
+        });
+    }
+    carousel.current = index;
+    // Reset auto-slide timer
+    if (carousel.timer) clearInterval(carousel.timer);
+    startAutoSlide(id);
+}
+
 // --- INIZIALIZZAZIONE GLOBALE ---
 document.addEventListener('DOMContentLoaded', () => {
     // Render contenuti
@@ -192,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     adjustScrollOffset();
     initSeasonSwitcher();
+    initStudioCarousels();
 });
 
 // --- CAROUSEL (caricato dopo load) ---

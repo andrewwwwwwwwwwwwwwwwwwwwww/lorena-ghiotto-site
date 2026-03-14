@@ -70,9 +70,12 @@ function openBioModal() {
         <span class="text-xs font-bold text-accent-cta uppercase tracking-widest mb-2 block">CHI SONO</span>
         <h3 class="text-3xl font-serif font-bold text-primary mb-6">La mia storia</h3>
         <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">
-            <p>Il mio percorso nasce da una profonda curiosità verso l'essere umano e le sue risorse infinite. Dopo la laurea in Psicologia Clinica a Padova, ho sentito l'esigenza di andare oltre la teoria e di trovare strumenti concreti per aiutare le persone a stare meglio.</p>
-            <p>Ho scelto la specializzazione in Psicoterapia Cognitivo-Comportamentale perché credo nell'importanza di lavorare sul "qui e ora", fornendo strategie pratiche per gestire pensieri ed emozioni.</p>
-            <p>Successivamente, l'incontro con l'EMDR mi ha aperto nuove prospettive sulla cura del trauma, permettendomi di lavorare ancora più in profondità. Oggi, nel mio studio, cerco di integrare tutto questo con un approccio umano, caldo e accogliente, perché credo che la relazione terapeutica sia il primo vero strumento di cura.</p>
+            <p>Il mio percorso nasce da una profonda curiosità verso l'essere umano e le sue risorse infinite. Fin da giovane ho sentito il desiderio di comprendere cosa muove le persone, cosa le ferma e cosa le aiuta a ritrovare la propria strada. Questo interesse mi ha guidata verso la Psicologia e, nel tempo, verso la Psicoterapia.</p>
+            <p>Dopo la <strong>laurea in Psicologia Clinica</strong> presso l'Università di Padova, ho sentito l'esigenza di andare oltre la teoria e di trovare strumenti concreti per aiutare le persone a stare meglio. Ho scelto la <strong>specializzazione in Psicoterapia Cognitivo-Comportamentale</strong> perché credo nell'importanza di lavorare sul "qui e ora", fornendo strategie pratiche per gestire pensieri ed emozioni.</p>
+            <p>Successivamente, l'incontro con l'<strong>EMDR</strong> mi ha aperto nuove prospettive sulla cura del trauma, permettendomi di lavorare ancora più in profondità con chi porta ferite emotive che condizionano il presente. L'EMDR mi ha insegnato che il corpo e la mente custodiscono risorse straordinarie per la guarigione, e che il compito del terapeuta è creare le condizioni perché queste risorse possano emergere.</p>
+            <p>Accanto alla pratica clinica, negli anni ho sviluppato una forte passione per la <strong>mindfulness</strong> e per i <strong>laboratori esperienziali</strong>. Conduco percorsi di gruppo dedicati alla consapevolezza, al benessere emotivo, al mindful eating e alla connessione con sé stessi e con gli altri. Questi laboratori nascono dalla convinzione che la crescita personale si nutre anche di esperienze condivise, di momenti in cui ci si ferma, si respira e ci si ascolta davvero.</p>
+            <p>Oggi, nel mio studio, cerco di integrare tutto questo con un approccio umano, caldo e accogliente. Lavoro con bambini, adolescenti, adulti e anziani, accompagnando ciascuno nel proprio percorso con rispetto, attenzione e professionalità. Credo che la <strong>relazione terapeutica</strong> sia il primo vero strumento di cura: uno spazio protetto in cui sentirsi accolti, compresi e liberi di esplorare il proprio mondo interiore.</p>
+            <p>Il mio impegno quotidiano è quello di essere presente — come persona e come professionista — per chi sceglie di intraprendere un cammino di cambiamento.</p>
         </div>
     `;
     
@@ -160,6 +163,14 @@ function openGestioneEmozioniModal() {
         <p class="text-lg text-secondary mb-6 leading-relaxed">
             Attraverso il gioco, le storie e attività creative, i bambini sviluppano l'intelligenza emotiva e acquisiscono strumenti per esprimere ciò che sentono.
         </p>
+    `;
+    openPercorsiModal();
+}
+
+function openPercorsoModal(title, content) {
+    percorsiModalBody.innerHTML = `
+        <h2 class="text-4xl font-serif font-bold text-primary mb-6">${title}</h2>
+        <div class="text-lg text-secondary leading-relaxed space-y-4">${content}</div>
     `;
     openPercorsiModal();
 }
