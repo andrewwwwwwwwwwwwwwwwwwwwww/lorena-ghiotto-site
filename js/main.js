@@ -52,23 +52,11 @@ function renderLabPage() {
         const card = document.createElement('div');
         card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
         card.innerHTML = `
-            ${art.bgImage ? `<div class="w-full h-40 rounded-lg overflow-hidden mb-4 flex-shrink-0"><img src="${encodeURI(art.bgImage)}" alt="${art.title}" class="w-full h-full object-cover"></div>` : ''}
             <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
             <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
             <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
             <button onclick="openArticleModal(${art.id})" class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto">Scopri di più &rarr;</button>
         `;
-        // se presente immagine, aggiungi miniatura che apparirà al hover
-        if (art.bgImage) {
-            const thumb = document.createElement('div');
-            thumb.className = 'card-thumb';
-            const thumbImg = document.createElement('img');
-            thumbImg.className = 'card-thumb-img';
-            thumbImg.src = encodeURI(art.bgImage);
-            thumbImg.alt = art.title + ' - anteprima';
-            thumb.appendChild(thumbImg);
-            card.appendChild(thumb);
-        }
 
         laboratoriContainer.appendChild(card);
     });
@@ -129,8 +117,8 @@ function initMobileMenu() {
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
-        // Close menu when clicking on anchor links
-        menu.querySelectorAll('a[href^="#"]').forEach(link => {
+        // Close menu when clicking on any link
+        menu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');
             });

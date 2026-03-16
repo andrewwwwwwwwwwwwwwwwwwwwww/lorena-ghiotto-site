@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/components.css">
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen overflow-x-hidden">
 
     <!-- HEADER -->
     <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
@@ -46,28 +46,29 @@
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6 flex flex-col gap-4 border-t">
-            <a href="#chisiamo" class="block text-secondary hover:text-primary">Chi Sono</a>
-            <a href="#approccio" class="block text-secondary hover:text-primary">L'Approccio</a>
-            <a href="#percorsi" class="block text-secondary hover:text-primary">Percorsi</a>
-            <a href="#laboratori" class="block text-secondary hover:text-primary">Laboratori</a>
-            <a href="#Blog" class="hover:text-primary transition">Blog</a>
-            <a href="Media.html" class="block text-secondary hover:text-primary">Media</a>
-            <a href="#contatti" class="block text-secondary hover:text-primary">Contatti</a>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-6 flex flex-col gap-2 border-t">
+            <a href="#chisiamo" class="block text-secondary hover:text-primary py-2">Chi Sono</a>
+            <a href="#approccio" class="block text-secondary hover:text-primary py-2">L'Approccio</a>
+            <a href="#percorsi" class="block text-secondary hover:text-primary py-2">Percorsi</a>
+            <a href="#laboratori" class="block text-secondary hover:text-primary py-2">Laboratori</a>
+            <a href="#Blog" class="block text-secondary hover:text-primary py-2">Blog</a>
+            <a href="Media.html" class="block text-secondary hover:text-primary py-2">Media</a>
+            <a href="#contatti" class="block text-secondary hover:text-primary py-2">Contatti</a>
+            <a href="#prenota" class="block mt-2 bg-accent-cta text-white px-4 py-3 rounded-full text-sm font-semibold text-center hover:bg-primary transition">Prenota Colloquio</a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="pt-32 pb-20 bg-main min-h-[80vh] flex items-center text-center relative overflow-hidden">
+    <section class="pt-24 pb-16 md:pt-32 md:pb-20 bg-main min-h-[80vh] flex items-center text-center relative overflow-hidden">
         <div class="w-full px-6 relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight text-center mx-auto">
-                <span class="inline-block whitespace-nowrap">Ogni percorso ha le sue stagioni.</span><br>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold text-primary mb-6 leading-tight text-center mx-auto">
+                <span class="inline-block">Ogni percorso ha le sue stagioni.</span><br>
                 <span class="inline-block">Troviamo insieme la tua.</span>
             </h1>
             <p class="text-sm md:text-base text-secondary mb-10 max-w-2xl mx-auto font-light italic">
                 "Il terapeuta potrà portare il paziente solo fin dove lui stesso è arrivato" — C. G. Jung
             </p>
-            <p class="text-xl text-secondary mb-10 max-w-2xl mx-auto font-light">
+            <p class="text-base md:text-xl text-secondary mb-10 max-w-2xl mx-auto font-light">
                 Sono Lorena Ghiotto. Offro uno spazio di ascolto sicuro e non giudicante per accompagnarti attraverso le fasi della vita.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
@@ -82,14 +83,14 @@
     </section>
 
     <!-- CHI SONO -->
-    <section id="chisiamo" class="py-24 bg-white">
+    <section id="chisiamo" class="py-14 md:py-24 bg-white">
         <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
             <div class="relative">
                 <div class="absolute inset-0 bg-main rounded-2xl transform translate-x-4 translate-y-4"></div>
                 <img src="img/Profilo_Ghiotto.jpg" alt="Lorena Ghiotto" class="relative rounded-2xl shadow-xl w-full max-w-md mx-auto object-cover aspect-[3/4]">
             </div>
             <div>
-                <h2 class="text-4xl font-bold text-primary mb-6">Creare un legame di fiducia.</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6">Creare un legame di fiducia.</h2>
                 <p class="text-lg text-secondary mb-4 leading-relaxed">
                     Sono Lorena Ghiotto, psicologa e psicoterapeuta. Il mio percorso nasce da una profonda curiosità verso l'essere umano e le sue risorse infinite. Dopo la laurea in Psicologia Clinica presso l'Università di Padova, ho scelto di specializzarmi in Psicoterapia Cognitivo-Comportamentale, perché credo nell'importanza di lavorare sul "qui e ora" fornendo strategie pratiche per gestire pensieri ed emozioni.
                 </p>
@@ -113,10 +114,10 @@
     </section>
 
     <!-- APPROCCIO (STAGIONI) -->
-    <section id="approccio" class="py-24 bg-main">
+    <section id="approccio" class="py-14 md:py-24 bg-main">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-primary mb-4">La Terapia come Ciclo Naturale</h2>
+            <div class="text-center mb-10 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">La Terapia come Ciclo Naturale</h2>
                 <p class="text-secondary max-w-2xl mx-auto">La metafora delle stagioni ci aiuta a comprendere che ogni fase ha un senso.</p>
             </div>
             <div class="grid md:grid-cols-4 gap-6">
@@ -145,9 +146,9 @@
     </section>
 
     <!-- PERCORSI -->
-    <section id="percorsi" class="py-24 bg-white">
+    <section id="percorsi" class="py-14 md:py-24 bg-white">
         <div class="container mx-auto px-6 max-w-5xl">
-            <h2 class="text-4xl font-bold text-primary text-center mb-10">Un Percorso su Misura</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-10">Un Percorso su Misura</h2>
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <button onclick="showTab('adulti')" id="btn-adulti" class="px-8 py-3 rounded-full font-bold transition active-tab shadow-md">Adulti</button>
                 <button onclick="showTab('giovani')" id="btn-giovani" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Adolescenti e Bambini</button>
@@ -176,7 +177,7 @@
     </section>
 
     <!-- RECENSIONI CAROUSEL -->
-    <section id="recensioni" class="py-24 bg-main">
+    <section id="recensioni" class="py-14 md:py-24 bg-main">
         <div class="container mx-auto px-6">
             <div class="reviews-section-carousel max-w-5xl mx-auto">
                 <div class="reviews-header">
@@ -201,9 +202,9 @@
     </section>
 
     <!-- LABORATORI -->
-    <section id="laboratori" class="py-24 bg-white">
+    <section id="laboratori" class="py-14 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-primary text-center mb-12">Laboratori</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">Laboratori</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="laboratori-container"></div>
             <div class="flex justify-center items-center gap-4 mt-8">
                 <button id="prev-lab-btn" class="px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/80 transition disabled:opacity-30 disabled:cursor-not-allowed" onclick="changeLabPage(-1)">←</button>
@@ -217,9 +218,9 @@
     </section>
 
     <!-- BLOG -->
-    <section id="Blog" class="py-24 bg-white">
+    <section id="Blog" class="py-14 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-primary text-center mb-12">Blog</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-12">Blog</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="blog-container"></div>
             <div class="mt-10 text-center">
                 <a href="Blog.html" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-green-800 transition">Vedi tutti gli articoli</a>
@@ -228,18 +229,18 @@
     </section>
 
     <!-- PRENOTAZIONE -->
-    <section id="prenota" class="py-24 bg-main">
+    <section id="prenota" class="py-14 md:py-24 bg-main">
         <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold text-primary mb-4">Prenota il tuo Colloquio</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Prenota il tuo Colloquio</h2>
             <p class="text-secondary mb-10">Scegli una data per il primo incontro conoscitivo.</p>
             <div id="booking-widget" class="max-w-lg mx-auto bg-white border rounded-2xl p-6 shadow-lg"></div>
         </div>
     </section>
 
     <!-- CONTATTI -->
-    <section id="contatti" class="py-24 bg-white">
+    <section id="contatti" class="py-14 md:py-24 bg-white">
         <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-primary text-center mb-16">Sedi e Contatti</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-10 md:mb-16">Sedi e Contatti</h2>
             <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div class="space-y-8">
                     <!-- Selvazzano Dentro -->
