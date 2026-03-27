@@ -2,6 +2,28 @@
    COMPONENTS.CSS - Stili Componenti
    ====================================== */
 
+/* === NAVIGATION HIGHLIGHT === */
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-link.active {
+    color: #3A6B53 !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #3A6B53;
+    border-radius: 1px;
+}
+
 /* === SEASON CARDS === */
 .season-card {
     transition: all 0.3s ease;
@@ -21,6 +43,77 @@
 /* === TAB NASCOSTI === */
 .tab-hidden {
     display: none !important;
+}
+
+/* === SFONDI PERCORSI === */
+.percorso-bg {
+    transition: opacity 0.5s ease;
+}
+
+.percorso-bg.hidden {
+    opacity: 0 !important;
+}
+
+/* === PERCORSI CARD ESPANDIBILI === */
+.percorso-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.percorso-card:hover {
+    border-color: #3A6B53;
+    box-shadow: 0 4px 12px rgba(58, 107, 83, 0.1);
+}
+
+.percorso-card.active {
+    border-color: #3A6B53;
+    box-shadow: 0 8px 24px rgba(58, 107, 83, 0.15);
+}
+
+.percorso-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.percorso-header:hover {
+    background-color: var(--color-surface, #EBF2ED);
+}
+
+.percorso-card.active .percorso-header {
+    background-color: var(--color-surface, #EBF2ED);
+}
+
+.percorso-arrow {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.percorso-card.active .percorso-arrow {
+    transform: rotate(180deg);
+}
+
+.percorso-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 1.25rem;
+    color: #5C6F66;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.percorso-card.active .percorso-content {
+    max-height: 500px;
+    padding: 0 1.25rem 1.25rem 1.25rem;
 }
 
 /* === ANIMAZIONE PALLINO PERCORSI === */
@@ -102,6 +195,43 @@
     .card-thumb {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* === PALLINO COLORATO (card senza foto) === */
+.color-dot {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 3px solid currentColor;
+    background: transparent;
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Colori delle stagioni per i pallini */
+.color-dot.dot-spring { color: #E8A87C; }
+.color-dot.dot-summer { color: #88C0D0; }
+.color-dot.dot-autumn { color: #D08770; }
+.color-dot.dot-winter { color: #5E81AC; }
+
+.blog-card:hover .color-dot {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background-color: currentColor;
+}
+
+/* Touch devices */
+@media (hover: none) {
+    .color-dot {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        background-color: currentColor;
     }
 }
 
@@ -198,14 +328,14 @@
 /* === RECENSIONI CAROUSEL === */
 .reviews-section-carousel {
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    padding: 32px 24px;
 }
 
 .reviews-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
 }
 
 .reviews-stats {
@@ -233,26 +363,29 @@
 /* Carousel Container */
 .carousel-container {
     position: relative;
-    overflow: hidden;
-    margin-bottom: 30px;
-    min-height: 300px;
+    margin-bottom: 20px;
+    min-height: 150px;
 }
 
 .carousel-track {
-    display: flex;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
 }
 
 .review-card {
-    min-width: 100%;
-    max-width: 100%;
-    flex-shrink: 0;
-    padding: 30px;
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    width: 100%;
+    padding: 24px;
     box-sizing: border-box;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.review-card:not(.active) {
+    display: none !important;
+}
+
+.review-card.active {
+    display: block !important;
 }
 
 .review-header {

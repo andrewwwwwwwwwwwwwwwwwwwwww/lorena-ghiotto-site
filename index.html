@@ -21,26 +21,27 @@
 
     <!-- HEADER -->
     <header class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
-        <div class="container mx-auto px-6 py-2 flex justify-between items-center relative">
-            <a href="#" class="flex items-center gap-2 z-10">
-                <img src="img/Logo_Ghiotto.png" alt="Logo" class="h-10 md:h-20 lg:h-28 w-auto">
-                <div class="hidden md:block">
+        <div class="container mx-auto px-4 lg:px-6 py-2 flex justify-between items-center relative">
+            <a href="#" class="flex items-center gap-2 z-10 flex-shrink-0">
+                <img src="img/Logo_Ghiotto.png" alt="Logo" class="h-10 md:h-16 lg:h-24 w-auto">
+                <div class="hidden lg:block">
                     <span class="block font-serif font-bold text-primary text-base leading-none">Dott.ssa Lorena Ghiotto</span>
                     <span class="block text-[10px] text-secondary tracking-widest uppercase">Psicologa Psicoterapeuta</span>
                 </div>
             </a>
             
-            <nav class="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-8 text-base font-medium text-secondary">
-                <a href="#chisiamo" class="hover:text-primary transition">Chi Sono</a>
-                <a href="#approccio" class="hover:text-primary transition">L'Approccio</a>
-                <a href="#percorsi" class="hover:text-primary transition">Percorsi</a>
-                <a href="#laboratori" class="hover:text-primary transition">Laboratori</a>
-                <a href="#Blog" class="hover:text-primary transition">Blog</a>
-                <a href="Media.html" class="hover:text-primary transition">Media</a>
-                <a href="#contatti" class="hover:text-primary transition">Contatti</a>
+            <nav class="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8 text-sm lg:text-base font-medium text-secondary" id="main-nav">
+                <a href="#chisiamo" class="nav-link hover:text-primary transition whitespace-nowrap" data-section="chisiamo">Chi Sono</a>
+                <a href="#approccio" class="nav-link hover:text-primary transition whitespace-nowrap" data-section="approccio">L'Approccio</a>
+                <a href="#percorsi" class="nav-link hover:text-primary transition" data-section="percorsi">Percorsi</a>
+                <a href="#eventi" class="nav-link hover:text-primary transition" id="nav-eventi" data-section="eventi" style="display: none;">Eventi</a>
+                <a href="#laboratori" class="nav-link hover:text-primary transition" data-section="laboratori">Laboratori</a>
+                <a href="#Blog" class="nav-link hover:text-primary transition" data-section="Blog">Blog</a>
+                <a href="Media.html" class="nav-link hover:text-primary transition">Media</a>
+                <a href="#contatti" class="nav-link hover:text-primary transition" data-section="contatti">Contatti</a>
             </nav>
 
-            <a href="#prenota" class="hidden md:block bg-accent-cta text-white px-4 md:px-5 py-2 rounded-full text-sm font-semibold hover:bg-primary transition shadow-md z-10">Prenota Colloquio</a>
+            <a href="#prenota" class="hidden md:block bg-accent-cta text-white px-3 lg:px-5 py-2 rounded-full text-xs lg:text-sm font-semibold hover:bg-primary transition shadow-md z-10 flex-shrink-0 whitespace-nowrap">Prenota Colloquio</a>
             
             <button id="mobile-menu-btn" class="md:hidden text-primary">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -50,6 +51,7 @@
             <a href="#chisiamo" class="block text-secondary hover:text-primary">Chi Sono</a>
             <a href="#approccio" class="block text-secondary hover:text-primary">L'Approccio</a>
             <a href="#percorsi" class="block text-secondary hover:text-primary">Percorsi</a>
+            <a href="#eventi" class="block text-secondary hover:text-primary" id="mobile-nav-eventi" style="display: none;">Eventi</a>
             <a href="#laboratori" class="block text-secondary hover:text-primary">Laboratori</a>
             <a href="#Blog" class="hover:text-primary transition">Blog</a>
             <a href="Media.html" class="block text-secondary hover:text-primary">Media</a>
@@ -74,8 +76,8 @@
                 <a href="#percorsi" onclick="showTab('adulti')" class="bg-white px-8 py-4 rounded-xl shadow-md text-primary font-bold hover:shadow-lg transition border-l-4 border-primary text-left cursor-pointer">
                     Un Percorso per Te <span class="block text-xs font-normal text-secondary mt-1">Ansia, Stress, Cambiamento &rarr;</span>
                 </a>
-                <a href="#percorsi" onclick="showTab('bambini')" class="bg-white px-8 py-4 rounded-xl shadow-md text-primary font-bold hover:shadow-lg transition border-l-4 border-accent-cta text-left cursor-pointer">
-                    Bambini e Genitori <span class="block text-xs font-normal text-secondary mt-1">Crescita, Emozioni, Sostegno &rarr;</span>
+                <a href="#percorsi" onclick="showTab('giovani')" class="bg-white px-8 py-4 rounded-xl shadow-md text-primary font-bold hover:shadow-lg transition border-l-4 border-accent-cta text-left cursor-pointer">
+                    Adolescenti e Bambini <span class="block text-xs font-normal text-secondary mt-1">Crescita, Emozioni, Sostegno &rarr;</span>
                 </a>
             </div>
         </div>
@@ -105,7 +107,7 @@
                     <li>Specializzazione in Psicoterapia Cognitivo-Comportamentale</li>
                     <li>Terapeuta EMDR certificata</li>
                     <li>Conduttrice di laboratori di Mindfulness</li>
-                    <li>Iscrizione Albo Psicologi del Veneto n. 7937</li>
+                    <li>Iscritta nella sezione A dell'Albo dal 23/10/2017 — n. 23394</li>
                 </ul>
                 <button onclick="openSpaziModal()" class="text-accent-cta font-bold hover:text-primary underline underline-offset-4 mt-6 block">I miei spazi &rarr;</button>
             </div>
@@ -145,58 +147,224 @@
     </section>
 
     <!-- PERCORSI -->
-    <section id="percorsi" class="py-24 bg-white">
-        <div class="container mx-auto px-6 max-w-5xl">
+    <section id="percorsi" class="py-24 bg-white relative overflow-hidden">
+        <!-- Sfondi decorativi per tab -->
+        <div id="bg-adulti" class="percorso-bg absolute inset-0 opacity-25 pointer-events-none" style="background: url('img/bg_adulti.png') center center/contain no-repeat;"></div>
+        <div id="bg-giovani" class="percorso-bg absolute inset-0 opacity-10 pointer-events-none hidden" style="background: url('img/Cards.png') center center/contain no-repeat;"></div>
+        
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
             <h2 class="text-4xl font-bold text-primary text-center mb-10">Un Percorso su Misura</h2>
             <div class="flex flex-wrap justify-center gap-4 mb-12">
                 <button onclick="showTab('adulti')" id="btn-adulti" class="px-8 py-3 rounded-full font-bold transition active-tab shadow-md">Adulti</button>
                 <button onclick="showTab('giovani')" id="btn-giovani" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Adolescenti e Bambini</button>
                 <button onclick="showTab('terzaeta')" id="btn-terzaeta" class="px-8 py-3 rounded-full font-bold text-secondary bg-gray-100 hover:bg-gray-200 transition">Terza Età</button>
             </div>
-            <div id="tab-adulti" class="grid md:grid-cols-2 gap-4">
-                <div onclick="openPercorsoModal('Ansia e Attacchi di Panico', '<p class=\'mb-4\'>Mi occupo di accompagnare le persone che vivono stati d\'ansia, attacchi di panico e paure pervasive che interferiscono con la quotidianità. Il lavoro terapeutico è orientato a comprendere le origini profonde dei sintomi, imparare a riconoscerli e gestirli, riducendo il senso di perdita di controllo.</p><p class=\'mb-4\'>Attraverso strumenti psicodinamici, metodi attivi, tecniche di mindfulness e di regolazione emotiva, è possibile ritrovare sicurezza, calma e fiducia nelle proprie risorse senza sentirsi sopraffatti.</p><p>Tutto questo offrendo uno spazio sicuro in cui comprendere e accogliere le proprie emozioni.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Ansia e Attacchi di Panico</div>
-                <div onclick="openPercorsoModal('Difficoltà Relazionali', '<p class=\'mb-4\'>Quando le relazioni diventano fonte di frustrazione o dolore, il sostegno psicologico può fare la differenza. Lavoro con persone che sperimentano difficoltà nelle relazioni affettive, familiari, amicali o lavorative.</p><p class=\'mb-4\'>Insieme esploriamo modalità relazionali ripetitive, conflitti, vissuti di distanza o dipendenza emotiva. La terapia offre uno spazio sicuro per comprendere i propri bisogni, migliorare la comunicazione e costruire relazioni più autentiche, soddisfacenti ed appaganti.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Difficoltà Relazionali</div>
-                <div onclick="openPercorsoModal('Gestione Stress', '<p class=\'mb-4\'>Lo stress può accumularsi silenziosamente e influire sul benessere quotidiano; stress prolungato può avere un forte impatto sul benessere psicologico e corporeo.</p><p class=\'mb-4\'>Mi occupo di aiutare le persone a riconoscere le fonti di stress e i segnali del corpo, sviluppando strategie per gestire carichi emotivi e pressioni quotidiane. Il lavoro terapeutico integra ascolto psicologico, mindfulness e tecniche di regolazione psicocorporea per favorire equilibrio e prevenzione del burnout, imparando ad utilizzare strumenti concreti per rilassarsi, ritrovare equilibrio e affrontare le sfide con maggiore leggerezza.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Gestione Stress</div>
-                <div onclick="openPercorsoModal('Elaborazione Lutto', '<p class=\'mb-4\'>Perdere qualcuno o qualcosa di importante lascia spesso un vuoto profondo. Accompagno persone che stanno attraversando un lutto, una perdita o una separazione significativa.</p><p class=\'mb-4\'>La terapia offre uno spazio di accoglienza del dolore, senza forzature né tempi prestabiliti. Attraverso l\'ascolto la condivisione e il lavoro emotivo, diventa possibile dare senso alla perdita, integrare l\'assenza e ritrovare gradualmente un nuovo equilibrio interiore, trovando nuove risorse interiori per continuare a vivere in modo pieno.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Elaborazione Lutto</div>
-                <div onclick="openPercorsoModal('Autostima e Crescita Personale', '<p class=\'mb-4\'>Spesso ci troviamo a dubitare di noi stessi o a sottovalutare le nostre risorse. Mi occupo di percorsi orientati al rafforzamento dell\'autostima, alla conoscenza di sé e allo sviluppo delle proprie potenzialità.</p><p class=\'mb-4\'>Lavoriamo su insicurezze, senso di inadeguatezza e blocchi emotivi, favorendo una maggiore consapevolezza dei propri valori e desideri. La crescita personale diventa così un processo di contatto autentico con sé e con le proprie risorse a fidarsi di se stessi ed abbracciare la propria unicità.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Autostima e Crescita Personale</div>
-                <div onclick="openPercorsoModal('Tecniche di Rilassamento Psicocorporeo', '<p class=\'mb-4\'>Utilizzo tecniche di rilassamento psicocorporeo per favorire il contatto con il corpo e la regolazione del sistema emotivo.</p><p>Attraverso respirazione consapevole, mindfulness e pratiche corporee, è possibile ridurre tensioni fisiche e mentali. Questi strumenti aiutano a sviluppare una maggiore presenza, calma e ascolto di sé, integrando mente ed emozioni.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Tecniche di Rilassamento Psicocorporeo</div>
-                <div onclick="openPercorsoModal('Consulenza e Terapia Online', '<p class=\'mb-4\'>Offro percorsi di consulenza e psicoterapia online, garantendo uno spazio di ascolto sicuro, riservato ed efficace anche a distanza.</p><p>La modalità online consente continuità terapeutica, flessibilità e accessibilità, mantenendo la qualità della relazione terapeutica. È una soluzione adatta a chi vive lontano o ha difficoltà a recarsi in studio.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Consulenza e Terapia Online</div>
-                <div onclick="openPercorsoModal('Sostegno alla Genitorialità', '<p class=\'mb-4\'>Mi occupo di supportare genitori nei diversi momenti del ciclo di vita familiare.</p><p class=\'mb-4\'>Il lavoro terapeutico aiuta a comprendere le dinamiche relazionali con i figli, affrontare difficoltà educative ed emotive e sostenere il ruolo genitoriale. L\'obiettivo è favorire una genitorialità più consapevole, presente e in ascolto così da rafforzare la relazione con i propri figli.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Sostegno alla Genitorialità</div>
-                <div onclick="openPercorsoModal('Terapia di Coppia', '<p class=\'mb-4\'>Accompagno le coppie che attraversano momenti di crisi, difficoltà comunicative o cambiamenti importanti. La terapia di coppia offre uno spazio protetto per esplorare conflitti, bisogni e dinamiche relazionali.</p><p class=\'mb-4\'>L\'obiettivo è favorire una comunicazione più autentica, una maggiore comprensione reciproca e nuove possibilità di incontro.</p><p>Lavoriamo insieme per migliorare la comunicazione, la comprensione e la vicinanza emotiva, aprendo possibilità di incontro e rinnovamento.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Terapia di Coppia</div>
+            
+            <!-- TAB ADULTI -->
+            <div id="tab-adulti" class="grid md:grid-cols-2 gap-4 items-start">
+                <div class="percorso-card" data-percorso="ansia">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Ansia e Attacchi di Panico</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Mi occupo di accompagnare le persone che vivono stati d'ansia, attacchi di panico e paure pervasive che interferiscono con la quotidianità. Il lavoro terapeutico è orientato a comprendere le origini profonde dei sintomi, imparare a riconoscerli e gestirli, riducendo il senso di perdita di controllo.</p>
+                        <p class="mb-3">Attraverso strumenti psicodinamici, metodi attivi, tecniche di mindfulness e di regolazione emotiva, è possibile ritrovare sicurezza, calma e fiducia nelle proprie risorse senza sentirsi sopraffatti.</p>
+                        <p>Tutto questo offrendo uno spazio sicuro in cui comprendere e accogliere le proprie emozioni.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="relazioni">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Difficoltà Relazionali</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Quando le relazioni diventano fonte di frustrazione o dolore, il sostegno psicologico può fare la differenza. Lavoro con persone che sperimentano difficoltà nelle relazioni affettive, familiari, amicali o lavorative.</p>
+                        <p>Insieme esploriamo modalità relazionali ripetitive, conflitti, vissuti di distanza o dipendenza emotiva. La terapia offre uno spazio sicuro per comprendere i propri bisogni, migliorare la comunicazione e costruire relazioni più autentiche, soddisfacenti ed appaganti.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="stress">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Gestione Stress</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Lo stress può accumularsi silenziosamente e influire sul benessere quotidiano; stress prolungato può avere un forte impatto sul benessere psicologico e corporeo.</p>
+                        <p>Mi occupo di aiutare le persone a riconoscere le fonti di stress e i segnali del corpo, sviluppando strategie per gestire carichi emotivi e pressioni quotidiane. Il lavoro terapeutico integra ascolto psicologico, mindfulness e tecniche di regolazione psicocorporea per favorire equilibrio e prevenzione del burnout.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="lutto">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Elaborazione Lutto</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Perdere qualcuno o qualcosa di importante lascia spesso un vuoto profondo. Accompagno persone che stanno attraversando un lutto, una perdita o una separazione significativa.</p>
+                        <p>La terapia offre uno spazio di accoglienza del dolore, senza forzature né tempi prestabiliti. Attraverso l'ascolto, la condivisione e il lavoro emotivo, diventa possibile dare senso alla perdita, integrare l'assenza e ritrovare gradualmente un nuovo equilibrio interiore.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="autostima">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Autostima e Crescita Personale</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Spesso ci troviamo a dubitare di noi stessi o a sottovalutare le nostre risorse. Mi occupo di percorsi orientati al rafforzamento dell'autostima, alla conoscenza di sé e allo sviluppo delle proprie potenzialità.</p>
+                        <p>Lavoriamo su insicurezze, senso di inadeguatezza e blocchi emotivi, favorendo una maggiore consapevolezza dei propri valori e desideri. La crescita personale diventa così un processo di contatto autentico con sé e con le proprie risorse.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="rilassamento">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Tecniche di Rilassamento Psicocorporeo</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Utilizzo tecniche di rilassamento psicocorporeo per favorire il contatto con il corpo e la regolazione del sistema emotivo.</p>
+                        <p>Attraverso respirazione consapevole, mindfulness e pratiche corporee, è possibile ridurre tensioni fisiche e mentali. Questi strumenti aiutano a sviluppare una maggiore presenza, calma e ascolto di sé.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="online">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Consulenza e Terapia Online</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Offro percorsi di consulenza e psicoterapia online, garantendo uno spazio di ascolto sicuro, riservato ed efficace anche a distanza.</p>
+                        <p>La modalità online consente continuità terapeutica, flessibilità e accessibilità, mantenendo la qualità della relazione terapeutica. È una soluzione adatta a chi vive lontano o ha difficoltà a recarsi in studio.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="genitorialita">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Sostegno alla Genitorialità</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Mi occupo di supportare genitori nei diversi momenti del ciclo di vita familiare.</p>
+                        <p>Il lavoro terapeutico aiuta a comprendere le dinamiche relazionali con i figli, affrontare difficoltà educative ed emotive e sostenere il ruolo genitoriale. L'obiettivo è favorire una genitorialità più consapevole, presente e in ascolto.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card md:col-span-2" data-percorso="coppia">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Terapia di Coppia</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Accompagno le coppie che attraversano momenti di crisi, difficoltà comunicative o cambiamenti importanti. La terapia di coppia offre uno spazio protetto per esplorare conflitti, bisogni e dinamiche relazionali.</p>
+                        <p>L'obiettivo è favorire una comunicazione più autentica, una maggiore comprensione reciproca e nuove possibilità di incontro.</p>
+                    </div>
+                </div>
             </div>
-            <div id="tab-giovani" class="tab-hidden grid md:grid-cols-2 gap-4">
-                <div onclick="openPercorsoModal('Disturbi dell\'Umore', '<p class=\'mb-4\'>Mi occupo di bambini e adolescenti che vivono episodi di tristezza, apatia, sbalzi d\'umore o cali di motivazione che interferiscono con la vita scolastica, le amicizie ed il benessere quotidiano.</p><p class=\'mb-4\'>In terapia aiuto i bambini ed adolescenti a riconoscere e comprendere le emozioni che provano, imparando a gestire i momenti difficili con strumenti concreti e adeguati alla loro età. Lavoriamo insieme su consapevolezza emotiva, regolazione dei sentimenti e valorizzazione delle risorse interne, favorendo la resilienza e la capacità di affrontare le sfide quotidiane.</p><p class=\'mb-4\'>Spesso il percorso coinvolge anche la famiglia, creando uno spazio di ascolto e supporto condiviso. L\'obiettivo è che il bambino o l\'adolescente possa ritrovare equilibrio, sicurezza e fiducia in sé stesso.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Disturbi dell'Umore</div>
-                <div onclick="openPercorsoModal('Disturbi Comportamentali', '<p class=\'mb-4\'>Accompagno bambini e adolescenti che mostrano difficoltà nel comportamento, impulsività, oppositività o problemi di autoregolazione.</p><p class=\'mb-4\'>La terapia permette di comprendere il legame tra emozioni, pensieri e azioni, offrendo strategie concrete per modificare schemi disfunzionali e rafforzare comportamenti adattivi. Lavoriamo in uno spazio sicuro dove il giovane può esprimersi liberamente, sperimentare nuovi modi di reagire e sviluppare consapevolezza delle proprie emozioni.</p><p class=\'mb-4\'>Il percorso può includere attività pratiche, laboratori esperienziali e strumenti psicocorporei, pensati per essere applicabili nella vita di tutti i giorni. L\'obiettivo è migliorare il benessere, la relazione con gli altri e la capacità di affrontare le sfide quotidiane in modo più equilibrato.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Disturbi Comportamentali</div>
-                <div onclick="openPercorsoModal('Percorsi Mindfulness Individuali e/o di Gruppo', '<p class=\'mb-4\'>Progetto e conduco percorsi di mindfulness pensati specificamente per bambini e adolescenti, sia individuali sia di gruppo.</p><p class=\'mb-4\'>Gli incontri permettono di sviluppare attenzione, consapevolezza emotiva e regolazione dello stress, strumenti fondamentali per affrontare la scuola, le amicizie e le sfide della crescita. La pratica aiuta i più giovani a riconoscere e accogliere le emozioni, a migliorare la concentrazione e a ritrovare calma e centratura nei momenti di tensione o agitazione.</p><p class=\'mb-4\'>Nei gruppi, oltre al lavoro individuale, si favorisce la condivisione e la sperimentazione di pratiche di consapevolezza in un contesto sicuro e accogliente. La mindfulness diventa così una risorsa concreta, utile sia nella vita quotidiana che nel percorso terapeutico, per crescere più sereni e consapevoli.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-accent-cta rounded-full"></span>Percorsi Mindfulness Individuali e/o di Gruppo</div>
+            
+            <!-- TAB GIOVANI -->
+            <div id="tab-giovani" class="tab-hidden grid md:grid-cols-2 gap-4 items-start">
+                <div class="percorso-card" data-percorso="umore-giovani">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-accent-cta rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Disturbi dell'Umore</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Mi occupo di bambini e adolescenti che vivono episodi di tristezza, apatia, sbalzi d'umore o cali di motivazione che interferiscono con la vita scolastica, le amicizie ed il benessere quotidiano.</p>
+                        <p class="mb-3">In terapia aiuto i bambini ed adolescenti a riconoscere e comprendere le emozioni che provano, imparando a gestire i momenti difficili con strumenti concreti e adeguati alla loro età.</p>
+                        <p>Spesso il percorso coinvolge anche la famiglia, creando uno spazio di ascolto e supporto condiviso.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card" data-percorso="comportamento">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-accent-cta rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Disturbi Comportamentali</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Accompagno bambini e adolescenti che mostrano difficoltà nel comportamento, impulsività, oppositività o problemi di autoregolazione.</p>
+                        <p class="mb-3">La terapia permette di comprendere il legame tra emozioni, pensieri e azioni, offrendo strategie concrete per modificare schemi disfunzionali e rafforzare comportamenti adattivi.</p>
+                        <p>Il percorso può includere attività pratiche, laboratori esperienziali e strumenti psicocorporei.</p>
+                    </div>
+                </div>
+                
+                <div class="percorso-card md:col-span-2" data-percorso="mindfulness-giovani">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-accent-cta rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Percorsi Mindfulness Individuali e/o di Gruppo</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Progetto e conduco percorsi di mindfulness pensati specificamente per bambini e adolescenti, sia individuali sia di gruppo.</p>
+                        <p class="mb-3">Gli incontri permettono di sviluppare attenzione, consapevolezza emotiva e regolazione dello stress, strumenti fondamentali per affrontare la scuola, le amicizie e le sfide della crescita.</p>
+                        <p>Nei gruppi, oltre al lavoro individuale, si favorisce la condivisione e la sperimentazione di pratiche di consapevolezza in un contesto sicuro e accogliente.</p>
+                    </div>
+                </div>
             </div>
-            <div id="tab-terzaeta" class="tab-hidden grid md:grid-cols-1 gap-4">
-                <div onclick="openPercorsoModal('Terza Età', '<p class=\'mb-4\'>Accompagnare le persone nell\'invecchiamento è per me un percorso di ascolto e sostegno che può davvero migliorare la qualità della vita. Offro uno spazio sicuro per affrontare solitudine e perdite, come il pensionamento, la scomparsa di una persona cara o il distacco dai figli, aiutando a costruire nuove relazioni e a ritrovare un senso di appartenenza.</p><p class=\'mb-4\'>Supporto chi vive ansia o depressione legate all\'età, fornendo strumenti concreti per affrontare le paure e ritrovare serenità. Attraverso esercizi mirati, lavoro anche sulla stimolazione cognitiva, per preservare memoria e concentrazione.</p><p class=\'mb-4\'>Mi impegno a favorire autostima e motivazione, sostenendo la riscoperta di passioni e interessi che portano gioia e senso alla vita quotidiana. Infine, accompagno chi convive con dolore o malattie croniche, aiutando a gestire emozioni e ad accogliere la propria esperienza con maggiore equilibrio e leggerezza.</p>')" class="p-5 border rounded-lg hover:bg-main transition flex items-center gap-3 cursor-pointer"><span class="w-2 h-2 bg-primary rounded-full"></span>Terza Età</div>
+            
+            <!-- TAB TERZA ETÀ -->
+            <div id="tab-terzaeta" class="tab-hidden">
+                <div class="percorso-card" data-percorso="terzaeta">
+                    <div class="percorso-header">
+                        <span class="w-2 h-2 bg-primary rounded-full flex-shrink-0"></span>
+                        <span class="flex-grow">Terza Età</span>
+                        <svg class="percorso-arrow w-5 h-5 text-primary transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="percorso-content">
+                        <p class="mb-3">Accompagnare le persone nell'invecchiamento è per me un percorso di ascolto e sostegno che può davvero migliorare la qualità della vita. Offro uno spazio sicuro per affrontare solitudine e perdite, come il pensionamento, la scomparsa di una persona cara o il distacco dai figli.</p>
+                        <p class="mb-3">Supporto chi vive ansia o depressione legate all'età, fornendo strumenti concreti per affrontare le paure e ritrovare serenità. Attraverso esercizi mirati, lavoro anche sulla stimolazione cognitiva, per preservare memoria e concentrazione.</p>
+                        <p>Mi impegno a favorire autostima e motivazione, sostenendo la riscoperta di passioni e interessi che portano gioia e senso alla vita quotidiana.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- RECENSIONI CAROUSEL -->
-    <section id="recensioni" class="py-24 bg-main">
+    <section id="recensioni" class="py-12 bg-main">
         <div class="container mx-auto px-6">
-            <div class="reviews-section-carousel max-w-5xl mx-auto">
+            <div class="reviews-section-carousel max-w-4xl mx-auto">
                 <div class="reviews-header">
-                    <h2 class="text-3xl md:text-4xl font-bold text-primary text-center mb-4">Le Vostre Parole</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-primary text-center mb-2">Le Vostre Parole</h2>
                     <div class="reviews-stats">
                         <div class="rating-summary"><span class="stars-display">★★★★★</span><strong id="averageRating">5.0</strong></div>
                         <span>•</span>
                         <span><strong id="totalReviews">27</strong> recensioni verificate</span>
                     </div>
                 </div>
-                <div class="carousel-container" id="carouselContainer"><div class="loading-reviews">Caricamento recensioni...</div></div>
+                <div id="reviewsContent" style="background: #f8f9fa; border-radius: 12px; padding: 24px; margin-bottom: 20px; min-height: 200px;">
+                    <p style="text-align: center; color: #7f8c8d;">Caricamento recensioni...</p>
+                </div>
                 <div class="carousel-controls" id="carouselControls" style="display: none;">
-                    <button class="carousel-arrow" id="prevBtn" aria-label="Recensione precedente">←</button>
+                    <button class="carousel-arrow" id="prevBtn" type="button" aria-label="Recensione precedente">←</button>
                     <div class="carousel-dots" id="carouselDots"></div>
-                    <button class="carousel-arrow" id="nextBtn" aria-label="Recensione successiva">→</button>
+                    <button class="carousel-arrow" id="nextBtn" type="button" aria-label="Recensione successiva">→</button>
                 </div>
                 <div class="reviews-footer">
                     <a href="https://www.miodottore.it/lorena-ghiotto/psicologo-psicoterapeuta/montemerlo" class="miodottore-link" target="_blank" rel="noopener noreferrer">Leggi tutte le 27 recensioni su MioDottore</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- PROSSIMI APPUNTAMENTI -->
+    <section id="eventi" class="py-24 bg-main" style="display: none;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-primary text-center mb-4">Prossimi Appuntamenti</h2>
+            <p class="text-secondary text-center mb-12 max-w-2xl mx-auto">Credo profondamente nel valore del lavoro individuale e, allo stesso tempo, nella forza trasformativa del gruppo. Ecco i prossimi eventi in programma.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto" id="eventi-container"></div>
         </div>
     </section>
 
@@ -221,6 +389,11 @@
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-primary text-center mb-12">Blog</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" id="blog-container"></div>
+            <div class="flex justify-center items-center gap-4 mt-8">
+                <button id="prev-blog-btn" class="px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/80 transition disabled:opacity-30 disabled:cursor-not-allowed" onclick="changeBlogPage(-1)">←</button>
+                <span id="blog-page-indicator" class="text-primary font-semibold"></span>
+                <button id="next-blog-btn" class="px-6 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/80 transition disabled:opacity-30 disabled:cursor-not-allowed" onclick="changeBlogPage(1)">→</button>
+            </div>
             <div class="mt-10 text-center">
                 <a href="Blog.html" class="inline-block bg-primary text-white px-6 py-3 rounded-full font-semibold shadow hover:bg-green-800 transition">Vedi tutti gli articoli</a>
             </div>
@@ -243,55 +416,66 @@
             <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div class="space-y-8">
                     <!-- Selvazzano Dentro -->
-                    <div class="bg-main p-6 rounded-xl shadow-sm">
-                        <div class="flex gap-6 items-start mb-4">
-                            <div class="studio-carousel w-32 h-24 flex-shrink-0 relative overflow-hidden rounded-lg bg-gray-200" id="carousel-selvazzano">
+                    <div class="bg-main p-4 rounded-xl shadow-sm">
+                        <div class="flex gap-4 items-start mb-3">
+                            <div class="studio-carousel w-24 h-20 flex-shrink-0 relative overflow-hidden rounded-lg bg-gray-200" id="carousel-selvazzano">
                                 <img src="img/Studio_selvazzano_01.jpg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-100" alt="Studio Selvazzano 1">
                                 <img src="img/Studio_Selvazzano_02.jpg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0" alt="Studio Selvazzano 2">
                                 <img src="img/Studio_Selvazzano_03.jpg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0" alt="Studio Selvazzano 3">
                             </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-primary">Selvazzano Dentro</h4>
-                                <p class="text-secondary">Via San Giuseppe 1, Padova</p>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-bold text-primary">Selvazzano Dentro</h4>
+                                <p class="text-secondary text-sm">Via San Giuseppe 1</p>
+                                <div class="flex gap-1 mt-2" id="dots-selvazzano">
+                                    <button class="w-2 h-2 rounded-full bg-primary" onclick="goToSlide('selvazzano', 0)"></button>
+                                    <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('selvazzano', 1)"></button>
+                                    <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('selvazzano', 2)"></button>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex gap-1 justify-center" id="dots-selvazzano">
-                            <button class="w-2 h-2 rounded-full bg-primary" onclick="goToSlide('selvazzano', 0)"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('selvazzano', 1)"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('selvazzano', 2)"></button>
+                        <div class="rounded-lg overflow-hidden">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=Via+San+Giuseppe+1+Selvazzano+Dentro+PD&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                width="100%" 
+                                height="120" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Mappa Studio Selvazzano">
+                            </iframe>
                         </div>
                     </div>
                     <!-- Montemerlo -->
-                    <div class="bg-main p-6 rounded-xl shadow-sm">
-                        <div class="flex gap-6 items-start mb-4">
-                            <div class="studio-carousel w-32 h-24 flex-shrink-0 relative overflow-hidden rounded-lg bg-gray-200" id="carousel-montemerlo">
+                    <div class="bg-main p-4 rounded-xl shadow-sm">
+                        <div class="flex gap-4 items-start mb-3">
+                            <div class="studio-carousel w-24 h-20 flex-shrink-0 relative overflow-hidden rounded-lg bg-gray-200" id="carousel-montemerlo">
                                 <img src="img/Montemerlo01.jpeg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-100" alt="Studio Montemerlo 1">
                                 <img src="img/Montemerlo02.jpeg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0" alt="Studio Montemerlo 2">
                                 <img src="img/Montemerlo03.jpeg" class="w-full h-full object-cover absolute inset-0 transition-opacity duration-500 opacity-0" alt="Studio Montemerlo 3">
                             </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-primary">Montemerlo</h4>
-                                <p class="text-secondary">Via Repoise 18/1, Padova</p>
+                            <div class="flex-1">
+                                <h4 class="text-lg font-bold text-primary">Montemerlo</h4>
+                                <p class="text-secondary text-sm">Via Repoise 18/1</p>
+                                <div class="flex gap-1 mt-2" id="dots-montemerlo">
+                                    <button class="w-2 h-2 rounded-full bg-primary" onclick="goToSlide('montemerlo', 0)"></button>
+                                    <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('montemerlo', 1)"></button>
+                                    <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('montemerlo', 2)"></button>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex gap-1 justify-center" id="dots-montemerlo">
-                            <button class="w-2 h-2 rounded-full bg-primary" onclick="goToSlide('montemerlo', 0)"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('montemerlo', 1)"></button>
-                            <button class="w-2 h-2 rounded-full bg-gray-300" onclick="goToSlide('montemerlo', 2)"></button>
+                        <div class="rounded-lg overflow-hidden">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=Via+Repoise+18+Montemerlo+Cervarese+Santa+Croce+PD&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                width="100%" 
+                                height="120" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Mappa Studio Montemerlo">
+                            </iframe>
                         </div>
-                    </div>
-                    <!-- Google Maps -->
-                    <div class="rounded-xl overflow-hidden shadow-sm">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2803.2!2d11.7878!3d45.3863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda555c0d4e9f%3A0x1!2sSelvazzano+Dentro+PD!5e0!3m2!1sit!2sit!4v1" 
-                            width="100%" 
-                            height="200" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            title="Mappa studi Dott.ssa Ghiotto - Selvazzano Dentro, Padova">
-                        </iframe>
                     </div>
                 </div>
                 <div class="bg-main p-8 rounded-xl shadow-lg">
@@ -309,7 +493,9 @@
     <!-- FOOTER -->
     <footer class="bg-primary text-white py-12 text-center">
         <p class="font-serif text-xl mb-2">Dott.ssa Lorena Ghiotto</p>
-        <p class="text-sm opacity-80 mb-6">Psicologa Psicoterapeuta - Albo Veneto n. 7937</p>
+        <p class="text-sm opacity-90 mb-2">Psicologa | Psicoterapeuta</p>
+        <p class="text-sm opacity-80 mb-4">Iscritta nella sezione A dell'Albo dal 23/10/2017 con il n. 23394</p>
+        <p class="text-sm mb-6"><a href="tel:+393473594380" class="hover:underline">Tel: 347 359 4380</a></p>
         <div class="text-sm opacity-60 space-x-4">
             <a href="#" class="hover:text-white">Privacy Policy</a><span>|</span><a href="#" class="hover:text-white">Cookie Policy</a>
         </div>

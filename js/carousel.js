@@ -1,5 +1,5 @@
 /* ======================================
-   CAROUSEL.JS - Reviews Carousel
+   CAROUSEL.JS - Reviews Carousel (Simple Version)
    ====================================== */
 
 class ReviewsCarousel {
@@ -17,250 +17,133 @@ class ReviewsCarousel {
         try {
             await this.loadReviews();
             if (this.reviews && this.reviews.length > 0) {
-                this.setupCarousel();
+                this.render();
                 this.setupEventListeners();
                 this.startAutoPlay();
             } else {
-                console.error('No reviews found');
-                const container = document.getElementById('carouselContainer');
-                if (container) {
-                    container.innerHTML = '<div class="loading-reviews">Nessuna recensione disponibile.</div>';
-                }
+                document.getElementById('reviewsContent').innerHTML = '<p style="text-align:center;color:#888;">Nessuna recensione disponibile.</p>';
             }
         } catch (error) {
-            console.error('Failed to initialize carousel:', error);
-            const container = document.getElementById('carouselContainer');
-            if (container) {
-                container.innerHTML = '<div class="loading-reviews">Errore nell\'inizializzazione del carosello.</div>';
-            }
+            console.error('Carousel error:', error);
+            document.getElementById('reviewsContent').innerHTML = '<p style="text-align:center;color:#888;">Errore nel caricamento recensioni.</p>';
         }
     }
 
     async loadReviews() {
-        console.log('Loading reviews...');
         const response = await fetch('reviews_complete.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const data = await response.json();
         this.reviews = data.reviews;
-        console.log('Reviews loaded:', this.reviews.length);
         
         // Update stats
-        const avgRatingEl = document.getElementById('averageRating');
-        const totalReviewsEl = document.getElementById('totalReviews');
-        if (avgRatingEl) avgRatingEl.textContent = data.statistics.average_rating.toFixed(1);
-        if (totalReviewsEl) totalReviewsEl.textContent = data.statistics.total_reviews;
+        const avgEl = document.getElementById('averageRating');
+        const totalEl = document.getElementById('totalReviews');
+        if (avgEl) avgEl.textContent = data.statistics.average_rating.toFixed(1);
+        if (totalEl) totalEl.textContent = data.statistics.total_reviews;
     }
 
-    setupCarousel() {
-        console.log('Setting up carousel with', this.reviews.length, 'reviews');
-        const container = document.getElementById('carouselContainer');
+    render() {
+        const review = this.reviews[this.currentIndex];
+        const content = document.getElementById('reviewsContent');
         const controls = document.getElementById('carouselControls');
         const dotsContainer = document.getElementById('carouselDots');
-
-        if (!container) {
-            console.error('carouselContainer not found');
-            return;
-        }
-        if (!controls) {
-            console.error('carouselControls not found');
-            return;
-        }
-        if (!dotsContainer) {
-            console.error('carouselDots not found');
-            return;
-        }
-
-        if (this.reviews.length === 0) {
-            console.error('No reviews to display');
-            container.innerHTML = '<div class="loading-reviews">Nessuna recensione trovata.</div>';
-            return;
-        }
-
-        // Create carousel track
-        const track = document.createElement('div');
-        track.className = 'carousel-track';
-        track.id = 'carouselTrack';
-
-        // Create review cards
-        this.reviews.forEach((review, index) => {
-            const card = this.createReviewCard(review, index);
-            track.appendChild(card);
-            console.log('Created card', index + 1, 'of', this.reviews.length);
-        });
-
-        container.innerHTML = '';
-        container.appendChild(track);
-        controls.style.display = 'flex';
-        console.log('Track appended to container, controls displayed');
-
-        // Create dots
-        this.reviews.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.className = 'dot';
-            dot.setAttribute('aria-label', `Vai alla recensione ${index + 1}`);
-            dot.addEventListener('click', () => this.goToSlide(index));
-            dotsContainer.appendChild(dot);
-        });
-
-        // Show first review
-        this.showReview(0);
-    }
-
-    createReviewCard(review, index) {
-        const card = document.createElement('div');
-        card.className = 'review-card';
-        card.setAttribute('data-index', index);
+        
+        if (!content || !review) return;
 
         const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
         const date = new Date(review.date).toLocaleDateString('it-IT', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
+            year: 'numeric', month: 'long', day: 'numeric'
         });
+        const categories = review.categories.map(cat => 
+            `<span style="display:inline-block;background:#e8f0e8;color:#5c7a5c;padding:3px 10px;border-radius:20px;font-size:12px;margin:2px;">${cat}</span>`
+        ).join('');
 
-        const categories = review.categories
-            .map(cat => `<span class="category-tag">${cat}</span>`)
-            .join('');
-
-        card.innerHTML = `
-            <div class="review-header">
-                <div class="review-author">
-                    <div class="author-name">
+        content.innerHTML = `
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;flex-wrap:wrap;gap:8px;">
+                <div>
+                    <div style="font-weight:600;color:#333;">
                         ${review.author}
-                        ${review.verified ? '<span class="verified-badge">Verificato</span>' : ''}
+                        ${review.verified ? '<span style="background:#d4edda;color:#155724;font-size:11px;padding:2px 8px;border-radius:10px;margin-left:8px;">✓ Verificato</span>' : ''}
                     </div>
-                    <div class="review-date">${date}</div>
+                    <div style="color:#888;font-size:13px;">${date}</div>
                 </div>
-                <div class="review-rating">
-                    <span class="stars">${stars}</span>
-                </div>
+                <div style="color:#5c7a5c;font-size:18px;letter-spacing:2px;">${stars}</div>
             </div>
-            <div class="review-title">${review.title}</div>
-            <div class="review-text">${review.text}</div>
-            <div class="review-categories">${categories}</div>
+            <div style="font-weight:600;color:#5c7a5c;margin-bottom:8px;font-size:16px;">${review.title}</div>
+            <div style="color:#555;line-height:1.6;margin-bottom:12px;">${review.text}</div>
+            <div>${categories}</div>
         `;
 
-        return card;
-    }
-
-    showReview(index) {
-        console.log('showReview called with index:', index);
-        const track = document.getElementById('carouselTrack');
-        const dots = document.querySelectorAll('.dot');
-        
-        if (!track) {
-            console.error('Track not found');
-            return;
-        }
-
-        console.log('Found track, dots:', dots.length);
-
-        // Move track to show the correct card
-        const offset = -100 * index;
-        track.style.transform = `translateX(${offset}%)`;
-        console.log('Track transformed to:', offset + '%');
+        // Show controls
+        if (controls) controls.style.display = 'flex';
 
         // Update dots
-        dots.forEach(dot => dot.classList.remove('active'));
-        if (dots[index]) {
-            dots[index].classList.add('active');
+        if (dotsContainer && dotsContainer.children.length === 0) {
+            this.reviews.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.setAttribute('aria-label', `Recensione ${i + 1}`);
+                dot.onclick = () => this.goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+        } else if (dotsContainer) {
+            Array.from(dotsContainer.children).forEach((dot, i) => {
+                dot.classList.toggle('active', i === this.currentIndex);
+            });
         }
-
-        this.currentIndex = index;
     }
 
     goToSlide(index) {
-        this.showReview(index);
+        this.currentIndex = index;
+        this.render();
         this.resetAutoPlay();
     }
 
     nextReview() {
-        console.log('nextReview called, current:', this.currentIndex);
-        const nextIndex = (this.currentIndex + 1) % this.reviews.length;
-        this.goToSlide(nextIndex);
+        this.currentIndex = (this.currentIndex + 1) % this.reviews.length;
+        this.render();
     }
 
     prevReview() {
-        console.log('prevReview called, current:', this.currentIndex);
-        const prevIndex = (this.currentIndex - 1 + this.reviews.length) % this.reviews.length;
-        this.goToSlide(prevIndex);
+        this.currentIndex = (this.currentIndex - 1 + this.reviews.length) % this.reviews.length;
+        this.render();
     }
 
     setupEventListeners() {
-        console.log('Setting up event listeners...');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const container = document.getElementById('carouselContainer');
+        const content = document.getElementById('reviewsContent');
 
-        console.log('prevBtn:', prevBtn, 'nextBtn:', nextBtn, 'container:', container);
+        if (prevBtn) prevBtn.onclick = () => { this.prevReview(); this.resetAutoPlay(); };
+        if (nextBtn) nextBtn.onclick = () => { this.nextReview(); this.resetAutoPlay(); };
 
-        if (prevBtn && nextBtn && container) {
-            prevBtn.addEventListener('click', () => {
-                console.log('Prev button clicked');
-                this.prevReview();
-            });
-            nextBtn.addEventListener('click', () => {
-                console.log('Next button clicked');
-                this.nextReview();
-            });
-            console.log('Event listeners attached to navigation buttons');
+        if (content) {
+            content.onmouseenter = () => this.isPaused = true;
+            content.onmouseleave = () => this.isPaused = false;
 
-            // Pause on hover
-            container.addEventListener('mouseenter', () => this.pauseAutoPlay());
-            container.addEventListener('mouseleave', () => this.resumeAutoPlay());
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') this.prevReview();
-                if (e.key === 'ArrowRight') this.nextReview();
-            });
-
-            // Touch swipe support
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            container.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            container.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                this.handleSwipe(touchStartX, touchEndX);
-            });
+            // Touch swipe
+            let startX = 0;
+            content.ontouchstart = (e) => startX = e.changedTouches[0].screenX;
+            content.ontouchend = (e) => {
+                const diff = startX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 50) {
+                    diff > 0 ? this.nextReview() : this.prevReview();
+                    this.resetAutoPlay();
+                }
+            };
         }
-    }
 
-    handleSwipe(startX, endX) {
-        const swipeThreshold = 50;
-        const diff = startX - endX;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                this.nextReview();
-            } else {
-                this.prevReview();
-            }
-        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') { this.prevReview(); this.resetAutoPlay(); }
+            if (e.key === 'ArrowRight') { this.nextReview(); this.resetAutoPlay(); }
+        });
     }
 
     startAutoPlay() {
-        console.log('Starting auto-play with delay:', this.autoPlayDelay);
         this.autoPlayInterval = setInterval(() => {
-            if (!this.isPaused) {
-                console.log('Auto-play tick');
-                this.nextReview();
-            }
+            if (!this.isPaused) this.nextReview();
         }, this.autoPlayDelay);
-    }
-
-    pauseAutoPlay() {
-        this.isPaused = true;
-    }
-
-    resumeAutoPlay() {
-        this.isPaused = false;
     }
 
     resetAutoPlay() {

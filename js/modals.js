@@ -38,7 +38,7 @@ function renderGallery(images) {
     }).join('');
     return `
         <div class="mt-10">
-            <h4 class="text-lg font-semibold text-primary mb-3">Immagini</h4>
+            <h4 class="text-lg font-semibold text-primary mb-3">Gallery</h4>
             <div class="article-gallery">${items}</div>
         </div>
     `;
@@ -51,11 +51,13 @@ function openArticleModal(id) {
         article = blogArticles.find(a => a.id === id);
     }
     if (article) {
+        // Usa modalText per la home se disponibile, altrimenti fullText
+        const textContent = article.modalText || article.fullText;
         modalBody.innerHTML = `
             <span class="text-xs font-bold ${article.colorClass} uppercase tracking-widest mb-2 block">${article.tag}</span>
             <h3 class="text-3xl font-serif font-bold text-primary mb-6">${article.title}</h3>
             <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">
-                ${article.fullText}
+                ${textContent}
             </div>
             ${renderGallery(article.images)}
         `;

@@ -15,6 +15,11 @@ function showTab(tabName) {
         giovani: document.getElementById('btn-giovani'),
         terzaeta: document.getElementById('btn-terzaeta')
     };
+    
+    const backgrounds = {
+        adulti: document.getElementById('bg-adulti'),
+        giovani: document.getElementById('bg-giovani')
+    };
 
     // Nascondi tutti i tab (classe tab-hidden con !important per evitare conflitti con grid)
     Object.values(tabs).forEach(tab => { tab.classList.add('tab-hidden'); });
@@ -24,6 +29,9 @@ function showTab(tabName) {
         btn.classList.remove('active-tab', 'shadow-md');
         btn.classList.add('text-secondary', 'bg-gray-100');
     });
+    
+    // Nascondi tutti gli sfondi
+    Object.values(backgrounds).forEach(bg => { if(bg) bg.classList.add('hidden'); });
 
     // Mostra il tab selezionato e attiva il bottone
     if (tabs[tabName]) {
@@ -31,7 +39,53 @@ function showTab(tabName) {
         buttons[tabName].classList.add('active-tab', 'shadow-md');
         buttons[tabName].classList.remove('text-secondary', 'bg-gray-100');
     }
+    
+    // Mostra lo sfondo corrispondente
+    if (backgrounds[tabName]) {
+        backgrounds[tabName].classList.remove('hidden');
+    }
+    
+    // Chiudi tutte le card percorso quando si cambia tab
+    document.querySelectorAll('.percorso-card.active').forEach(card => {
+        card.classList.remove('active');
+    });
 }
+
+// --- PERCORSI CARD ESPANDIBILI ---
+function initPercorsiCards() {
+    const cards = document.querySelectorAll('.percorso-card');
+    
+    cards.forEach(card => {
+        const header = card.querySelector('.percorso-header');
+        
+        header.addEventListener('click', () => {
+            const isActive = card.classList.contains('active');
+            
+            // Chiudi tutte le altre card nello stesso tab
+            const parentTab = card.closest('[id^="tab-"]');
+            if (parentTab) {
+                parentTab.querySelectorAll('.percorso-card.active').forEach(activeCard => {
+                    if (activeCard !== card) {
+                        activeCard.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Toggle della card cliccata
+            card.classList.toggle('active');
+            
+            // Scroll smooth alla card se aperta
+            if (!isActive) {
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        });
+    });
+}
+
+// Inizializza le card quando il DOM è pronto
+document.addEventListener('DOMContentLoaded', initPercorsiCards);
 
 // --- LABORATORI PAGINATION ---
 const laboratoriContainer = document.getElementById('laboratori-container');
@@ -52,7 +106,6 @@ function renderLabPage() {
         const card = document.createElement('div');
         card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
         card.innerHTML = `
-            ${art.bgImage ? `<div class="w-full h-40 rounded-lg overflow-hidden mb-4 flex-shrink-0"><img src="${encodeURI(art.bgImage)}" alt="${art.title}" class="w-full h-full object-cover"></div>` : ''}
             <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
             <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
             <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
@@ -90,12 +143,22 @@ function changeLabPage(direction) {
     document.getElementById('laboratori').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// --- BLOG RENDERING ---
-function renderBlogArticles() {
-    const blogContainer = document.getElementById('blog-container');
+// --- BLOG PAGINATION ---
+const blogContainer = document.getElementById('blog-container');
+
+let currentBlogPage = 0;
+const blogItemsPerPage = 4;
+const totalBlogPages = Math.ceil(blogArticles.length / blogItemsPerPage);
+
+function renderBlogPage() {
     if (!blogContainer) return;
     
-    blogArticles.forEach(art => {
+    blogContainer.innerHTML = '';
+    const start = currentBlogPage * blogItemsPerPage;
+    const end = start + blogItemsPerPage;
+    const pageArticles = blogArticles.slice(start, end);
+
+    pageArticles.forEach(art => {
         const card = document.createElement('div');
         card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
         card.innerHTML = `
@@ -114,9 +177,126 @@ function renderBlogArticles() {
             thumbImg.alt = art.title + ' - anteprima';
             thumb.appendChild(thumbImg);
             card.appendChild(thumb);
+        } else {
+            // Aggiungi pallino colorato per card senza immagini
+            const dot = document.createElement('div');
+            // Estrai la stagione dalla colorClass (text-accent-spring -> spring)
+            const seasonMatch = art.colorClass.match(/text-accent-(spring|summer|autumn|winter)/);
+            const season = seasonMatch ? seasonMatch[1] : 'spring';
+            dot.className = `color-dot dot-${season}`;
+            card.appendChild(dot);
         }
 
         blogContainer.appendChild(card);
+    });
+
+    const prevBtn = document.getElementById('prev-blog-btn');
+    const nextBtn = document.getElementById('next-blog-btn');
+    const indicator = document.getElementById('blog-page-indicator');
+    
+    if (prevBtn) prevBtn.disabled = currentBlogPage === 0;
+    if (nextBtn) nextBtn.disabled = currentBlogPage === totalBlogPages - 1;
+    if (indicator) indicator.textContent = `${currentBlogPage + 1} / ${totalBlogPages}`;
+}
+
+function changeBlogPage(direction) {
+    currentBlogPage += direction;
+    if (currentBlogPage < 0) currentBlogPage = 0;
+    if (currentBlogPage >= totalBlogPages) currentBlogPage = totalBlogPages - 1;
+    renderBlogPage();
+    document.getElementById('Blog').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Alias per retrocompatibilità
+function renderBlogArticles() {
+    renderBlogPage();
+}
+
+// --- EVENTI/APPUNTAMENTI ---
+function getUpcomingEvents() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    return articles.filter(art => {
+        if (!art.eventDate) return false;
+        
+        // Se è un range (oggetto con start/end)
+        if (typeof art.eventDate === 'object' && art.eventDate.start) {
+            const startDate = new Date(art.eventDate.start);
+            return startDate >= today;
+        }
+        
+        // Se è una data singola
+        const eventDate = new Date(art.eventDate);
+        return eventDate >= today;
+    }).sort((a, b) => {
+        const dateA = typeof a.eventDate === 'object' ? new Date(a.eventDate.start) : new Date(a.eventDate);
+        const dateB = typeof b.eventDate === 'object' ? new Date(b.eventDate.start) : new Date(b.eventDate);
+        return dateA - dateB;
+    });
+}
+
+function formatEventDate(eventDate) {
+    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+    
+    if (typeof eventDate === 'object' && eventDate.start) {
+        const start = new Date(eventDate.start);
+        const end = new Date(eventDate.end);
+        const startDay = start.getDate();
+        const endDay = end.getDate();
+        const month = start.toLocaleDateString('it-IT', { month: 'long' });
+        const year = start.getFullYear();
+        return `${startDay}-${endDay} ${month} ${year}`;
+    }
+    
+    return new Date(eventDate).toLocaleDateString('it-IT', options);
+}
+
+function renderUpcomingEvents() {
+    const container = document.getElementById('eventi-container');
+    const section = document.getElementById('eventi');
+    const navLink = document.getElementById('nav-eventi');
+    const mobileNavLink = document.getElementById('mobile-nav-eventi');
+    
+    if (!container || !section) return;
+    
+    const upcomingEvents = getUpcomingEvents();
+    
+    // Se non ci sono eventi futuri, nascondi la sezione
+    if (upcomingEvents.length === 0) {
+        section.style.display = 'none';
+        if (navLink) navLink.style.display = 'none';
+        if (mobileNavLink) mobileNavLink.style.display = 'none';
+        return;
+    }
+    
+    // Mostra sezione e nav
+    section.style.display = 'block';
+    if (navLink) navLink.style.display = 'inline';
+    if (mobileNavLink) mobileNavLink.style.display = 'block';
+    
+    container.innerHTML = '';
+    
+    upcomingEvents.forEach(event => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-6 rounded-xl shadow-lg border-l-4 border-accent-cta hover:shadow-xl transition';
+        
+        const dateFormatted = formatEventDate(event.eventDate);
+        const location = event.eventLocation || '';
+        
+        card.innerHTML = `
+            <div class="flex items-center gap-2 mb-3">
+                <span class="text-2xl">📅</span>
+                <span class="text-accent-cta font-bold">${dateFormatted}</span>
+            </div>
+            ${location ? `<p class="text-sm text-secondary mb-3">📍 ${location}</p>` : ''}
+            <span class="text-xs font-bold ${event.colorClass} uppercase tracking-widest mb-2 block">${event.tag}</span>
+            <h3 class="text-xl font-bold text-primary mb-3 font-serif">${event.title}</h3>
+            <p class="text-secondary text-sm mb-4">${event.excerpt}</p>
+            <button onclick="openArticleModal(${event.id})" class="font-bold text-primary hover:text-accent-cta transition">Scopri di più →</button>
+        `;
+        
+        container.appendChild(card);
     });
 }
 
@@ -231,6 +411,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render contenuti
     renderLabPage();
     renderBlogArticles();
+    renderUpcomingEvents();
     
     // Inizializza calendario
     initCalendar();
@@ -240,6 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     adjustScrollOffset();
     initSeasonSwitcher();
     initStudioCarousels();
+    initNavHighlight();
 });
 
 // --- CAROUSEL (caricato dopo load) ---
@@ -248,3 +430,66 @@ window.addEventListener('load', () => {
         new ReviewsCarousel();
     }, 100);
 });
+
+// --- NAVIGATION HIGHLIGHT ON SCROLL ---
+function initNavHighlight() {
+    const navLinks = document.querySelectorAll('.nav-link[data-section]');
+    const sections = [];
+    
+    // Raccogli le sezioni corrispondenti ai link
+    navLinks.forEach(link => {
+        const sectionId = link.getAttribute('data-section');
+        const section = document.getElementById(sectionId);
+        if (section) {
+            sections.push({ id: sectionId, element: section });
+        }
+    });
+    
+    if (sections.length === 0) return;
+    
+    // Funzione per aggiornare il link attivo
+    function updateActiveLink() {
+        const scrollPos = window.scrollY + 150; // offset per header fisso
+        let currentSection = null;
+        
+        // Trova la sezione corrente
+        sections.forEach(({ id, element }) => {
+            const sectionTop = element.offsetTop;
+            const sectionBottom = sectionTop + element.offsetHeight;
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+                currentSection = id;
+            }
+        });
+        
+        // Se siamo in fondo alla pagina, attiva Contatti
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+            currentSection = 'contatti';
+        }
+        
+        // Aggiorna classi
+        navLinks.forEach(link => {
+            const linkSection = link.getAttribute('data-section');
+            if (linkSection === currentSection) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+    
+    // Ascolta scroll con throttling
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                updateActiveLink();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Esegui subito
+    updateActiveLink();
+}
