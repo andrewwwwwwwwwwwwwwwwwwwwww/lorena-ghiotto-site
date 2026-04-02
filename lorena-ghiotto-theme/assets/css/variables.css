@@ -1,0 +1,97 @@
+/* ======================================
+   VARIABLES.CSS - Palette e Variabili
+   ====================================== */
+
+/* BASE */
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: var(--color-bg);
+    color: #333;
+    transition: background-color 2.2s ease, color 1.0s ease;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* PALETTE COLORI (CSS Variables) */
+:root {
+    /* Base Colors (Sempre uguali) */
+    --color-primary: #3A6B53;
+    --color-secondary: #5C6F66;
+    --color-bg: #F9FAF9;
+    --color-surface: #EBF2ED;
+
+    /* CTA color should remain the brand green even when seasons change */
+    --color-cta: #3A6B53;
+    --color-cta-hover: #2f5a44;
+
+    /* Accent defaults ( verranno cambiate con le classi season-... ) */
+    --color-accent: #8EB89D;
+    --color-accent-hover: #6ea683;
+
+    /* Header height for scroll offset */
+    --header-height: 4rem;
+}
+
+/* === STAGIONI === */
+
+body.season-winter {
+    --color-accent: #5E81AC;
+    --color-accent-hover: #4C566A;
+    --color-bg: #F3F7FB;
+    --color-surface: #EAF2F8;
+}
+
+body.season-spring {
+    --color-accent: #A8D5BA;
+    --color-accent-hover: #8EB89D;
+    --color-bg: #F5FBF7;
+    --color-surface: #EBF5EF;
+}
+
+body.season-summer {
+    --color-accent: #E9B872;
+    --color-accent-hover: #D4A056;
+    --color-bg: #FFF9F0;
+    --color-surface: #FFF3E0;
+}
+
+body.season-autumn {
+    --color-accent: #D08770;
+    --color-accent-hover: #BF616A;
+    --color-bg: #FFF6F0;
+    --color-surface: #FFF1E6;
+}
+
+/* === UTILITY CLASSES === */
+
+.text-primary { color: var(--color-primary); }
+.bg-primary { background-color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.bg-main { background-color: var(--color-surface); }
+.bg-accent-cta { background-color: var(--color-cta); }
+.text-accent-cta { color: var(--color-accent); }
+
+/* Accent colors per stagione */
+.text-accent-spring { color: #E8A87C; }
+.text-accent-summer { color: #88C0D0; }
+.text-accent-autumn { color: #D08770; }
+.text-accent-winter { color: #5E81AC; }
+
+/* Border colors for season cards */
+.border-winter { border-color: #8BA9C7 !important; }
+.border-spring { border-color: #A8D5BA !important; }
+.border-summer { border-color: #E9B872 !important; }
+.border-autumn { border-color: #D08770 !important; }
+
+/* Active style for season card */
+.season-card.active {
+    border-color: var(--color-accent) !important;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+/* Scroll offset for fixed header */
+html {
+    scroll-padding-top: var(--header-height);
+}

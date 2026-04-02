@@ -7,6 +7,7 @@
 
 get_header();
 
+// Le immagini sono in assets/img/ del tema
 $img_base = get_template_directory_uri() . '/assets/img/';
 ?>
 

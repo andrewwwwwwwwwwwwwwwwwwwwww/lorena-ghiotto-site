@@ -148,7 +148,8 @@ function changeLabPage(direction) {
     if (currentLabPage < 0) currentLabPage = 0;
     if (currentLabPage >= totalLabPages) currentLabPage = totalLabPages - 1;
     renderLabPage();
-    document.getElementById('laboratori').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const labSection = document.getElementById('laboratori') || laboratoriContainer;
+    if (labSection) labSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // --- BLOG PAGINATION ---

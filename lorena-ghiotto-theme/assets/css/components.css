@@ -1,0 +1,744 @@
+/* ======================================
+   COMPONENTS.CSS - Stili Componenti
+   ====================================== */
+
+/* === NAVIGATION HIGHLIGHT === */
+.nav-link {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-link.active {
+    color: #3A6B53 !important;
+    font-weight: 600;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #3A6B53;
+    border-radius: 1px;
+}
+
+/* === SEASON CARDS === */
+.season-card {
+    transition: all 0.3s ease;
+}
+
+.season-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* === TAB ATTIVI === */
+.active-tab {
+    background-color: #3A6B53 !important;
+    color: white !important;
+}
+
+/* === TAB NASCOSTI === */
+.tab-hidden {
+    display: none !important;
+}
+
+/* === SFONDI PERCORSI === */
+.percorso-bg {
+    transition: opacity 0.5s ease;
+}
+
+.percorso-bg.hidden {
+    opacity: 0 !important;
+}
+
+/* === PERCORSI CARD ESPANDIBILI === */
+.percorso-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.percorso-card:hover {
+    border-color: #3A6B53;
+    box-shadow: 0 4px 12px rgba(58, 107, 83, 0.1);
+}
+
+.percorso-card.active {
+    border-color: #3A6B53;
+    box-shadow: 0 8px 24px rgba(58, 107, 83, 0.15);
+}
+
+.percorso-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: #333;
+    transition: background-color 0.2s ease;
+}
+
+.percorso-header:hover {
+    background-color: var(--color-surface, #EBF2ED);
+}
+
+.percorso-card.active .percorso-header {
+    background-color: var(--color-surface, #EBF2ED);
+}
+
+.percorso-arrow {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.percorso-card.active .percorso-arrow {
+    transform: rotate(180deg);
+}
+
+.percorso-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 1.25rem;
+    color: #5C6F66;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.percorso-card.active .percorso-content {
+    max-height: 500px;
+    padding: 0 1.25rem 1.25rem 1.25rem;
+}
+
+/* === ANIMAZIONE PALLINO PERCORSI === */
+.p-5.border.rounded-lg span.rounded-full {
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: center;
+}
+
+.p-5.border.rounded-lg:hover span.rounded-full {
+    transform: scale(1.8);
+    box-shadow: 0 0 0 2px rgba(58, 107, 83, 0.2);
+}
+
+/* === BLOG CARDS === */
+.blog-card {
+    position: relative;
+    overflow: hidden;
+    background: white;
+    transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    opacity: 0.08;
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 0 C20 0 0 20 0 50 C0 80 20 100 50 100 C80 100 100 80 100 50 C100 20 80 0 50 0 Z' fill='%233A6B53'/%3E%3C/svg%3E");
+    transform: rotate(-15deg);
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover::after {
+    transform: rotate(0deg) scale(1.1);
+    opacity: 0.12;
+}
+
+/* === CARD THUMBNAILS === */
+.card-thumb {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.92);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    border: 2px solid rgba(255,255,255,0.85);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-card:hover .card-thumb,
+.card:hover .card-thumb {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Keep thumbnails visible on touch devices */
+@media (hover: none) {
+    .card-thumb {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === PALLINO COLORATO (card senza foto) === */
+.color-dot {
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 3px solid currentColor;
+    background: transparent;
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Colori delle stagioni per i pallini */
+.color-dot.dot-spring { color: #E8A87C; }
+.color-dot.dot-summer { color: #88C0D0; }
+.color-dot.dot-autumn { color: #D08770; }
+.color-dot.dot-winter { color: #5E81AC; }
+
+.blog-card:hover .color-dot {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background-color: currentColor;
+}
+
+/* Touch devices */
+@media (hover: none) {
+    .color-dot {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        background-color: currentColor;
+    }
+}
+
+/* === MODALI === */
+
+/* Modale Universale */
+#universal-modal {
+    transition: opacity 0.5s ease;
+    background-color: rgba(0,0,0,0.45) !important;
+}
+
+#universal-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#universal-modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Modale Percorsi (più larga) */
+#percorsi-modal {
+    transition: opacity 0.5s ease;
+    background-color: rgba(0,0,0,0.45) !important;
+}
+
+#percorsi-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#percorsi-modal:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#percorsi-modal-panel {
+    max-width: 1200px;
+    position: relative;
+}
+
+#percorsi-bg-watermark {
+    position: absolute;
+    inset: 0;
+    background-image: url('../img/Cards.png');
+    background-size: 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#percorsi-modal-content {
+    position: relative;
+    z-index: 1;
+}
+
+#percorsi-modal-body h2 {
+    color: #2d5540 !important;
+}
+
+#percorsi-modal-body p {
+    color: #3a3a3a !important;
+    font-weight: 400 !important;
+}
+
+/* Pannello contenuto dentro la modale */
+#modal-content {
+    position: relative;
+    z-index: 10;
+    background-color: rgba(255,255,255,0.80);
+    border-radius: 1rem;
+    overflow: auto;
+    max-height: 90vh;
+}
+
+#modal-content .text-secondary {
+    color: #4a4a4a !important;
+    font-weight: 400 !important;
+}
+
+#modal-content .text-primary {
+    color: #2d5540 !important;
+    font-weight: 500 !important;
+}
+
+#modal-panel {
+    position: relative;
+    background: white;
+}
+
+/* === RECENSIONI CAROUSEL === */
+.reviews-section-carousel {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    padding: 32px 24px;
+}
+
+.reviews-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.reviews-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #7f8c8d;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stars-display {
+    color: #f39c12;
+    font-size: 1.3rem;
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    margin-bottom: 20px;
+    min-height: 150px;
+}
+
+.carousel-track {
+    width: 100%;
+}
+
+.review-card {
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+}
+
+.review-card:not(.active) {
+    display: none !important;
+}
+
+.review-card.active {
+    display: block !important;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.review-author {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.author-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.verified-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--color-primary);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.verified-badge::before {
+    content: "✓";
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.review-date {
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+.review-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.stars {
+    color: #f39c12;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    white-space: nowrap;
+}
+
+.review-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.review-text {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1rem;
+    text-align: justify;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.review-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.category-tag {
+    background: var(--color-surface);
+    color: var(--color-secondary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Navigation Controls */
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+
+.carousel-arrow {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(58, 107, 83, 0.3);
+}
+
+.carousel-arrow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(58, 107, 83, 0.5);
+    background: var(--color-cta-hover);
+}
+
+.carousel-arrow:active {
+    transform: scale(0.95);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: scale(1);
+}
+
+/* Dots Navigation */
+.carousel-dots {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #bdc3c7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    padding: 0;
+}
+
+.dot.active {
+    background: var(--color-primary);
+    width: 30px;
+    border-radius: 5px;
+}
+
+.dot:hover {
+    background: #95a5a6;
+}
+
+.dot.active:hover {
+    background: var(--color-primary);
+}
+
+/* Footer Link */
+.reviews-footer {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid var(--color-surface);
+}
+
+.miodottore-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(58, 107, 83, 0.3);
+}
+
+.miodottore-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 107, 83, 0.5);
+    background: var(--color-cta-hover);
+}
+
+.miodottore-link::after {
+    content: "→";
+    font-size: 1.2rem;
+}
+
+/* Loading State */
+.loading-reviews {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+/* === CALENDARIO === */
+.calendar-day {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.calendar-day:hover:not(.disabled) {
+    background-color: #EBF2ED;
+    color: #3A6B53;
+}
+
+.calendar-day.selected {
+    background-color: #3A6B53;
+    color: white;
+}
+
+.calendar-day.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.time-slot {
+    border: 1px solid #8EB89D;
+    color: #3A6B53;
+    border-radius: 8px;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.time-slot:hover {
+    background-color: #EBF2ED;
+}
+
+.time-slot.selected {
+    background-color: #3A6B53;
+    color: white;
+    border-color: #3A6B53;
+}
+
+/* === GALLERIA IMMAGINI ARTICOLO === */
+.article-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .article-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.article-gallery figure {
+    overflow: hidden;
+    border-radius: 0.75rem;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.article-gallery img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s ease;
+    cursor: zoom-in;
+}
+
+.article-gallery figure:hover img {
+    transform: scale(1.03);
+}
+
+/* === RESPONSIVE CAROUSEL === */
+@media (max-width: 768px) {
+    .reviews-section-carousel {
+        padding: 30px 20px;
+        border-radius: 15px;
+    }
+
+    .review-card {
+        padding: 20px 10px;
+    }
+
+    .review-header {
+        flex-direction: column;
+    }
+
+    .carousel-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .carousel-controls {
+        gap: 10px;
+    }
+
+    .carousel-dots {
+        gap: 8px;
+    }
+
+    .miodottore-link {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-section-carousel {
+        padding: 20px 15px;
+    }
+
+    .review-title {
+        font-size: 1rem;
+    }
+
+    .review-text {
+        font-size: 0.95rem;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}

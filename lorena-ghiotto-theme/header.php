@@ -78,14 +78,39 @@
 
 <?php
 /**
+ * Mappa: slug pagina WP → URL completo homepage + anchor
+ * Funziona da qualsiasi pagina, non solo dalla front page
+ */
+function lorena_page_slug_to_anchor($url) {
+    $home = rtrim(home_url('/'), '/');
+    $anchor_map = array(
+        'chi-sono'   => $home . '/#chisiamo',
+        'approccio'  => $home . '/#approccio',
+        'percorsi'   => $home . '/#percorsi',
+        'laboratori' => $home . '/#laboratori',
+        'blog'       => $home . '/#Blog',
+        'contatti'   => $home . '/#contatti',
+    );
+    $parsed = wp_parse_url($url);
+    $slug   = isset($parsed['path']) ? trim($parsed['path'], '/') : '';
+    $slug   = basename($slug);
+    return isset($anchor_map[$slug]) ? $anchor_map[$slug] : null;
+}
+
+/**
  * Walker per il menu desktop
  */
 class Lorena_Nav_Walker extends Walker_Nav_Menu {
     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
-        $url     = $item->url;
-        $title   = $item->title;
+        $url   = $item->url;
+        $title = $item->title;
+        // Converti sempre i link a pagine in anchor della homepage
+        $anchor = lorena_page_slug_to_anchor($url);
+        if ($anchor) {
+            $url = $anchor;
+        }
         $classes = in_array('current-menu-item', $item->classes) ? 'text-primary font-semibold' : 'hover:text-primary transition';
-        $output .= '<a href="' . esc_url($url) . '" class="nav-link whitespace-nowrap ' . esc_attr($classes) . '">' . esc_html($title) . '</a>';
+        $output .= '<a href="' . esc_attr($url) . '" class="nav-link whitespace-nowrap ' . esc_attr($classes) . '">' . esc_html($title) . '</a>';
     }
 }
 
@@ -94,9 +119,14 @@ class Lorena_Nav_Walker extends Walker_Nav_Menu {
  */
 class Lorena_Mobile_Nav_Walker extends Walker_Nav_Menu {
     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
-        $url    = $item->url;
-        $title  = $item->title;
-        $output .= '<a href="' . esc_url($url) . '" class="block text-secondary hover:text-primary py-1">' . esc_html($title) . '</a>';
+        $url   = $item->url;
+        $title = $item->title;
+        // Converti sempre i link a pagine in anchor della homepage
+        $anchor = lorena_page_slug_to_anchor($url);
+        if ($anchor) {
+            $url = $anchor;
+        }
+        $output .= '<a href="' . esc_attr($url) . '" class="block text-secondary hover:text-primary py-1">' . esc_html($title) . '</a>';
     }
 }
 
@@ -104,12 +134,15 @@ class Lorena_Mobile_Nav_Walker extends Walker_Nav_Menu {
  * Fallback menu
  */
 function lorena_fallback_menu() {
-    $pages = array('Chi Sono', 'Laboratori', 'Blog', 'Media', 'Contatti');
-    foreach ($pages as $page) {
-        $obj = get_page_by_title($page);
-        if ($obj) {
-            echo '<a href="' . esc_url(get_permalink($obj)) . '" class="nav-link hover:text-primary transition whitespace-nowrap">' . esc_html($page) . '</a>';
-        }
+    $items = array(
+        'Chi Sono'   => is_front_page() ? '#chisiamo'   : home_url('/chi-sono/'),
+        'Laboratori' => is_front_page() ? '#laboratori' : home_url('/laboratori/'),
+        'Blog'       => is_front_page() ? '#Blog'       : home_url('/blog/'),
+        'Media'      => home_url('/media/'),
+        'Contatti'   => is_front_page() ? '#contatti'   : home_url('/contatti/'),
+    );
+    foreach ($items as $label => $href) {
+        echo '<a href="' . esc_attr($href) . '" class="nav-link hover:text-primary transition whitespace-nowrap">' . esc_html($label) . '</a>';
     }
 }
 ?>

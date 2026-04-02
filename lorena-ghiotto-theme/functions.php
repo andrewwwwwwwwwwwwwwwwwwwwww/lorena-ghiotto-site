@@ -118,7 +118,7 @@ function lorena_enqueue_assets() {
         true
     );
 
-    // Inietta base URL immagini e URL reviews prima di data.js
+    // Inietta base URL immagini (tema/assets/) e URL reviews prima di data.js
     wp_add_inline_script(
         'lorena-data',
         'const lorenaImgBase = "' . esc_js(get_template_directory_uri() . '/assets/') . '";
