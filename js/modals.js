@@ -51,8 +51,8 @@ function openArticleModal(id) {
         article = blogArticles.find(a => a.id === id);
     }
     if (article) {
-        // Usa modalText per la home se disponibile, altrimenti fullText
-        const textContent = article.modalText || article.fullText;
+        // HOME MODALE: usa modalText (versione corta), altrimenti fullText
+        const textContent = article.modalText || article.fullText || article.excerpt;
         modalBody.innerHTML = `
             <span class="text-xs font-bold ${article.colorClass} uppercase tracking-widest mb-2 block">${article.tag}</span>
             <h3 class="text-3xl font-serif font-bold text-primary mb-6">${article.title}</h3>
@@ -66,18 +66,35 @@ function openArticleModal(id) {
     }
 }
 
+// --- MODALE EVENTO ---
+function openEventModal() {
+    if (typeof prossimoEvento === 'undefined') return;
+    
+    const textContent = prossimoEvento.fullText || prossimoEvento.excerpt;
+    modalBody.innerHTML = `
+        <span class="text-xs font-bold ${prossimoEvento.colorClass} uppercase tracking-widest mb-2 block">${prossimoEvento.tag}</span>
+        <h3 class="text-3xl font-serif font-bold text-primary mb-6">${prossimoEvento.title}</h3>
+        <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">
+            ${textContent}
+        </div>
+        ${renderGallery(prossimoEvento.images)}
+    `;
+    
+    openModal();
+}
+
 // --- MODALE BIO ---
 function openBioModal() {
     modalBody.innerHTML = `
         <span class="text-xs font-bold text-accent-cta uppercase tracking-widest mb-2 block">CHI SONO</span>
         <h3 class="text-3xl font-serif font-bold text-primary mb-6">La mia storia</h3>
         <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">
-            <p>Il mio percorso nasce da una profonda curiosità verso l'essere umano e le sue risorse infinite. Fin da giovane ho sentito il desiderio di comprendere cosa muove le persone, cosa le ferma e cosa le aiuta a ritrovare la propria strada. Questo interesse mi ha guidata verso la Psicologia e, nel tempo, verso la Psicoterapia.</p>
-            <p>Dopo la <strong>laurea in Psicologia Clinica</strong> presso l'Università di Padova, ho sentito l'esigenza di andare oltre la teoria e di trovare strumenti concreti per aiutare le persone a stare meglio. Ho scelto la <strong>specializzazione in Psicoterapia Cognitivo-Comportamentale</strong> perché credo nell'importanza di lavorare sul "qui e ora", fornendo strategie pratiche per gestire pensieri ed emozioni.</p>
-            <p>Successivamente, l'incontro con l'<strong>EMDR</strong> mi ha aperto nuove prospettive sulla cura del trauma, permettendomi di lavorare ancora più in profondità con chi porta ferite emotive che condizionano il presente. L'EMDR mi ha insegnato che il corpo e la mente custodiscono risorse straordinarie per la guarigione, e che il compito del terapeuta è creare le condizioni perché queste risorse possano emergere.</p>
-            <p>Accanto alla pratica clinica, negli anni ho sviluppato una forte passione per la <strong>mindfulness</strong> e per i <strong>laboratori esperienziali</strong>. Conduco percorsi di gruppo dedicati alla consapevolezza, al benessere emotivo, al mindful eating e alla connessione con sé stessi e con gli altri. Questi laboratori nascono dalla convinzione che la crescita personale si nutre anche di esperienze condivise, di momenti in cui ci si ferma, si respira e ci si ascolta davvero.</p>
-            <p>Oggi, nel mio studio, cerco di integrare tutto questo con un approccio umano, caldo e accogliente. Lavoro con bambini, adolescenti, adulti e anziani, accompagnando ciascuno nel proprio percorso con rispetto, attenzione e professionalità. Credo che la <strong>relazione terapeutica</strong> sia il primo vero strumento di cura: uno spazio protetto in cui sentirsi accolti, compresi e liberi di esplorare il proprio mondo interiore.</p>
-            <p>Il mio impegno quotidiano è quello di essere presente — come persona e come professionista — per chi sceglie di intraprendere un cammino di cambiamento.</p>
+            <p>Sono psicologa, psicoterapeuta e formatrice mindfulness. Il mio lavoro nasce da una profonda passione per il sentire, per i processi emotivi e per le relazioni, ed è il risultato di un percorso personale e professionale fatto di scelte, cambi di direzione e trasformazioni.</p>
+            <p>Ho iniziato il mio percorso di studi a <strong>Padova</strong>, dove mi sono formata in psicologia, vivendo anche un'importante esperienza Erasmus a Parigi, che ha ampliato il mio sguardo personale e culturale. Dopo una laurea triennale che oggi sento non completamente allineata a chi ero, durante la specialistica scelgo di cambiare direzione e approdo alla <strong>Psicologia Clinico-Dinamica</strong>: un vero colpo di fulmine, il mio grande amore.</p>
+            <p>Per il tirocinio post laurea decido di trasferirmi a <strong>Roma</strong>, città in cui vivrò per due anni e mezzo e che segnerà profondamente il mio percorso. È qui che "incontro" <strong>IPOD Plays</strong>, scuola di Psicodramma ad orientamento psicodinamico; un'esperienza che rappresenta per me una vera rivoluzione di pensiero, emotiva, evolutiva e relazionale. Lo psicodramma, ed i maestri che ho incontrato, cambiano presto il mio modo di sentire, di stare nella relazione e di accompagnare l'altro nel proprio percorso.</p>
+            <p>Concluso il tirocinio, sostengo l'Esame di Stato presso l'Università La Sapienza di Roma. Scelgo poi di rimanere a Roma anche per la <strong>specializzazione in Psicoterapia</strong>, ancora una volta attraverso lo Psicodramma, non solo come formazione professionale ma come casa: una città che mi ha adottata, che mi ha insegnato tanto e che continua a nutrire il mio percorso umano e clinico. Ancora oggi torno spesso per seminari, approfondimenti e per gli affetti che lì vivono.</p>
+            <p>Nel tempo ho continuato ad approfondire il lavoro sul sentire e sulla consapevolezza, integrando nel mio percorso una pratica che è diventata centrale: la <strong>mindfulness</strong>. Non solo come strumento clinico, ma come vero e proprio pilastro del mio cammino personale di psicoterapia e crescita. Un momento particolarmente significativo è stato il 1° maggio 2024, quando ho partecipato a un ritiro di cinque giorni di mindfulness a Gavi con i monaci della tradizione di <strong>Thích Nhất Hạnh</strong>. Un'esperienza intensa e trasformativa, che mi ha segnata profondamente e che continua ancora oggi a nutrire il mio modo di essere, di ascoltare e di accompagnare le persone nel loro percorso.</p>
+            <p>Ad oggi <strong>psicodramma, metodi attivi e mindfulness</strong> sono i riferimenti principali del mio lavoro: li utilizzo nel mio studio clinico, nei laboratori esperienziali, nei percorsi di gruppo e in tutte le collaborazioni che creo o a cui partecipo. Credo in un approccio che metta al centro la persona nella sua interezza, il corpo, le emozioni, la relazione e la possibilità di trasformazione.</p>
         </div>
     `;
     
@@ -92,7 +109,8 @@ function openSpaziModal() {
     currentGalleryImages = [
         'img/Studio_selvazzano_01.jpg',
         'img/Studio_Selvazzano_02.jpg',
-        'img/Studio_Selvazzano_03.jpg'
+        'img/Studio_Selvazzano_03.jpg',
+        'img/Studio_Selvazzano_04.jpg'
     ];
 
     const galleryHTML = currentGalleryImages.map((img, idx) => {

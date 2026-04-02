@@ -66,32 +66,30 @@
     <p class="font-serif">Dott.ssa Lorena Ghiotto</p>
   </footer>
 
+  <script src="js/data.js"></script>
   <script>
-    const blogArticles = [
-      { title: "Come Gestire l'Ansia quotidiana", excerpt: "Strategie pratiche e respirazione.", tag: "Benessere", colorClass: "text-accent-winter", id: 5 },
-      { title: "Il Ruolo della Resilienza", excerpt: "Costruire resilienza e forza interiore.", tag: "Psicologia", colorClass: "text-accent-spring", id: 6 },
-      { title: "Relazioni Sane: Confini e Comunicazione", excerpt: "Assertività e gestione dei confini.", tag: "Relazioni", colorClass: "text-accent-summer", id: 7 },
-      { title: "Consapevolezza Emotiva nei Bambini", excerpt: "Riconoscere e gestire le emozioni.", tag: "Genitori & Figli", colorClass: "text-accent-autumn", id: 8 }
-    ];
-
     const container = document.getElementById('blog-list');
     const articleEl = document.getElementById('blog-article');
     const articleContent = document.getElementById('blog-article-content');
 
-    const fullTexts = {
-      5: "<p class='mb-4'>L'ansia è una compagna sempre più frequente nelle nostre vite. In questo articolo scopriamo come riconoscerla e affrontarla con strumenti concreti.</p><p>Impareremo la tecnica della respirazione 4-7-8, il grounding sensoriale e come distinguere un'ansia adattiva da una patologica che richiede supporto professionale.</p>",
-      6: "<p class='mb-4'>La resilienza non è una qualità innata, ma una competenza che si può sviluppare.</p><p>Esploreremo i pilastri della resilienza: auto-consapevolezza, flessibilità mentale, chiedere aiuto e il significato personale attribuito alle sfide.</p>",
-      7: "<p class='mb-4'>Le relazioni sane iniziano dall'assertività e dal rispetto dei confini personali.</p><p>Come dire 'no' senza colpa, ascoltare attivamente e trasformare i conflitti in crescita.</p>",
-      8: "<p class='mb-4'>Sviluppare l'intelligenza emotiva nei bambini è un dono.</p><p>Attraverso gioco, disegno e narrazione, insegniamo a nominare, comprendere ed esprimere le emozioni.</p>"
-    };
-
     function openArticle(id) {
       const art = blogArticles.find(a => a.id === id);
       if (!art) return;
+      
+      // Costruisci galleria immagini se presenti
+      let imagesHtml = '';
+      if (art.images && art.images.length > 0) {
+        imagesHtml = `<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-6">
+          ${art.images.map(img => `<img src="${img}" alt="${art.title}" class="rounded-lg w-full h-40 object-cover">`).join('')}
+        </div>`;
+      }
+      
       articleContent.innerHTML = `
         <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
         <h2 class="text-3xl font-serif font-bold text-primary mb-6">${art.title}</h2>
-        <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">${fullTexts[id] || art.excerpt}</div>
+        ${art.bgImage ? `<img src="${art.bgImage}" alt="${art.title}" class="w-full h-64 object-cover rounded-xl mb-6">` : ''}
+        <div class="text-secondary text-lg leading-relaxed space-y-4 font-light">${art.fullText || art.excerpt}</div>
+        ${imagesHtml}
       `;
       articleEl.classList.remove('hidden');
       window.scrollTo({ top: articleEl.offsetTop - 80, behavior: 'smooth' });
@@ -104,12 +102,15 @@
 
     blogArticles.forEach(art => {
       const card = document.createElement('div');
-      card.className = 'blog-card p-8 rounded-xl shadow-sm border border-gray-100 flex flex-col h-full';
+      card.className = 'blog-card rounded-xl shadow-sm border border-gray-100 flex flex-col h-full overflow-hidden';
       card.innerHTML = `
-        <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
-        <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
-        <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
-        <button class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto" onclick="openArticle(${art.id})">Apri articolo &rarr;</button>
+        ${art.bgImage ? `<img src="${art.bgImage}" alt="${art.title}" class="w-full h-48 object-cover">` : ''}
+        <div class="p-8 flex flex-col flex-grow">
+          <span class="text-xs font-bold ${art.colorClass} uppercase tracking-widest mb-2 block">${art.tag}</span>
+          <h3 class="text-2xl font-bold text-primary mb-4 font-serif">${art.title}</h3>
+          <p class="text-secondary mb-6 text-sm flex-grow">${art.excerpt}</p>
+          <button class="font-bold text-primary hover:text-accent-cta transition text-left mt-auto" onclick="openArticle(${art.id})">Apri articolo &rarr;</button>
+        </div>
       `;
       container.appendChild(card);
     });

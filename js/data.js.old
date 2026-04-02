@@ -1,0 +1,253 @@
+/* ======================================
+   DATA.JS - Dati Articoli e Laboratori
+   ====================================== */
+
+// --- PROSSIMO EVENTO (solo evento, non laboratorio) ---
+const prossimoEvento = {
+    title: "Touch&Flow 🌿",
+    excerpt: "Un weekend per ritrovare il contatto con te stessa, immersa in un ambiente caldo e accogliente.",
+    fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Touch&Flow: Un Weekend di Benessere</h3><p class='mb-4'>Un weekend per ritrovare il contatto con te stessa, immersa in un ambiente caldo e accogliente al Nif Alpine Taste di Vetriolo Terme.</p><p class='mb-4'>Attraverso yoga con Barbara, un laboratorio di ceramica con Michela e pratiche di mindfulness guidate da me, psicoterapeuta, riscopriremo il respiro e la presenza.</p><p class='mb-4'>Esperienze dentro e fuori, a stretto contatto con la natura, per rallentare e ritrovare equilibrio.</p><p class='mb-4'><strong>Posti limitati.</strong></p>",
+    tag: "Natura & Benessere",
+    colorClass: "text-accent-summer",
+    bgImage: "img/Mindfulness01.jpeg",
+    images: [
+        "img/Mindfulness01.jpeg",
+        "img/Mindfulness02.jpeg",
+        "img/Mindfulness03.jpeg"
+    ],
+    eventDate: { start: "2026-05-09", end: "2026-05-10" },
+    eventLocation: "Nif Alpine Taste, Vetriolo Terme",
+    id: 0
+};
+
+// --- LABORATORI (WORKSHOP) ---
+// Ordine: dal più recente (primo) al meno recente (ultimo)
+const articles = [
+    {
+        title: "Oltre i Blocchi",
+        excerpt: "Attraversare le resistenze e attivare nuove possibilità con il corpo, il gruppo e l'espressione.",
+        modalText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Socioplay Esperienziale: Sbloccare il Potenziale</h3><p class='mb-4'>Un laboratorio per attraversare le fasi di passaggio in cui emergono resistenze e blocchi, trasformandoli in possibilità evolutive:</p><p class='mb-4'><strong>Dimensione corporea:</strong> esplorare attraverso il movimento e l'espressione.</p><p class='mb-4'><strong>Lavoro di gruppo:</strong> ascolto, presenza e condivisione come risorse attive.</p><p class='mb-4'><strong>Psicodramma:</strong> dispositivo simbolico per osservare e rielaborare i blocchi.</p><p class='mb-4'>Accedere a livelli profondi, facilitando insight e possibilità di cambiamento concreto.</p>",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Oltre i Blocchi: Socioplay Esperienziale</h3><p class='mb-4'>Nel percorso evolutivo individuale incontro spesso fasi di passaggio in cui emergono resistenze, arresti o veri e propri blocchi. Sono momenti in cui i consueti assetti identitari e relazionali non risultano più funzionali, mentre il nuovo non è ancora pienamente accessibile.</p><p class='mb-4'>Queste soglie, spesso accompagnate da disagio, incertezza o dalla ripetizione di schemi ricorrenti, racchiudono in realtà un importante potenziale trasformativo. Nel mio lavoro considero fondamentale creare contesti strutturati, accoglienti e consapevoli, in cui sia possibile integrare parti interne, elaborare le resistenze e attivare nuove possibilità evolutive.</p><h4 class='text-xl font-serif font-bold text-primary mb-4 mt-6'>Il dispositivo psicodrammatico</h4><p class='mb-4'><strong>\"Oltre i blocchi\"</strong> è un socioplay esperienziale che utilizza la dimensione gruppale, corporea ed espressiva come strumenti di esplorazione e trasformazione. Attraverso il dispositivo psicodrammatico e simbolico, accompagno i partecipanti nell'osservare, attraversare e rielaborare i propri blocchi all'interno di uno spazio protetto, favorendo processi di consapevolezza e riorganizzazione interna.</p><h4 class='text-xl font-serif font-bold text-primary mb-4 mt-6'>Il gruppo come risorsa</h4><p class='mb-4'>Durante il laboratorio, il gruppo diventa una risorsa attiva: uno spazio di ascolto, presenza e condivisione in cui ogni esperienza individuale può trovare risonanza e sostegno. Il coinvolgimento corporeo e creativo permette di accedere a livelli più profondi rispetto alla sola dimensione cognitiva, facilitando insight, nuovi significati e possibilità di cambiamento concreto.</p><p class='mb-4'>Conduco questo percorso insieme a <strong>Roberta Curatolo</strong> e <strong>Iris Mattera</strong>, con cui condivido l'approccio e la visione del lavoro.</p><h4 class='text-xl font-serif font-bold text-primary mb-4 mt-6'>La location</h4><p class='mb-4'>L'incontro si è tenuto presso <strong>Multiverso, Studio d'Arte – Galleria – Centro Interculturale</strong>, in Via della Lungara 43, nel quartiere Trastevere a Roma. La scelta della location è parte integrante dell'esperienza: uno spazio artistico e interculturale che sostiene il processo creativo e amplifica il potenziale trasformativo del lavoro.</p>",
+        tag: "Crescita Personale",
+        colorClass: "text-accent-spring",
+        bgImage: "img/OltreiBlocchi01.jpeg",
+        images: [
+            "img/OltreiBlocchi01.jpeg",
+            "img/OltreiBlocchi02.jpeg",
+            "img/OltreiBlocchi03.jpeg",
+            "img/OltreiBlocchi04.jpeg",
+            "img/OltreiBlocchi05.jpeg",
+            "img/OltreiBlocchi06.jpeg"
+        ],
+        id: 1
+    },
+    {
+        title: "Spazio Ben-essere",
+        excerpt: "Uno spazio per fermarsi, ascoltarsi e ritrovare equilibrio nella quotidianità.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Uno Spazio per Fermarsi e Ascoltarsi</h3><p class='mb-4'>Da gennaio 2026, una serie di incontri gratuiti dedicati alla cura di sé e alle relazioni. Ogni appuntamento di un'ora e mezza offre:</p><p class='mb-4'><strong>Temi di benessere:</strong> cura di sé, dinamiche relazionali, consapevolezza emotiva.</p><p class='mb-4'><strong>Spunti pratici:</strong> strumenti concreti da portare nella quotidianità.</p><p class='mb-4'><strong>Confronto guidato:</strong> momenti di riflessione condivisa in uno spazio accogliente.</p><p class='mb-4'>Un percorso per ritrovare equilibrio, coltivare presenza e comprendere meglio il proprio mondo interiore.</p>",
+        tag: "Benessere Online",
+        colorClass: "text-accent-winter",
+        bgImage: "img/LaboratorioBenessere01.jpeg",
+        images: [
+            "img/LaboratorioBenessere01.jpeg",
+            "img/LaboratorioBenessere02.jpeg",
+            "img/LaboratorioBenessere03.jpeg",
+            "img/LaboratorioBenessere04.jpeg",
+            "img/LaboratorioBenessere05.jpeg"
+        ],
+        id: 2
+    },
+    {
+        title: "Rituali di gusto",
+        excerpt: "Degustazione consapevole e mindfulness al caseificio Sapori di Montegnago.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Rituali di gusto: Degustazione Consapevole e Mindfulness</h3><p class='mb-4'>In un mondo che corre veloce, anche il cibo rischia di diventare un gesto automatico, quasi invisibile. È da questa riflessione che, insieme alla mia amica <strong>Elisa</strong>, casara e degustatrice ONAF, è nato <em>\"Rituali di gusto\"</em>, un laboratorio che unisce la tradizione casearia artigianale alla mindfulness e alla degustazione consapevole.</p><p class='mb-4'>Un'esperienza immersiva che invita a rallentare, ad aprire i sensi e a incontrare il cibo in modo più autentico, in un luogo speciale: un caseificio nel verde dei <strong>Colli Berici</strong>, dove il tempo sembra avere un ritmo diverso.</p><h4 class='font-serif font-semibold text-lg text-primary mt-6 mb-3'>Un viaggio nel mondo del formaggio</h4><p class='mb-4'>La prima parte del laboratorio è affidata a Elisa, casara esperta e appassionata. Attraverso il suo racconto, i partecipanti possono scoprire le fasi della lavorazione artigianale del latte, comprendere il valore delle stagionature, riconoscere profumi, aromi e caratteristiche dei diversi formaggi.</p><h4 class='font-serif font-semibold text-lg text-primary mt-6 mb-3'>Mindful eating</h4><p class='mb-4'>Dopo aver esplorato l'arte casearia, accompagno i partecipanti in una pratica di <strong>mindful eating</strong>: respirare per preparare i sensi, osservare forme e colori, ascoltare consistenze e sensazioni al tatto, assaggiare con intenzione, lasciando che il gusto si sviluppi lentamente.</p><p class='mb-4'><em>\"Rituali di gusto\" è un invito a vivere il cibo in modo diverso: più lento, più sentito, più vero.</em></p>",
+        tag: "Natura & Benessere",
+        colorClass: "text-accent-summer",
+        bgImage: "img/Ritualidigusto.jpeg",
+        images: [
+            "img/Ritualidigusto.jpeg",
+            "img/Ritualidigusto02.jpg"
+        ],
+        id: 3
+    },
+    {
+        title: "Benessere per le atlete",
+        excerpt: "Strumenti di mindfulness per affrontare la competizione con calma, presenza e fiducia.",
+        modalText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Mindfulness e Sport: Gestire Ansia e Pressione</h3><p class='mb-4'>Percorsi dedicati a giovani atlete per trasformare lo stress della competizione in energia positiva. Il progetto lavora su:</p><p class='mb-4'><strong>Pre-gara:</strong> respirazione, visualizzazioni e tecniche di centratura.</p><p class='mb-4'><strong>Post-gara:</strong> pratiche di defaticamento emotivo.</p><p class='mb-4'><strong>Consapevolezza corporea:</strong> riconoscere i segnali dell'ansia e imparare a gestirli.</p>",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Benessere per le atlete: Percorsi di gestione dell'ansia e dello stress</h3><p class='mb-4'>Nel mondo sportivo, soprattutto in età evolutiva, le emozioni legate alla competizione possono essere intense e difficili da gestire. Come psicoterapeuta e formatrice in mindfulness, ho sviluppato un progetto specifico dedicato al benessere delle atlete, con percorsi mirati alla gestione dell'ansia e dello stress nelle fasi pre e post gara.</p><p class='mb-4'>Il progetto ha coinvolto <strong>bambine dagli 8 ai 10 anni</strong> e <strong>atlete preadolescenti e adolescenti</strong> delle scuole medie e superiori.</p><p class='mb-4'>Il cuore del percorso è l'utilizzo della <strong>mindfulness applicata allo sport</strong>, con respirazioni, riconoscimento delle sensazioni corporee, visualizzazioni guidate e pratiche di concentrazione.</p><p class='mb-4'><em>Lo sport diventa palestra di consapevolezza, offrendo strumenti utili per la vita.</em></p>",
+        tag: "Sport & Mindfulness",
+        colorClass: "text-accent-spring",
+        bgImage: "img/MindfulBreathing01.jpeg",
+        images: [
+            "img/MindfulBreathing01.jpeg",
+            "img/MindfulBreathing02.jpeg"
+        ],
+        id: 4
+    },
+    {
+        title: "ZenFlow: Equilibrio Online",
+        excerpt: "Mindfulness e yoga si alternano per creare equilibrio tra mente e corpo, comodamente da casa.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Benessere Integrato: Mindfulness e Yoga Online</h3><p class='mb-4'>Un percorso di 10 incontri online dove mindfulness e yoga si alternano per creare un equilibrio profondo tra mente e corpo. In collaborazione con un'insegnante di yoga, ogni lunedì sera offriamo:</p><p class='mb-4'><strong>Mindfulness:</strong> 5 incontri di presenza, respiro e ascolto interiore.</p><p class='mb-4'><strong>Yoga:</strong> 5 incontri di movimento consapevole e rilassamento.</p><p class='mb-4'>Un ciclo semplice ma trasformativo per ritrovare equilibrio e consapevolezza, un lunedì alla volta.</p>",
+        tag: "Benessere Online",
+        colorClass: "text-accent-winter",
+        bgImage: "img/Zenflow01.jpeg",
+        images: [
+            "img/Zenflow01.jpeg",
+            "img/CorsiMindfulness01.jpeg",
+            "img/CorsiMindfulnessGruppo.jpeg",
+            "img/CorsiMindfulnessIndividuale.jpeg"
+        ],
+        id: 5
+    },
+    {
+        title: "Mindfulness tra Natura e Sapori",
+        excerpt: "Camminare nella natura, assaporare con presenza: un viaggio tra sensi e consapevolezza.",
+        modalText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Quando Natura, Cibo e Consapevolezza si Incontrano</h3><p class='mb-4'>Un'esperienza immersiva a Vetriolo Terme dove abbiamo unito la bellezza della natura alpina con la pratica della mindfulness. Il laboratorio ha integrato:</p><p class='mb-4'><strong>Mindful Walking:</strong> una camminata consapevole nella natura per riconnettersi con l'ambiente.</p><p class='mb-4'><strong>Mindful Eating:</strong> degustazione multisensoriale per trasformare ogni boccone in una meditazione.</p><p class='mb-4'><strong>Esperienza di Gruppo:</strong> condivisione e scoperta collettiva in un rifugio alpino.</p><p class='mb-4'>Un viaggio tra sapori autentici e presenza mentale, dove rallentare diventa un atto di cura verso se stessi.</p>",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Mindfulness tra Natura e Sapori: laboratorio esperienziale di mindful walking e mindful eating</h3><p class='mb-4'>Nel laboratorio <strong>Mindfulness tra Natura e Sapori</strong>, ospitato al <strong>Nif Alpine Taste</strong> di Vetriolo Terme, abbiamo unito mindful walking e mindful eating in un'esperienza immersiva tra natura e gusto.</p><p class='mb-4'>In collaborazione con una collega psicologa abbiamo guidato una camminata consapevole, mentre il proprietario del locale ha messo a disposizione i cibi per la degustazione.</p><p class='mb-4'>Ho condotto la parte di <strong>mindful eating</strong>, invitando i partecipanti ad ascoltare sensazioni, sapori ed emozioni con presenza e lentezza.</p><p class='mb-4'><em>Un incontro dedicato alla connessione autentica con sé, il cibo e l'ambiente.</em></p><p class='mb-4'><strong>Collaborazione con:</strong> Dafne Reato Psicologa ed Edoardo proprietario del Nif - Alpine Taste</p>",
+        tag: "Natura & Benessere",
+        colorClass: "text-accent-summer",
+        bgImage: "img/Mindfulness tra Natura e Sapori.jpeg",
+        images: [
+            "img/Mindfulness tra Natura e Sapori.jpeg",
+            "img/Mindfulness01.jpeg",
+            "img/Mindfulness02.jpeg",
+            "img/Mindfulness03.jpeg"
+        ],
+        id: 6
+    },
+    {
+        title: "Progetto D.I.T.A.",
+        excerpt: "Portare calma, presenza e ascolto di sé nelle classi della scuola secondaria.",
+        modalText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Mindfulness a scuola: coltivare presenza e benessere</h3><p class='mb-4'>Un intervento dedicato agli studenti della scuola secondaria di primo grado, pensato per introdurre la mindfulness come strumento di consapevolezza emotiva e benessere quotidiano.</p><p class='mb-4'><strong>Progetto Finanziato UE:</strong> realizzato presso l'IC Michelangelo Buonarroti di Rubano nell'ambito del programma D.I.T.A. per la Regione Veneto.</p>",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Progetto D.I.T.A.: Mindfulness per le Scuole</h3><p class='mb-4'>Il progetto <strong>D.I.T.A.</strong>, realizzato presso l'IC Statale Michelangelo Buonarroti di Rubano e finanziato dall'Unione Europea per la Regione Veneto, è stato pensato per promuovere <em>affettività, emotività e benessere</em> negli studenti della scuola secondaria di primo grado.</p><p class='mb-4'>Ho partecipato al progetto conducendo una sessione di mindfulness rivolta a tutte le classi di terza media. L'esperienza è stata intensa e significativa: tutti gli studenti coinvolti hanno potuto sperimentare un momento di <em>benessere, quiete e presenza</em>.</p>",
+        tag: "Scuola & Formazione",
+        colorClass: "text-accent-autumn",
+        bgImage: "img/LabScuola01.jpeg",
+        images: [],
+        id: 7
+    },
+    {
+        title: "La Donna e il suo Corpo",
+        excerpt: "Tornare ad abitare il proprio corpo come luogo di storia, libertà e cura.",
+        modalText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Quando il corpo diventa spazio di potere e cura</h3><p class='mb-4'>Un laboratorio dedicato all'empowerment femminile, pensato per offrire uno spazio sicuro e rispettoso in cui esplorare il rapporto con il corpo, il cibo e l'immagine di sé.</p>",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>La donna e il suo corpo: un progetto dedicato all'empowerment femminile</h3><p class='mb-4'>Il progetto <strong>La donna e il suo corpo</strong> nasce dall'esigenza di creare uno spazio sicuro in cui le donne potessero esplorare il proprio rapporto con il corpo, la propria storia emotiva e le modalità con cui si sono relazionate al cibo e all'immagine di sé.</p><p class='mb-4'>L'incontro si è svolto in un <strong>teatro a Roma</strong>, un luogo scelto per la sua capacità di contenere ciò che emerge quando si lavora sull'identità corporea.</p><p class='mb-4'>Il progetto è stato realizzato in collaborazione con <strong>Iris Mattera</strong>, psicologa e psicoterapeuta, e <strong>Veronica Giachè</strong>, dietista e nutrizionista.</p><p class='mb-4'><strong>La donna e il suo corpo</strong> è stato un invito a tornare ad abitare il proprio corpo come luogo di potere, di storia, di libertà e di cura.</p>",
+        tag: "Crescita Personale",
+        colorClass: "text-accent-spring",
+        bgImage: "img/La donna e il suo corpo.jpeg",
+        images: [
+            "img/La donna e il suo corpo.jpeg",
+            "img/LaDonna01.jpeg",
+            "img/LaDonna02.jpeg",
+            "img/LaDonna03.jpeg"
+        ],
+        id: 8
+    },
+    {
+        title: "Formazione Insegnanti",
+        excerpt: "Vivere le pratiche in prima persona per guidare i bambini nel viaggio emotivo.",
+        modalText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Emozioni e Mindfulness per una Scuola Consapevole</h3><p class='mb-4'>Un percorso rivolto alle insegnanti per portare l'educazione emotiva nella quotidianità scolastica.</p>",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Formazione Insegnanti: Emozioni e Mindfulness per una Scuola più Consapevole</h3><p class='mb-4'>La scuola è uno dei primi luoghi in cui i bambini imparano a conoscersi, relazionarsi e riconoscere ciò che provano. Da questa visione è nato il percorso di <strong>Formazione Insegnanti</strong> che porto avanti insieme a <strong>Silvia Ferrari</strong>, docente di scuola primaria.</p><p class='mb-4'>Il laboratorio si fonda su tre pilastri: la comprensione delle emozioni, la gestione delle relazioni, e la mindfulness come pratica per coltivare presenza e autoregolazione.</p><p class='mb-4'>Quando l'adulto è presente, consapevole e radicato, anche i bambini lo percepiscono e si affidano più facilmente.</p>",
+        tag: "Scuola & Formazione",
+        colorClass: "text-accent-autumn",
+        bgImage: "img/LabScuola01.jpeg",
+        images: [
+            "img/LabScuola01.jpeg"
+        ],
+        id: 9
+    }
+];
+
+// --- ARTICOLI BLOG ---
+const blogArticles = [
+    {
+        title: "Come Gestire l'Ansia quotidiana",
+        excerpt: "L'ansia quotidiana spesso non si presenta con grandi crisi, ma con piccole tensioni che si accumulano.",
+        fullText: "<p class='mb-4'>L'ansia quotidiana spesso non si presenta con grandi crisi, ma con piccole tensioni che si accumulano: il respiro che si fa corto, la mente che corre, il corpo sempre in \"allerta\". Invece di combatterla o giudicarla, possiamo imparare a riconoscerla come un segnale, un messaggio che ci invita a rallentare, ascoltarci e prenderci cura di noi in modo diverso.</p><p class='mb-4'>Una delle prime cose che possiamo fare è <strong>tornare al corpo</strong>. Il respiro è uno strumento semplice e sempre disponibile.</p><p class='mb-4'><em>Gestire l'ansia quotidiana non significa eliminarla, ma imparare ad abitarla con più consapevolezza.</em></p>",
+        tag: "Benessere",
+        colorClass: "text-accent-winter",
+        id: 101
+    },
+    {
+        title: "Il Ruolo della Resilienza",
+        excerpt: "La resilienza non è la capacità di resistere a tutto senza mai crollare, ma quella di piegarsi senza spezzarsi.",
+        fullText: "<p class='mb-4'>La resilienza non è la capacità di \"resistere a tutto\" senza mai crollare, ma piuttosto quella di piegarsi senza spezzarsi, di attraversare le difficoltà e, quando possibile, di imparare qualcosa su di sé lungo il cammino.</p><p class='mb-4'>Un ingrediente centrale della resilienza è la possibilità di <strong>riconoscere le proprie emozioni</strong>, anche quelle scomode, senza negarle.</p><p class='mb-4'><em>Nei momenti difficili, la domanda diventa \"di cosa ho bisogno adesso per attraversare questo momento nel modo più gentile possibile verso di me?\"</em></p>",
+        tag: "Psicologia",
+        colorClass: "text-accent-spring",
+        id: 102
+    },
+    {
+        title: "Relazioni Sane: Confini e Comunicazione",
+        excerpt: "Costruire relazioni sane non significa evitare i conflitti, ma imparare a stare dentro i legami senza perdersi.",
+        fullText: "<p class='mb-4'>Costruire relazioni sane non significa evitare i conflitti, ma imparare a stare dentro i legami senza perdersi, mantenendo un dialogo autentico con se stessi e con l'altro. Due elementi centrali sono i <strong>confini</strong> e la <strong>comunicazione</strong>.</p><p class='mb-4'><em>Confini e comunicazione non sono competenze da \"imparare una volta per tutte\", ma pratiche che si aggiustano nel tempo.</em></p>",
+        tag: "Relazioni",
+        colorClass: "text-accent-summer",
+        id: 103
+    },
+    {
+        title: "Consapevolezza Emotiva nei Bambini",
+        excerpt: "I bambini imparano a conoscere le emozioni prima nel corpo che nelle parole.",
+        fullText: "<p class='mb-4'>I bambini imparano a conoscere le emozioni prima nel corpo che nelle parole: una pancia che si stringe, un nodo in gola, un pianto che arriva improvviso. Aiutarli a sviluppare consapevolezza emotiva significa accompagnarli nel dare un nome a ciò che sentono.</p><p class='mb-4'><em>Coltivare la consapevolezza emotiva nei bambini significa offrire loro una base interna più stabile su cui poggiare la crescita.</em></p>",
+        tag: "Genitori & Figli",
+        colorClass: "text-accent-autumn",
+        id: 104
+    },
+    {
+        title: "Super poteri del cuore",
+        excerpt: "Educazione emotiva e mindfulness per bambini della scuola primaria.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>I Super Poteri del Cuore: Emozioni e Mindfulness alla Scuola Primaria</h3><p class='mb-4'><em>Educare alle emozioni significa offrire ai bambini gli strumenti per conoscersi davvero</em>, per comprendere ciò che accade dentro di loro e per affrontare il mondo con maggiore equilibrio. Da diversi anni porto nelle scuole primarie il mio laboratorio \"I Super Poteri del Cuore\", un percorso che unisce educazione emotiva e pratiche di mindfulness.</p><h4 class='font-serif font-semibold text-lg text-primary mt-6 mb-3'>Un percorso che parte dal cuore</h4><p class='mb-4'>Il progetto è costruito come un viaggio alla scoperta di quattro emozioni fondamentali — <strong>gioia, rabbia, tristezza e paura</strong> — presentate ai bambini come veri e propri \"super poteri\". Ogni emozione è un'energia che, se impariamo ad ascoltarla, può diventare un alleato prezioso.</p><h4 class='font-serif font-semibold text-lg text-primary mt-6 mb-3'>Il diario delle emozioni</h4><p class='mb-4'>Uno degli strumenti più significativi del progetto è il <strong>diario delle emozioni</strong>, un quaderno che accompagna i bambini lungo tutto il percorso.</p><h4 class='font-serif font-semibold text-lg text-primary mt-6 mb-3'>La mindfulness come filo conduttore</h4><p class='mb-4'>La mindfulness è il cuore pulsante del progetto. Ogni incontro include momenti di pratica guidata: respirazioni lente, body scan semplificati, esercizi di ascolto sensoriale, meditazioni brevi, pratiche di gentilezza.</p><p class='mb-4'><em>\"I Super Poteri del Cuore\" è un percorso che nasce dal desiderio di aiutare i bambini a conoscere sé stessi attraverso strumenti semplici, concreti e profondi.</em></p>",
+        tag: "Scuola & Formazione",
+        colorClass: "text-accent-autumn",
+        bgImage: "img/Superpoteridelcuore.jpeg",
+        images: [
+            "img/Emozioniascuolta.jpg",
+            "img/Superpoteridelcuore.jpeg",
+            "img/LabScuola01.jpeg"
+        ],
+        id: 105
+    },
+    {
+        title: "Emozioni in gioco",
+        excerpt: "Laboratorio esperienziale per genitori e figli alla scoperta del mondo emotivo.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Emozioni in gioco: Genitori e Figli alla Scoperta del Mondo Emotivo</h3><p class='mb-4'>Insieme a una collega psicologa, ho ideato <strong>\"Emozioni in gioco\"</strong>, un laboratorio esperienziale rivolto a genitori e bambini che desiderano esplorare insieme il mondo delle emozioni attraverso il gioco, la creatività e la mindfulness.</p><p class='mb-4'><em>\"Emozioni in gioco\" non è solo un laboratorio: è un'esperienza che mette al centro la relazione.</em></p>",
+        tag: "Scuola & Formazione",
+        colorClass: "text-accent-autumn",
+        bgImage: "img/LabScuola01.jpeg",
+        images: [
+            "img/LabScuola01.jpeg"
+        ],
+        id: 106
+    },
+    {
+        title: "Calm Connection",
+        excerpt: "Giornata di benessere con yoga, mindfulness, ceramica e natura a Vetriolo Terme.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Calm Connection: Una Giornata di Benessere a Vetriolo Terme</h3><p class='mb-4'><strong>Calm Connection</strong> è stato un invito a rallentare, ascoltarsi e creare connessioni autentiche, immersi nella natura di Vetriolo Terme, nello splendido spazio del <em>NIF Alpine Taste</em>.</p><p class='mb-4'>La giornata ha incluso yoga con Barbara, brunch, laboratorio di ceramica con Michela, mindful walking nel bosco e meditazione.</p><p class='mb-4'><em>Calm Connection è stato più di un evento: un'esperienza di benessere condiviso.</em></p>",
+        tag: "Natura & Benessere",
+        colorClass: "text-accent-summer",
+        bgImage: "img/Calmconnection01.jpeg",
+        images: [
+            "img/Calmconnection01.jpeg",
+            "img/CalmConnection02.jpeg",
+            "img/CalmConnection03.jpeg",
+            "img/CalmConnection04.jpeg",
+            "img/CalmConnection05.jpeg",
+            "img/CalmConnection06.jpeg"
+        ],
+        id: 107
+    },
+    {
+        title: "Donne: Ascolto e Cura di Sé",
+        excerpt: "Uno spazio autentico dove raccontarsi, ascoltarsi e scoprire radici comuni.",
+        fullText: "<h3 class='text-2xl font-serif font-bold text-primary mb-6'>Donne: Ascolto e Cura di Sé</h3><p class='mb-4'>Il 9 marzo abbiamo vissuto un'esperienza intensa e significativa, in occasione della giornata dedicata alla donna e al femminile. L'incontro è stato condotto insieme alla collega psicologa <strong>Sofia Dalla Libera</strong>.</p><p class='mb-4'>Nei piccoli gruppi sono nati confronti sinceri e profondi: storie diverse, vissuti unici, ma attraversati da fili comuni.</p><p class='mb-4'>Grazie a tutte le donne che hanno reso possibile questo incontro.</p>",
+        tag: "Crescita Personale",
+        colorClass: "text-accent-spring",
+        bgImage: "img/DonneAscolto01.jpeg",
+        images: [
+            "img/DonneAscolto01.jpeg",
+            "img/DonneAscolto02.jpeg",
+            "img/DonneAscolto03.jpeg",
+            "img/DonneAscolto04.jpeg",
+            "img/DonneAscolto05.jpeg"
+        ],
+        id: 108
+    }
+];

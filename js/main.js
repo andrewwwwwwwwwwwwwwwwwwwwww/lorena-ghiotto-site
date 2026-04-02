@@ -217,23 +217,17 @@ function getUpcomingEvents() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     
-    return articles.filter(art => {
-        if (!art.eventDate) return false;
-        
-        // Se è un range (oggetto con start/end)
-        if (typeof art.eventDate === 'object' && art.eventDate.start) {
-            const startDate = new Date(art.eventDate.start);
-            return startDate >= today;
+    // Usa prossimoEvento se definito e se la data è futura
+    if (typeof prossimoEvento !== 'undefined' && prossimoEvento.eventDate) {
+        const startDate = typeof prossimoEvento.eventDate === 'object' 
+            ? new Date(prossimoEvento.eventDate.start) 
+            : new Date(prossimoEvento.eventDate);
+        if (startDate >= today) {
+            return [prossimoEvento];
         }
-        
-        // Se è una data singola
-        const eventDate = new Date(art.eventDate);
-        return eventDate >= today;
-    }).sort((a, b) => {
-        const dateA = typeof a.eventDate === 'object' ? new Date(a.eventDate.start) : new Date(a.eventDate);
-        const dateB = typeof b.eventDate === 'object' ? new Date(b.eventDate.start) : new Date(b.eventDate);
-        return dateA - dateB;
-    });
+    }
+    
+    return [];
 }
 
 function formatEventDate(eventDate) {
@@ -293,7 +287,7 @@ function renderUpcomingEvents() {
             <span class="text-xs font-bold ${event.colorClass} uppercase tracking-widest mb-2 block">${event.tag}</span>
             <h3 class="text-xl font-bold text-primary mb-3 font-serif">${event.title}</h3>
             <p class="text-secondary text-sm mb-4">${event.excerpt}</p>
-            <button onclick="openArticleModal(${event.id})" class="font-bold text-primary hover:text-accent-cta transition">Scopri di più →</button>
+            <button onclick="openEventModal()" class="font-bold text-primary hover:text-accent-cta transition">Scopri di più →</button>
         `;
         
         container.appendChild(card);
