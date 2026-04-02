@@ -134,12 +134,13 @@ class Lorena_Mobile_Nav_Walker extends Walker_Nav_Menu {
  * Fallback menu
  */
 function lorena_fallback_menu() {
+    $home = rtrim(home_url('/'), '/');
     $items = array(
-        'Chi Sono'   => is_front_page() ? '#chisiamo'   : home_url('/chi-sono/'),
-        'Laboratori' => is_front_page() ? '#laboratori' : home_url('/laboratori/'),
-        'Blog'       => is_front_page() ? '#Blog'       : home_url('/blog/'),
+        'Chi Sono'   => $home . '/#chisiamo',
+        'Laboratori' => $home . '/#laboratori',
+        'Blog'       => $home . '/#Blog',
         'Media'      => home_url('/media/'),
-        'Contatti'   => is_front_page() ? '#contatti'   : home_url('/contatti/'),
+        'Contatti'   => $home . '/#contatti',
     );
     foreach ($items as $label => $href) {
         echo '<a href="' . esc_attr($href) . '" class="nav-link hover:text-primary transition whitespace-nowrap">' . esc_html($label) . '</a>';
